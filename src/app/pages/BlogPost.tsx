@@ -1,17 +1,21 @@
-import { Link, useParams } from "react-router";
+"use client";
+
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import { Calendar, Clock, ArrowLeft, Share2 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Badge } from "../components/ui/badge";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
 export function BlogPost() {
-  const { slug } = useParams();
+  const params = useParams<{ slug?: string | string[] }>();
+  const slug = Array.isArray(params?.slug) ? params.slug[0] : params?.slug;
 
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <Button variant="ghost" asChild className="mb-6">
-          <Link to="/blog">
+          <Link href="/blog">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Blog
           </Link>

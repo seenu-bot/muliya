@@ -197,6 +197,42 @@ src="https://www.facebook.com/tr?id=1312702170151233&ev=PageView&noscript=1"
 	position: fixed;
 	top: 0;
 	left: 0;
+}
+
+#mj-scroll-swap {
+	height: 300vh;
+}
+
+#mj-scroll-swap > .e-con-inner {
+	position: sticky;
+	top: 120px;
+	min-height: calc(100vh - 120px);
+	display: flex;
+	align-items: center;
+}
+
+#mj-scroll-swap img,
+#mj-scroll-swap h2,
+#mj-scroll-swap .elementor-widget-text-editor {
+	transition: opacity 280ms ease, transform 280ms ease;
+}
+
+#mj-scroll-swap.mj-changing img,
+#mj-scroll-swap.mj-changing h2,
+#mj-scroll-swap.mj-changing .elementor-widget-text-editor {
+	opacity: 0;
+	transform: translateY(10px);
+}
+
+@media (max-width: 767px) {
+	#mj-scroll-swap {
+		height: auto;
+	}
+	#mj-scroll-swap > .e-con-inner {
+		position: static;
+		top: auto;
+		min-height: auto;
+	}
 }		</style>
 		</head>
 <body data-rsssl=1 class="home wp-singular page-template-default page page-id-2374 wp-embed-responsive wp-theme-hello-elementor wp-child-theme-muliya-jewels theme-hello-elementor woocommerce-no-js hello-elementor-default elementor-default elementor-kit-7 elementor-page elementor-page-2374">
@@ -254,7 +290,7 @@ src="https://www.facebook.com/tr?id=1312702170151233&ev=PageView&noscript=1"
 
 												<span class="elementor-icon-list-icon">
 							<svg xmlns="http://www.w3.org/2000/svg" width="44" height="26" viewBox="0 0 44 26" fill="none"><path d="M17.5888 14.2537H4.14304C3.84284 14.2537 3.58067 14.4568 3.50565 14.7475L1.21232 23.6341C1.1048 24.0508 1.4194 24.4569 1.84971 24.4569H19.5955C20.0175 24.4569 20.3306 24.0653 20.2376 23.6536L18.2309 14.767C18.1632 14.4669 17.8965 14.2537 17.5888 14.2537Z" fill="#FFE8EC" stroke="#E92548" stroke-width="1.23644"></path><path d="M29.0003 1H15.5545C15.2468 1 14.9802 1.21315 14.9124 1.51328L12.9057 10.3999C12.8128 10.8116 13.1258 11.2032 13.5479 11.2032H31.2936C31.7239 11.2032 32.0385 10.7971 31.931 10.3804L29.6377 1.49378C29.5627 1.20311 29.3005 1 29.0003 1Z" fill="#FFE8EC" stroke="#E92548" stroke-width="1.23644"></path><path d="M39.7054 14.2537H26.2596C25.9519 14.2537 25.6853 14.4669 25.6175 14.767L23.6108 23.6536C23.5179 24.0653 23.8309 24.4569 24.2529 24.4569H41.9987C42.429 24.4569 42.7436 24.0508 42.6361 23.6341L40.3428 14.7475C40.2678 14.4568 40.0056 14.2537 39.7054 14.2537Z" fill="#FFE8EC" stroke="#E92548" stroke-width="1.23644"></path></svg>						</span>
-										<span class="elementor-icon-list-text"><span style="color: #272727">Today's </span><br>Gold Rate</span>
+										<span class="elementor-icon-list-text"><span style="color: #272727">Today's</span><br>Gold Rate</span>
 											</a>
 									</li>
 						</ul>
@@ -1018,7 +1054,7 @@ src="https://www.facebook.com/tr?id=1312702170151233&ev=PageView&noscript=1"
 				</div>
 					</div>
 				</div>
-		<div class="elementor-element elementor-element-a238a05 e-flex e-con-boxed e-con e-parent" data-id="a238a05" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
+		<div class="elementor-element elementor-element-a238a05 e-flex e-con-boxed e-con e-parent" id="mj-scroll-swap" data-id="a238a05" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;}">
 					<div class="e-con-inner">
 		<div class="elementor-element elementor-element-ecbe0b6 e-con-full e-flex e-con e-child" data-id="ecbe0b6" data-element_type="container" data-e-type="container">
 				<div class="elementor-element elementor-element-3ee4056 elementor-invisible elementor-widget elementor-widget-image" data-id="3ee4056" data-element_type="widget" data-e-type="widget" data-settings="{&quot;_animation&quot;:&quot;fadeIn&quot;,&quot;_animation_delay&quot;:200}" data-widget_type="image.default">
@@ -2167,6 +2203,84 @@ jQuery(window).on("scroll", function () {
 
   lastScrollTop = st;
 });
+
+		(function () {
+			var section = document.getElementById('mj-scroll-swap');
+			if (!section) return;
+
+			var headingEl = section.querySelector('div[data-id="c0d869e"] h2');
+			var textEl = section.querySelector('div[data-id="c0d869e"] div[data-id="727b0d7"] .elementor-widget-container');
+			var imgEl = section.querySelector('div[data-id="3ee4056"] img');
+			if (!headingEl || !textEl || !imgEl) return;
+
+			var steps = [
+				{
+					heading: 'A new identity <br> the same legacy',
+					text: '<p>Our refreshed logo, mascot, and brand philosophy represent a new chapter—built on the same values that earned generations of trust.</p><p>Modern in expression, timeless in craftsmanship—Muliya continues to celebrate every story with purity, care, and detail.</p>',
+					img: 'https://muliya.in/wp-content/uploads/2025/04/Muliya-Mascot-1.png',
+					alt: 'Mascot'
+				},
+				{
+					heading: 'A mascot that means <br> strength &amp; loyalty',
+					text: '<p>Our elephant mascot is a symbol of what we stand for—steadfast relationships, unwavering quality, and the confidence that comes with purity.</p><p>Every piece carries that promise, from the first sketch to the final polish.</p>',
+					img: 'https://muliya.in/wp-content/uploads/2025/04/Home-Wedding-Jewelry-1024x841.png',
+					alt: 'Wedding jewellery'
+				},
+				{
+					heading: 'Creating Happiness <br> in every ornament',
+					text: '<p>Jewellery is more than gold and diamonds—it is emotion, memory, and celebration.</p><p>Our tagline, <strong>Creating Happiness</strong>, reflects the feeling we design for: everyday joy, family pride, and milestones made radiant.</p>',
+					img: 'https://muliya.in/wp-content/uploads/2025/04/Banner-scaled.png',
+					alt: 'Brand banner'
+				}
+			];
+
+			var activeStep = -1;
+			var ticking = false;
+
+			function clamp01(v) {
+				return Math.max(0, Math.min(1, v));
+			}
+
+			function computeStep() {
+				var rect = section.getBoundingClientRect();
+				var viewportH = window.innerHeight || document.documentElement.clientHeight;
+				var scrollable = section.offsetHeight - viewportH;
+				if (scrollable <= 0) return 0;
+				var progressed = -rect.top;
+				var p = clamp01(progressed / scrollable);
+				return Math.min(steps.length - 1, Math.floor(p * steps.length));
+			}
+
+			function applyStep(stepIdx) {
+				if (stepIdx === activeStep) return;
+				activeStep = stepIdx;
+				section.setAttribute('data-step', String(stepIdx));
+				section.classList.add('mj-changing');
+				window.setTimeout(function () {
+					var s = steps[stepIdx];
+					headingEl.innerHTML = s.heading;
+					textEl.innerHTML = s.text;
+					imgEl.setAttribute('src', s.img);
+					imgEl.setAttribute('alt', s.alt);
+				}, 140);
+				window.setTimeout(function () {
+					section.classList.remove('mj-changing');
+				}, 320);
+			}
+
+			function onScrollSwap() {
+				if (ticking) return;
+				ticking = true;
+				window.requestAnimationFrame(function () {
+					applyStep(computeStep());
+					ticking = false;
+				});
+			}
+
+			applyStep(0);
+			window.addEventListener('scroll', onScrollSwap, { passive: true });
+			window.addEventListener('resize', onScrollSwap);
+		})();
 
 		
 		

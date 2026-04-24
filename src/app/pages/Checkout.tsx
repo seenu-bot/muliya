@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { useNavigate } from "react-router";
+import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { CreditCard, MapPin, User, Check } from "lucide-react";
 import { Button } from "../components/ui/button";
@@ -21,7 +23,7 @@ type CheckoutFormData = {
 };
 
 export function Checkout() {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [step, setStep] = useState(1);
   const [paymentMethod, setPaymentMethod] = useState("card");
   const {
@@ -55,7 +57,7 @@ export function Checkout() {
       // Process payment
       toast.success("Order placed successfully!");
       setTimeout(() => {
-        navigate("/dashboard/orders");
+        router.push("/dashboard/orders");
       }, 2000);
     }
   };

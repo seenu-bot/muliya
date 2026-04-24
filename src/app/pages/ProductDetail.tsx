@@ -1,5 +1,8 @@
+"use client";
+
 import { useState } from "react";
-import { useParams, Link } from "react-router";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import {
   Heart,
   ShoppingCart,
@@ -9,6 +12,8 @@ import {
   RefreshCw,
   ChevronLeft,
   Star,
+  ChevronDown,
+  IndianRupee,
 } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
@@ -78,9 +83,21 @@ const relatedProducts = [
 ];
 
 export function ProductDetail() {
-  const { id } = useParams();
+  const params = useParams<{ id?: string | string[] }>();
+  const id = Array.isArray(params?.id) ? params.id[0] : params?.id;
   const [selectedImage, setSelectedImage] = useState(0);
   const [quantity, setQuantity] = useState(1);
+  
+  // Accordion state
+  const [openSections, setOpenSections] = useState<string[]>([]);
+
+  const toggleSection = (section: string) => {
+    setOpenSections(prev => 
+      prev.includes(section) 
+        ? prev.filter(s => s !== section)
+        : [...prev, section]
+    );
+  };
 
   const discount = Math.round(
     ((productData.originalPrice - productData.price) / productData.originalPrice) * 100
@@ -92,16 +109,16 @@ export function ProductDetail() {
       <div className="bg-white border-b">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <div className="flex items-center gap-2 text-sm">
-            <Link to="/" className="text-gray-600 hover:text-amber-600">
+            <Link href="/" className="text-gray-600 hover:text-amber-600">
               Home
             </Link>
             <span className="text-gray-400">/</span>
-            <Link to="/products" className="text-gray-600 hover:text-amber-600">
+            <Link href="/products" className="text-gray-600 hover:text-amber-600">
               Products
             </Link>
             <span className="text-gray-400">/</span>
             <Link
-              to={`/products/${productData.category.toLowerCase()}`}
+              href={`/products/${productData.category.toLowerCase()}`}
               className="text-gray-600 hover:text-amber-600"
             >
               {productData.category}
@@ -114,7 +131,7 @@ export function ProductDetail() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Button variant="ghost" asChild className="mb-6">
-          <Link to="/products">
+          <Link href="/products">
             <ChevronLeft className="w-4 h-4 mr-2" />
             Back to Products
           </Link>
@@ -266,6 +283,157 @@ export function ProductDetail() {
                 <div className="text-center">
                   <RefreshCw className="w-6 h-6 mx-auto mb-2 text-amber-600" />
                   <p className="text-xs text-gray-600">Easy Returns</p>
+                </div>
+              </div>
+
+              {/* Accordion Sections */}
+              <div className="mt-6 border-t pt-6">
+                {/* Product Details */}
+                <div className="border-b border-gray-200">
+                  <button
+                    onClick={() => toggleSection('product-details')}
+                    className="w-full flex items-center justify-between py-4 text-left"
+                  >
+                    <span className="text-lg font-medium text-gray-900">Product Details</span>
+                    <ChevronDown 
+                      className={`w-5 h-5 text-gray-500 transition-transform ${openSections.includes('product-details') ? 'rotate-180' : ''}`} 
+                    />
+                  </button>
+                  {openSections.includes('product-details') && (
+                    <div className="pb-4">
+                      <div className="grid grid-cols-2 gap-4 text-sm">
+                        <div>
+                          <p className="text-gray-500">Product ID</p>
+                          <p className="font-medium text-gray-900">{productData.id}</p>
+                        </div>
+                        <div>
+                          <p className="text-gray-500">Category</p>
+                          <p className="font-medium text-gray-900">{productData.category}</p>
+                        </div>
+                        {Object.entries(productData.specifications).map(([key, value]) => (
+                          <div key={key}>
+                            <p className="text-gray-500 capitalize">{key.replace(/([A-Z])/g, " $1")}</p>
+                            <p className="font-medium text-gray-900">{value}</p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Side Diamond Details */}
+                <div className="border-b border-gray-200">
+                  <button
+                    onClick={() => toggleSection('diamond-details')}
+                    className="w-full flex items-center justify-between py-4 text-left"
+                  >
+                    <span className="text-lg font-medium text-gray-900">Side Diamond Details</span>
+                    <ChevronDown 
+                      className={`w-5 h-5 text-gray-500 transition-transform ${openSections.includes('diamond-details') ? 'rotate-180' : ''}`} 
+                    />
+                  </button>
+                  {openSections.includes('diamond-details') && (
+                    <div className="pb-4">
+                      <div className="space-y-3 text-sm">
+                        <div className="flex justify-between">
+                          <span className="text-gray-500">Total Diamond Weight</span>
+                          <span className="font-medium text-gray-900">0.25 Carat</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-500">Number of Diamonds</span>
+                          <span className="font-medium text-gray-900">12</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-500">Diamond Color</span>
+                          <span className="font-medium text-gray-900">GH</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-500">Diamond Clarity</span>
+                          <span className="font-medium text-gray-900">SI</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-500">Diamond Shape</span>
+                          <span className="font-medium text-gray-900">Round</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-500">Setting Type</span>
+                          <span className="font-medium text-gray-900">Prong</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* Price Breakup */}
+                <div className="border-b border-gray-200">
+                  <button
+                    onClick={() => toggleSection('price-breakup')}
+                    className="w-full flex items-center justify-between py-4 text-left"
+                  >
+                    <span className="text-lg font-medium text-gray-900">Price Breakup</span>
+                    <ChevronDown 
+                      className={`w-5 h-5 text-gray-500 transition-transform ${openSections.includes('price-breakup') ? 'rotate-180' : ''}`} 
+                    />
+                  </button>
+                  {openSections.includes('price-breakup') && (
+                    <div className="pb-4">
+                      <div className="space-y-3 text-sm">
+                        <div className="flex justify-between">
+                          <span className="text-gray-500">Gold Price ({productData.specifications.weight || '8g'})</span>
+                          <span className="font-medium text-gray-900">₹{(productData.price * 0.6).toLocaleString()}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-500">Diamond Price</span>
+                          <span className="font-medium text-gray-900">₹{(productData.price * 0.25).toLocaleString()}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-500">Making Charges</span>
+                          <span className="font-medium text-gray-900">₹{(productData.price * 0.12).toLocaleString()}</span>
+                        </div>
+                        <div className="flex justify-between">
+                          <span className="text-gray-500">GST (3%)</span>
+                          <span className="font-medium text-gray-900">₹{(productData.price * 0.03).toLocaleString()}</span>
+                        </div>
+                        <div className="border-t border-gray-200 pt-2 flex justify-between">
+                          <span className="font-medium text-gray-900">Total</span>
+                          <span className="font-semibold text-amber-600">₹{productData.price.toLocaleString()}</span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+
+              {/* Policy Section */}
+              <div className="mt-6 bg-[#FAF7F5] rounded-lg p-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-4">
+                  <div className="flex flex-col items-center text-center">
+                    <div className="w-12 h-12 rounded-full border-2 border-gray-800 flex items-center justify-center mb-3">
+                      <IndianRupee className="w-6 h-6 text-gray-800" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wide">
+                      7 DAYS NO QUESTIONS ASKED
+                    </h3>
+                    <p className="text-gray-600 text-sm mt-1">RETURN POLICY</p>
+                  </div>
+                  <div className="flex flex-col items-center text-center md:border-l md:border-gray-300 md:pl-6">
+                    <div className="w-12 h-12 rounded-full border-2 border-gray-800 flex items-center justify-center mb-3">
+                      <Shield className="w-6 h-6 text-gray-800" />
+                    </div>
+                    <h3 className="font-semibold text-gray-900 text-sm uppercase tracking-wide">
+                      LIFETIME EXCHANGE & BUYBACK
+                    </h3>
+                    <p className="text-gray-600 text-sm mt-1">POLICY</p>
+                  </div>
+                </div>
+                <div className="text-center pt-4 border-t border-gray-200">
+                  <p className="text-sm text-gray-600">
+                    Any Questions? Please feel free to reach us at:{" "}
+                    <a href="tel:+917851005200" className="font-semibold text-gray-900 hover:text-amber-600">
+                      +91 7851005200
+                    </a>{" "}
+                    ( 9:30 AM to 8:00 PM )
+                  </p>
                 </div>
               </div>
             </div>

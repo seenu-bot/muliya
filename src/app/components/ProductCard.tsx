@@ -1,10 +1,12 @@
-import { Link } from "react-router";
+import Link from "next/link";
 import { Heart, ShoppingCart } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { toast } from "sonner";
+
+const formatINR = (value: number) => new Intl.NumberFormat("en-IN").format(value);
 
 interface ProductCardProps {
   id: string;
@@ -46,7 +48,7 @@ export function ProductCard({
     : 0;
 
   return (
-    <Link to={`/product/${id}`}>
+    <Link href={`/product/${id}`}>
       <Card className="group overflow-hidden hover:shadow-lg transition-shadow">
         <div className="relative aspect-square overflow-hidden bg-gray-100">
           <ImageWithFallback
@@ -97,11 +99,11 @@ export function ProductCard({
 
           <div className="flex items-baseline gap-2">
             <span className="text-xl font-semibold text-amber-700">
-              ₹{price.toLocaleString()}
+              ₹{formatINR(price)}
             </span>
             {originalPrice && (
               <span className="text-sm text-gray-500 line-through">
-                ₹{originalPrice.toLocaleString()}
+                ₹{formatINR(originalPrice)}
               </span>
             )}
           </div>

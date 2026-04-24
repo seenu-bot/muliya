@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { useParams, useSearchParams } from "react-router";
+import { useParams, useSearchParams } from "next/navigation";
 import { SlidersHorizontal, Grid3x3, LayoutList } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { ProductCard } from "../components/ProductCard";
@@ -165,8 +167,9 @@ const allProducts = [
 ];
 
 export function Products() {
-  const { category } = useParams();
-  const [searchParams] = useSearchParams();
+  const params = useParams<{ category?: string | string[] }>();
+  const category = Array.isArray(params?.category) ? params.category[0] : params?.category;
+  const searchParams = useSearchParams();
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [priceRange, setPriceRange] = useState([0, 500000]);
   const [selectedMetal, setSelectedMetal] = useState<string[]>([]);

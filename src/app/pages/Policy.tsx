@@ -1,4 +1,7 @@
-import { useParams, Link } from "react-router";
+"use client";
+
+import Link from "next/link";
+import { useParams } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
@@ -136,7 +139,8 @@ const policies = {
 };
 
 export function Policy() {
-  const { type } = useParams<{ type: string }>();
+  const params = useParams<{ type?: string | string[] }>();
+  const type = Array.isArray(params?.type) ? params.type[0] : params?.type;
   const policy = policies[type as keyof typeof policies];
 
   if (!policy) {
@@ -145,7 +149,7 @@ export function Policy() {
         <div className="text-center">
           <h1 className="text-2xl font-serif text-gray-900 mb-4">Policy Not Found</h1>
           <Button asChild>
-            <Link to="/">Go Home</Link>
+            <Link href="/">Go Home</Link>
           </Button>
         </div>
       </div>
@@ -156,7 +160,7 @@ export function Policy() {
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Button variant="ghost" asChild className="mb-6">
-          <Link to="/">
+          <Link href="/">
             <ArrowLeft className="w-4 h-4 mr-2" />
             Back to Home
           </Link>
@@ -201,7 +205,7 @@ export function Policy() {
               .filter(([key]) => key !== type)
               .slice(0, 4)
               .map(([key, value]) => (
-                <Link key={key} to={`/policy/${key}`}>
+                <Link key={key} href={`/policy/${key}`}>
                   <Card className="hover:shadow-md transition-shadow">
                     <CardContent className="p-4">
                       <p className="font-medium text-gray-900">{value.title}</p>

@@ -1,4 +1,4 @@
-import { Link } from "react-router";
+import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
 import { Card, CardContent } from "../components/ui/card";
 import { Badge } from "../components/ui/badge";
@@ -120,7 +120,7 @@ export function Blog() {
                 </div>
               </div>
               <Button asChild>
-                <Link to={`/blog/${blogPosts[0].slug}`}>
+                <Link href={`/blog/${blogPosts[0].slug}`}>
                   Read More
                   <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
@@ -132,7 +132,7 @@ export function Blog() {
         {/* Blog Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {blogPosts.slice(1).map((post) => (
-            <Link key={post.slug} to={`/blog/${post.slug}`}>
+            <Link key={post.slug} href={`/blog/${post.slug}`}>
               <Card className="h-full hover:shadow-lg transition-shadow">
                 <div className="h-48 overflow-hidden">
                   <ImageWithFallback

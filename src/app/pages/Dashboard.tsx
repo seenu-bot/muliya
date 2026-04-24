@@ -1,5 +1,8 @@
+"use client";
+
 import { useState } from "react";
-import { Link, useLocation } from "react-router";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   User,
   Package,
@@ -58,9 +61,9 @@ const goldScheme = {
 };
 
 export function Dashboard() {
-  const location = useLocation();
-  const isWishlist = location.pathname.includes("/wishlist");
-  const isOrders = location.pathname.includes("/orders");
+  const pathname = usePathname();
+  const isWishlist = pathname.includes("/wishlist");
+  const isOrders = pathname.includes("/orders");
 
   const [activeTab, setActiveTab] = useState(
     isWishlist ? "wishlist" : isOrders ? "orders" : "profile"
@@ -208,7 +211,7 @@ export function Dashboard() {
                     </p>
                     <div className="flex gap-2">
                       <Button className="flex-1" size="sm" asChild>
-                        <Link to={`/product/${item.id}`}>View</Link>
+                        <Link href={`/product/${item.id}`}>View</Link>
                       </Button>
                       <Button variant="outline" size="sm" className="flex-1">
                         Remove

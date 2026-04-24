@@ -1,5 +1,7 @@
+"use client";
+
 import { useState } from "react";
-import { Link } from "react-router";
+import Link from "next/link";
 import { Trash2, Plus, Minus, ShoppingBag, ArrowRight } from "lucide-react";
 import { Button } from "../components/ui/button";
 import { Card, CardContent } from "../components/ui/card";
@@ -84,7 +86,7 @@ export function Cart() {
             Add some beautiful jewelry to your cart
           </p>
           <Button asChild>
-            <Link to="/products">Continue Shopping</Link>
+            <Link href="/products">Continue Shopping</Link>
           </Button>
         </div>
       </div>
@@ -104,7 +106,7 @@ export function Cart() {
                 <CardContent className="p-6">
                   <div className="flex gap-6">
                     <Link
-                      to={`/product/${item.id}`}
+                      href={`/product/${item.id}`}
                       className="flex-shrink-0 w-24 h-24 rounded-lg overflow-hidden bg-gray-100"
                     >
                       <ImageWithFallback
@@ -118,7 +120,7 @@ export function Cart() {
                       <div className="flex justify-between">
                         <div>
                           <Link
-                            to={`/product/${item.id}`}
+                            href={`/product/${item.id}`}
                             className="text-lg font-semibold text-gray-900 hover:text-amber-600"
                           >
                             {item.name}
@@ -220,7 +222,7 @@ export function Cart() {
                 </div>
 
                 <Button className="w-full bg-amber-600 hover:bg-amber-700" asChild>
-                  <Link to="/checkout">
+                  <Link href="/checkout">
                     Proceed to Checkout
                     <ArrowRight className="ml-2 w-5 h-5" />
                   </Link>
