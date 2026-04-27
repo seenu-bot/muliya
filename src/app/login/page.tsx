@@ -73,6 +73,8 @@ export default function LoginPage() {
               src="/images/Logo-1.svg"
               alt="Muliya"
               className="h-12 mx-auto mb-4"
+              loading="lazy"
+              decoding="async"
             />
           </Link>
           <h1 className="text-2xl font-serif text-gray-900">Welcome Back</h1>

@@ -27,6 +27,8 @@ export function ImageWithFallbackNext({ src, fallbackSrc, alt, ...rest }: Props)
     onError,
     width,
     height,
+    loading,
+    decoding,
     ...imgProps
   } = rest;
 
@@ -36,6 +38,8 @@ export function ImageWithFallbackNext({ src, fallbackSrc, alt, ...rest }: Props)
       src={finalSrc}
       alt={alt}
       className={className}
+      loading={loading ?? "lazy"}
+      decoding={decoding ?? "async"}
       width={fill ? undefined : (width as number | undefined)}
       height={fill ? undefined : (height as number | undefined)}
       style={

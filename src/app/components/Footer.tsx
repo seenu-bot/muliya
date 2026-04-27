@@ -54,6 +54,7 @@ export function Footer() {
                 src="/images/Logo-1.svg"
                 alt="Muliya Gold & Diamonds"
                 loading="eager"
+                decoding="async"
                 className="h-10 w-auto object-contain max-w-[180px]"
                 onError={() => setLogoError(true)}
               />

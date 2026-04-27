@@ -13,7 +13,7 @@ export function ImageWithFallback(props: ImageWithFallbackProps) {
     setDidError(true)
   }
 
-  const { src, alt, style, className, fallbackSrc, ...rest } = props
+  const { src, alt, style, className, fallbackSrc, loading, decoding, ...rest } = props
   const resolvedSrc = src || fallbackSrc || DEFAULT_FALLBACK_SRC
 
   return didError ? (
@@ -22,6 +22,8 @@ export function ImageWithFallback(props: ImageWithFallbackProps) {
       alt={alt}
       className={className}
       style={style}
+      loading={loading ?? 'lazy'}
+      decoding={decoding ?? 'async'}
       {...rest}
       data-original-url={src}
     />
@@ -31,6 +33,8 @@ export function ImageWithFallback(props: ImageWithFallbackProps) {
       alt={alt}
       className={className}
       style={style}
+      loading={loading ?? 'lazy'}
+      decoding={decoding ?? 'async'}
       {...rest}
       onError={handleError}
     />

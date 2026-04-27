@@ -97,6 +97,8 @@ export default function AboutPage() {
                   src="/images/muliya keshava bhatta.png"
                   alt="Late Shri Muliya Keshava Bhatta - Founder"
                   className="w-full h-auto object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
                   <h3 className="text-2xl font-serif text-white mb-2">Muliya Keshava Bhatta</h3>
@@ -180,6 +182,8 @@ export default function AboutPage() {
                     src="/images/prasad-removebg-preview.png"
                     alt="Shri Keshava Prasad Muliya"
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <h3 className="text-2xl font-serif text-gray-900 mb-2">Shri Keshava Prasad Muliya</h3>
@@ -204,6 +208,8 @@ export default function AboutPage() {
                     src="/images/krishna-removebg-preview.png"
                     alt="Shri Krishna Narayana Muliya"
                     className="w-full h-full object-cover"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 <h3 className="text-2xl font-serif text-gray-900 mb-2">Shri Krishna Narayana Muliya</h3>
@@ -258,9 +264,11 @@ export default function AboutPage() {
             >
               <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                 <img
-                  src="/images/muliya-aboutuspage.png"
-                  alt="Muliya Showroom"
+                  src="/images/modelwith necklace.png"
+                  alt="Model with necklace"
                   className="w-full h-auto object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
               </div>
@@ -448,6 +456,8 @@ export default function AboutPage() {
                   src="/images/Muliya-Mascot-1.png"
                   alt="Muliya Mascot"
                   className="w-80 h-auto object-contain drop-shadow-2xl"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute -top-4 -right-4">
                   <Sparkles className="w-8 h-8 text-yellow-300" />

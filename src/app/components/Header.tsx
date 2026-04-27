@@ -251,6 +251,7 @@ export function Header() {
               src="/images/Logo-1.svg"
               alt="Muliya Gold & Diamonds"
               loading="eager"
+              decoding="async"
               className="h-10 w-auto object-contain max-w-[160px]"
               onError={() => setLogoError(true)}
             />
@@ -358,6 +359,7 @@ export function Header() {
                         src="/images/Logo-1.svg"
                         alt="Muliya"
                         loading="eager"
+                        decoding="async"
                         className="h-7 w-auto object-contain"
                         onError={() => setLogoError(true)}
                       />
@@ -463,6 +465,8 @@ export function Header() {
                                   src="/images/Gemini_Generated_Image_hhlctbhhlctbhhlc.png"
                                   alt="Featured Gold Collection"
                                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                  loading="lazy"
+                                  decoding="async"
                                   onError={(e) => {
                                     (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=600&q=80";
                                   }}
@@ -515,6 +519,7 @@ export function Header() {
                                             alt={it.label}
                                             className="w-10 h-10 rounded-md object-cover mr-3 border border-gray-100"
                                             loading="lazy"
+                                            decoding="async"
                                           />
                                         ) : null}
                                         <span className="text-[#8B4513] text-sm font-medium group-hover:text-[#E92247] transition-colors">
@@ -619,8 +624,10 @@ export function Header() {
                                   src="/images/daimond/Gemini_Generated_Image_9hrdca9hrdca9hrd.png"
                                   alt="Featured Diamond Collection"
                                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                  loading="lazy"
+                                  decoding="async"
                                   onError={(e) => {
-                                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?w=600&q=80";
+                                    (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&q=80";
                                   }}
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
@@ -671,6 +678,7 @@ export function Header() {
                                             alt={it.label}
                                             className="w-10 h-10 rounded-md object-cover mr-3 border border-gray-100"
                                             loading="lazy"
+                                            decoding="async"
                                           />
                                         ) : null}
                                         <span className="text-[#1e3a5f] text-sm font-medium group-hover:text-[#E92247] transition-colors">
@@ -790,9 +798,8 @@ export function Header() {
                                       src={col.image}
                                       alt={col.name}
                                       className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                      onError={(e) => {
-                                        (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80";
-                                      }}
+                                      loading="lazy"
+                                      decoding="async"
                                     />
                                     <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                                     <div className="absolute bottom-3 left-3 right-3">
@@ -819,6 +826,8 @@ export function Header() {
                                   src="/images/collections/featured-collection.png"
                                   alt="Featured Collection"
                                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                  loading="lazy"
+                                  decoding="async"
                                   onError={(e) => {
                                     (e.target as HTMLImageElement).src = "https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=400&q=80";
                                   }}

@@ -96,7 +96,7 @@ export function ImageBannerSwiper({
       >
         {images.map((src) => (
           <SwiperSlide key={src}>
-            <img src={src} alt={alt} className="w-full h-full object-cover" />
+            <img src={src} alt={alt} className="w-full h-full object-cover" loading="lazy" decoding="async" />
           </SwiperSlide>
         ))}
       </Swiper>
