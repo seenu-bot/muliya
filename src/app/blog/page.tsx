@@ -67,7 +67,7 @@ export default function BlogPage() {
       {/* Hero Section */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <Image src="/images/Artboard 1 copy 2.png" alt="Blog banner" fill priority className="object-cover" />
+          <Image src="/images/Artboard 1 copy 2.png" alt="Blog banner" fill loading="lazy" className="object-cover" />
           <div className="absolute inset-0 bg-black/40" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">

@@ -14,5 +14,5 @@ export function HeroParallaxBanner() {
     [],
   );
 
-  return <ImageBannerSwiper images={images} alt="Muliya banner" />;
+  return <ImageBannerSwiper images={images} alt="Muliya banner" className="h-[45vh] md:h-[70vh]" />;
 }

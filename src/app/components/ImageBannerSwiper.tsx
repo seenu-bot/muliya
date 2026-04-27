@@ -94,9 +94,16 @@ export function ImageBannerSwiper({
         pagination={{ clickable: true }}
         className="imageBannerSwiper w-full h-full"
       >
-        {images.map((src) => (
+        {images.map((src, idx) => (
           <SwiperSlide key={src}>
-            <img src={src} alt={alt} className="w-full h-full object-cover" loading="lazy" decoding="async" />
+            <img
+              src={src}
+              alt={alt}
+              className="w-full h-full object-cover"
+              loading={idx === 0 ? "eager" : "lazy"}
+              fetchPriority={idx === 0 ? "high" : "auto"}
+              decoding="async"
+            />
           </SwiperSlide>
         ))}
       </Swiper>
