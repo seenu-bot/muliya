@@ -289,7 +289,7 @@ export function Header() {
                   placeholder="Search..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-40 md:w-64 h-10 rounded-l-md border border-gray-200 pl-4 pr-4 text-sm outline-none focus:ring-2 focus:ring-[#E92247]/30"
+                  className="w-24 sm:w-40 md:w-64 h-10 rounded-l-md border border-gray-200 pl-3 sm:pl-4 pr-3 sm:pr-4 text-sm outline-none focus:ring-2 focus:ring-[#E92247]/30"
                 />
               </div>
               <button
@@ -352,7 +352,7 @@ export function Header() {
                     <Menu className="w-6 h-6" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="right" className="w-80">
+                <SheetContent side="right" className="w-full max-w-[320px] sm:max-w-sm overflow-y-auto">
                   <SheetHeader>
                     <SheetTitle className="flex items-center gap-2 text-[#E92247]">
                       <img
@@ -370,12 +370,12 @@ export function Header() {
                       ) : null}
                     </SheetTitle>
                   </SheetHeader>
-                  <nav className="flex flex-col gap-4 mt-8">
+                  <nav className="flex flex-col gap-2 mt-6 pb-6 pl-1 pr-1">
                     {categories.map((category) => (
                       <Link
                         key={category.slug}
                         href={`/products/${category.slug}`}
-                        className="text-gray-700 hover:text-[#E92247] py-2 transition-colors"
+                        className="text-gray-700 hover:text-[#E92247] py-2 px-2 rounded-md text-base transition-colors"
                         onClick={() => setMobileMenuOpen(false)}
                       >
                         {category.name}
@@ -383,24 +383,31 @@ export function Header() {
                     ))}
                     <Link
                       href="/store-locator"
-                      className="text-gray-700 hover:text-[#E92247] py-2 transition-colors"
+                      className="text-gray-700 hover:text-[#E92247] py-2 px-2 rounded-md text-base transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Store Locator
                     </Link>
                     <Link
                       href="/about"
-                      className="text-gray-700 hover:text-[#E92247] py-2 transition-colors"
+                      className="text-gray-700 hover:text-[#E92247] py-2 px-2 rounded-md text-base transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       About
                     </Link>
                     <Link
                       href="/blog"
-                      className="text-gray-700 hover:text-[#E92247] py-2 transition-colors"
+                      className="text-gray-700 hover:text-[#E92247] py-2 px-2 rounded-md text-base transition-colors"
                       onClick={() => setMobileMenuOpen(false)}
                     >
                       Blog
+                    </Link>
+                    <Link
+                      href="/contact"
+                      className="text-gray-700 hover:text-[#E92247] py-2 px-2 rounded-md text-base transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      Contact Us
                     </Link>
                   </nav>
                 </SheetContent>
@@ -865,6 +872,12 @@ export function Header() {
                             className="block px-5 py-3 text-gray-900 hover:bg-gray-50 hover:text-[#E92247] transition-colors text-base"
                           >
                             Careers
+                          </Link>
+                          <Link
+                            href="/contact"
+                            className="block px-5 py-3 text-gray-900 hover:bg-gray-50 hover:text-[#E92247] transition-colors text-base"
+                          >
+                            Contact Us
                           </Link>
                         </div>
                       </div>

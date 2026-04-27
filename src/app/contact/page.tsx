@@ -9,7 +9,7 @@ export default function ContactUsPage() {
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <nav className="flex items-center gap-2 text-sm text-gray-600">
+          <nav className="flex flex-wrap items-center gap-2 text-sm text-gray-600">
             <Link href="/" className="hover:text-[#E92247] transition-colors">
               Home
             </Link>
@@ -20,18 +20,22 @@ export default function ContactUsPage() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative bg-[#E92247] overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
+      <div className="relative overflow-hidden min-h-[240px] sm:min-h-[300px]">
+        <picture>
+          <source media="(max-width: 768px)" srcSet="/images/Artboard 1 copy 4.png" />
+          <img
+            src="/images/Artboard 1 copy 2.png"
+            alt="Contact us banner"
+            className="absolute inset-0 h-full w-full object-cover object-center"
+          />
+        </picture>
+        <div className="absolute inset-0 bg-black/45" />
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 md:py-28">
           <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-4 sm:mb-6">
               Contact us
             </h1>
-            <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto">
+            <p className="text-white/90 text-base sm:text-lg md:text-xl max-w-2xl mx-auto">
               Get in touch with us for any queries, feedback, or assistance
             </p>
           </div>
@@ -39,11 +43,11 @@ export default function ContactUsPage() {
       </div>
 
       {/* Contact Form Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
           {/* Form */}
           <div>
-            <h2 className="text-3xl font-serif text-gray-900 mb-2">Have some Questions?</h2>
+            <h2 className="text-2xl sm:text-3xl font-serif text-gray-900 mb-2">Have some Questions?</h2>
             <p className="text-gray-600 mb-8">Fill out the form below and we&apos;ll get back to you shortly</p>
             
             <form className="space-y-6">
@@ -125,7 +129,7 @@ export default function ContactUsPage() {
           {/* Map & Additional Info */}
           <div className="space-y-8">
             {/* Map Placeholder */}
-            <div className="bg-gray-100 rounded-2xl overflow-hidden h-80">
+            <div className="bg-gray-100 rounded-2xl overflow-hidden h-64 sm:h-80">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.4876868885863!2d75.1991723148218!3d12.760619990468797!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba4b9d6d5f5f5f5%3A0x5e5e5e5e5e5e5e5e!2sMuliya%20Gold%20%26%20Diamonds!5e0!3m2!1sen!2sin!4v1234567890"
                 width="100%"
@@ -144,11 +148,11 @@ export default function ContactUsPage() {
                 <h3 className="text-lg font-semibold text-gray-900">Working Hours</h3>
               </div>
               <div className="space-y-2 text-gray-600">
-                <div className="flex justify-between">
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                   <span>Monday - Saturday</span>
                   <span className="font-medium">10:00 AM - 8:00 PM</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex flex-col sm:flex-row sm:justify-between gap-1">
                   <span>Sunday</span>
                   <span className="font-medium">Closed</span>
                 </div>
@@ -158,7 +162,7 @@ export default function ContactUsPage() {
             {/* Social Media */}
             <div className="bg-gray-50 rounded-2xl p-6">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Find Us On</h3>
-              <div className="flex gap-4">
+              <div className="flex flex-wrap gap-3 sm:gap-4">
                 <a href="https://facebook.com/muliyajewels" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-[#1877F2] text-white rounded-full flex items-center justify-center hover:opacity-80 transition-opacity">
                   <Facebook className="w-5 h-5" />
                 </a>
@@ -182,57 +186,6 @@ export default function ContactUsPage() {
         </div>
       </div>
 
-      {/* Quick Links Section */}
-      <div className="bg-gray-900 text-white py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            {/* Head Office */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Head Office Address</h4>
-              <p className="text-gray-400 text-sm leading-relaxed">
-                SHYAMA JEWELS LLP<br />
-                NO 476 G and H<br />
-                INDIAN ARCADE<br />
-                Court Road, Puttur<br />
-                KARNATAKA - 574201
-              </p>
-            </div>
-
-            {/* Policy */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Policy</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link href="/policy/terms" className="hover:text-white transition-colors">Terms & Conditions</Link></li>
-                <li><Link href="/policy/privacy" className="hover:text-white transition-colors">Privacy Policy</Link></li>
-                <li><Link href="/policy/shipping" className="hover:text-white transition-colors">Shipping Policy</Link></li>
-                <li><Link href="/policy/returns" className="hover:text-white transition-colors">Return Policy</Link></li>
-              </ul>
-            </div>
-
-            {/* Shopping */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Shopping</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link href="/products/rings" className="hover:text-white transition-colors">Gold Jewellery</Link></li>
-                <li><Link href="/products/earrings" className="hover:text-white transition-colors">Diamond Jewellery</Link></li>
-                <li><Link href="/collections" className="hover:text-white transition-colors">Collections</Link></li>
-                <li><Link href="/store-locator" className="hover:text-white transition-colors">Store Locator</Link></li>
-              </ul>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400 text-sm">
-                <li><Link href="/about" className="hover:text-white transition-colors">About Us</Link></li>
-                <li><Link href="/careers" className="hover:text-white transition-colors">Careers</Link></li>
-                <li><Link href="/blog" className="hover:text-white transition-colors">Blog</Link></li>
-                <li><Link href="/contact" className="hover:text-white transition-colors">Contact Us</Link></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
     </main>
   );
 }

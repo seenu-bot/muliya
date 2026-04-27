@@ -79,7 +79,7 @@ export function ProductFilter({
       {/* Mobile Filter Toggle Button */}
       <button
         onClick={() => setIsOpen(true)}
-        className="lg:hidden flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg hover:border-[#E92247] transition-colors"
+        className="lg:hidden inline-flex items-center gap-2 px-4 py-2 bg-white border border-gray-300 rounded-lg hover:border-[#E92247] transition-colors"
       >
         <SlidersHorizontal className="w-4 h-4" />
         <span className="font-medium text-sm">Filters</span>
@@ -220,7 +220,7 @@ export function ProductFilter({
             className="fixed inset-0 bg-black/50 z-40 lg:hidden"
             onClick={() => setIsOpen(false)}
           />
-          <div className="fixed inset-y-0 left-0 w-80 bg-white z-50 lg:hidden overflow-y-auto">
+          <div className="fixed inset-y-0 left-0 w-full max-w-[320px] sm:max-w-sm bg-white z-50 lg:hidden overflow-y-auto">
             <div className="p-4 border-b border-gray-100 flex items-center justify-between sticky top-0 bg-white">
               <h3 className="font-semibold text-gray-900">Filters</h3>
               <button

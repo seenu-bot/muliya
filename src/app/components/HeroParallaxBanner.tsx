@@ -7,12 +7,18 @@ export function HeroParallaxBanner() {
   const images = useMemo(
     () => [
       "/images/Artboard 1 copy 2.png",
-      "/images/Artboard 1 copy 3.png",
       "/images/Artboard 1 copy 4.png",
       "/images/Artboard 1 copy 5.png",
+      "/images/Artboard 1 copy.png",
     ],
     [],
   );
 
-  return <ImageBannerSwiper images={images} alt="Muliya banner" className="h-[45vh] md:h-[70vh]" />;
+  return (
+    <ImageBannerSwiper
+      images={images}
+      alt="Muliya banner"
+      className="h-[calc(110vh-160px)] md:h-[calc(110vh-180px)]"
+    />
+  );
 }

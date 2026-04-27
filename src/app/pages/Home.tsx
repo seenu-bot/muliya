@@ -311,6 +311,30 @@ export function Home() {
 
   const activeIdentity = identitySteps[identityStep] ?? identitySteps[0];
 
+  const categoryScrollRef = React.useRef<HTMLDivElement | null>(null);
+
+  React.useEffect(() => {
+    const el = categoryScrollRef.current;
+    if (!el) return;
+
+    const id = window.setInterval(() => {
+      const node = categoryScrollRef.current;
+      if (!node) return;
+
+      const nearEnd = node.scrollLeft + node.clientWidth >= node.scrollWidth - 8;
+
+      if (nearEnd) {
+        node.scrollTo({ left: 0, behavior: "smooth" });
+        return;
+      }
+
+      const step = Math.max(240, Math.floor(node.clientWidth * 0.8));
+      node.scrollBy({ left: step, behavior: "smooth" });
+    }, 4000);
+
+    return () => window.clearInterval(id);
+  }, []);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
@@ -376,9 +400,9 @@ export function Home() {
       </section> */}
       <HeroParallaxBanner />
 
-      <section className="py-8 bg-white">
+      <section className="py-0 bg-white">
         <div className="relative">
-          <div className="flex overflow-x-auto scrollbar-hide">
+          <div ref={categoryScrollRef} className="flex overflow-x-auto scrollbar-hide">
             {[
   { name: "RINGS", slug: "rings", image: "/images/categories/ringimage.jpeg" },
   { name: "EARRINGS", slug: "earrings", image: "/images/categories/earingimage.jpeg" },

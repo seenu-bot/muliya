@@ -24,6 +24,14 @@ export function ImageBannerSwiper({
           display: none;
         }
 
+        .imageBannerSwiper .swiper-pagination {
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 12px;
+          z-index: 10;
+        }
+
         .imageBannerSwiperNav {
           position: absolute;
           top: 50%;
@@ -99,7 +107,7 @@ export function ImageBannerSwiper({
             <img
               src={src}
               alt={alt}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-left object-top md:object-[50%_25%]"
               loading={idx === 0 ? "eager" : "lazy"}
               fetchPriority={idx === 0 ? "high" : "auto"}
               decoding="async"
