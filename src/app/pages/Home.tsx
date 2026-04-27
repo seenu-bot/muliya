@@ -583,7 +583,12 @@ Our brand is built for every generation—from traditional gold lovers to the co
       <section className="w-full">
         <div className="relative w-full h-[60vh]">
           <ImageBannerSwiper
-            images={["/images/banners2.png", "/images/banners4.png", "/images/banners5.png"]}
+            images={[
+              "/images/Artboard 1 copy 2.png",
+              "/images/Artboard 1 copy 3.png",
+              "/images/Artboard 1 copy 4.png",
+              "/images/Artboard 1 copy 5.png",
+            ]}
             alt="Gold collection"
             className="h-full"
           />

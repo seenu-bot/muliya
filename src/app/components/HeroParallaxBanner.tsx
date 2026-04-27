@@ -6,10 +6,10 @@ import { ImageBannerSwiper } from "@/app/components/ImageBannerSwiper";
 export function HeroParallaxBanner() {
   const images = useMemo(
     () => [
-      "/images/banner/Artboard%201%20copy%203.png",
-      "/images/banner/Artboard%201%20copy%204.png",
-      "/images/banner/Artboard%201%20copy%205.png",
-      "/images/banner/Artboard%201%20copy%206.png",
+      "/images/Artboard 1 copy 2.png",
+      "/images/Artboard 1 copy 3.png",
+      "/images/Artboard 1 copy 4.png",
+      "/images/Artboard 1 copy 5.png",
     ],
     [],
   );
