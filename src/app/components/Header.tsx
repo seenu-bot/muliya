@@ -146,8 +146,78 @@ const desktopNav = [
   { label: "More", href: "/about", icon: undefined },
 ] as const;
 
+const mobileMenuSections = [
+  {
+    label: "Gold",
+    href: "/products/rings",
+    icon: Coins,
+    children: [
+      { label: "Rings", href: "/products/rings" },
+      { label: "Earrings", href: "/products/earrings" },
+      { label: "Pendants", href: "/products/pendants" },
+      { label: "Necklaces", href: "/products/necklaces" },
+      { label: "Haarams", href: "/products/haarams" },
+      { label: "Kadaas", href: "/products/kadaas" },
+      { label: "Mangalsutra", href: "/products/mangalsutra" },
+      { label: "Bangles", href: "/products/bangles" },
+      { label: "Chain", href: "/products/chain" },
+      { label: "Bracelets", href: "/products/bracelets" },
+    ],
+  },
+  {
+    label: "Silver",
+    href: "/products/silver",
+    icon: Coins,
+  },
+  {
+    label: "Diamond",
+    href: "/products/diamond-rings",
+    icon: Coins,
+    children: [
+      { label: "Rings", href: "/products/diamond-rings" },
+      { label: "Earrings", href: "/products/diamond-earrings" },
+      { label: "Pendants", href: "/products/diamond-pendants" },
+      { label: "Necklaces", href: "/products/diamond-necklace" },
+      { label: "Bangles", href: "/products/diamond-bangles" },
+      { label: "Bracelets", href: "/products/diamond-bracelets" },
+    ],
+  },
+  {
+    label: "Collections",
+    href: "/collections",
+    icon: Coins,
+  },
+  {
+    label: "Showrooms",
+    href: "/store-locator",
+    icon: Store,
+  },
+  {
+    label: "Gallery",
+    href: "/gallery",
+    icon: ImageIcon,
+  },
+  {
+    label: "Virtual Tour",
+    href: "/blog",
+    icon: Globe,
+  },
+  {
+    label: "More",
+    href: "/about",
+    icon: ChevronDown,
+    children: [
+      { label: "Gold Buying Plans", href: "/policy/gold-scheme" },
+      { label: "Blog", href: "/blog" },
+      { label: "Careers", href: "/careers" },
+      { label: "Contact Us", href: "/contact" },
+    ],
+  },
+] as const;
+
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [openMobileSection, setOpenMobileSection] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [goldDropdownOpen, setGoldDropdownOpen] = useState(false);
   const [diamondDropdownOpen, setDiamondDropdownOpen] = useState(false);
@@ -266,9 +336,12 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-10 text-sm text-gray-700">
             <div className="flex items-center gap-2 text-gray-700">
               <span className="whitespace-nowrap flex items-center gap-2">
-                <span
-                  aria-hidden="true"
-                  className="inline-block h-4 w-5 rounded-[3px] bg-gradient-to-br from-amber-300 via-yellow-300 to-amber-500 ring-1 ring-amber-400/70"
+                <img
+                  src="https://media.giphy.com/media/l0ExhcMymdL6TrZ84/giphy.gif"
+                  alt="Animated gold icon"
+                  className="h-4 w-5 rounded-[3px] object-cover ring-1 ring-amber-400/70"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <span>Gold</span>
               </span>
@@ -370,45 +443,76 @@ export function Header() {
                       ) : null}
                     </SheetTitle>
                   </SheetHeader>
-                  <nav className="flex flex-col gap-2 mt-6 pb-6 pl-1 pr-1">
-                    {categories.map((category) => (
-                      <Link
-                        key={category.slug}
-                        href={`/products/${category.slug}`}
-                        className="text-gray-700 hover:text-[#E92247] py-2 px-2 rounded-md text-base transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        {category.name}
-                      </Link>
-                    ))}
-                    <Link
-                      href="/store-locator"
-                      className="text-gray-700 hover:text-[#E92247] py-2 px-2 rounded-md text-base transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Store Locator
-                    </Link>
-                    <Link
-                      href="/about"
-                      className="text-gray-700 hover:text-[#E92247] py-2 px-2 rounded-md text-base transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      About
-                    </Link>
-                    <Link
-                      href="/blog"
-                      className="text-gray-700 hover:text-[#E92247] py-2 px-2 rounded-md text-base transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Blog
-                    </Link>
-                    <Link
-                      href="/contact"
-                      className="text-gray-700 hover:text-[#E92247] py-2 px-2 rounded-md text-base transition-colors"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Contact Us
-                    </Link>
+                  <nav className="flex flex-col gap-4 mt-6 pb-6 pl-1 pr-1">
+                    {mobileMenuSections.map((section) => {
+                      const Icon = section.icon;
+                      return (
+                        <div
+                          key={section.label}
+                          className="border-b border-gray-100 pb-3 last:border-b-0"
+                        >
+                          <div className="flex items-center">
+                            <Link
+                              href={section.href}
+                              className="flex flex-1 items-center gap-3 py-2 px-2 rounded-md text-base font-medium text-gray-800 hover:text-[#E92247] transition-colors"
+                              onClick={(e) => {
+                                if (section.children) {
+                                  e.preventDefault();
+                                  setOpenMobileSection((current) =>
+                                    current === section.label ? null : section.label,
+                                  );
+                                  return;
+                                }
+                                setMobileMenuOpen(false);
+                              }}
+                            >
+                              <Icon className="w-4 h-4 text-[#E92247] flex-shrink-0" />
+                              <span>{section.label}</span>
+                            </Link>
+                            {section.children ? (
+                              <button
+                                type="button"
+                                aria-label={`Toggle ${section.label} submenu`}
+                                className="p-2 text-[#E92247]"
+                                onClick={() =>
+                                  setOpenMobileSection((current) =>
+                                    current === section.label ? null : section.label,
+                                  )
+                                }
+                              >
+                                <ChevronDown
+                                  className={
+                                    "w-4 h-4 transition-transform " +
+                                    (openMobileSection === section.label ? "rotate-180" : "")
+                                  }
+                                />
+                              </button>
+                            ) : null}
+                          </div>
+                          {section.children ? (
+                            <div
+                              className={
+                                "mt-1 ml-7 flex flex-col gap-1 overflow-hidden transition-all " +
+                                (openMobileSection === section.label
+                                  ? "max-h-96 opacity-100"
+                                  : "max-h-0 opacity-0")
+                              }
+                            >
+                              {section.children.map((item) => (
+                                <Link
+                                  key={item.href}
+                                  href={item.href}
+                                  className="py-1.5 px-2 rounded-md text-sm text-gray-600 hover:text-[#E92247] transition-colors"
+                                  onClick={() => setMobileMenuOpen(false)}
+                                >
+                                  {item.label}
+                                </Link>
+                              ))}
+                            </div>
+                          ) : null}
+                        </div>
+                      );
+                    })}
                   </nav>
                 </SheetContent>
               </Sheet>

@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 const videos = [
   "/images/video1.mp4",
   "/images/video2.mp4",
-  "/images/video3.mp4",
-  "/images/video4.mp4",
-  "/images/video5.mp4",
+  "/images/Muliya_Reel_1.mp4",
+  "/images/Muliya_Reel_2.mp4",
+  "/images/Muliya_Reel_3.mp4",
 ];
 
 export default function VideoCarousel() {

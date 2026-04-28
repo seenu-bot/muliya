@@ -255,9 +255,9 @@ export function Home() {
     () => [
       "/images/video1.mp4",
       "/images/video2.mp4",
-      "/images/video3.mp4",
-      "/images/video4.mp4",
-      "/images/video5.mp4",
+      "/images/Muliya_Reel_1.mp4",
+      "/images/Muliya_Reel_2.mp4",
+      "/images/Muliya_Reel_3.mp4",
       // "/images/video6.mp4",
     ],
     [],
@@ -270,6 +270,14 @@ export function Home() {
 
   const nextReel = React.useCallback(() => {
     setActiveReel((i) => (i + 1) % reelSources.length);
+  }, [reelSources.length]);
+
+  React.useEffect(() => {
+    const intervalId = window.setInterval(() => {
+      setActiveReel((i) => (i + 1) % reelSources.length);
+    }, 15000);
+
+    return () => window.clearInterval(intervalId);
   }, [reelSources.length]);
 
   React.useEffect(() => {
@@ -402,7 +410,7 @@ export function Home() {
 
       <section className="py-0 bg-white">
         <div className="relative">
-          <div ref={categoryScrollRef} className="flex overflow-x-auto scrollbar-hide">
+          <div ref={categoryScrollRef} className="flex overflow-x-auto hide-scrollbar">
             {[
   { name: "RINGS", slug: "rings", image: "/images/categories/ringimage.jpeg" },
   { name: "EARRINGS", slug: "earrings", image: "/images/categories/earingimage.jpeg" },
@@ -465,7 +473,7 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="relative min-h-[360px] lg:min-h-[520px]">
               <ImageWithFallback
-                src="images/modelwith necklace.png"
+                src="/images/Who we are today.png"
                 alt="Who we are today"
                 className="absolute inset-0 h-full w-full object-cover"
               />
@@ -641,37 +649,37 @@ Our brand is built for every generation—from traditional gold lovers to the co
   { 
     name: "Amuliya Diamonds", 
     desc: "Exquisite Diamond Craftsmanship", 
-    image: "/images/amuliya.png", 
+    image: "/images/sector/Amulya.jpg.jpeg", 
     slug: "amuliya" 
   },
   { 
     name: "Mahathi Antique Collection", 
     desc: "Timeless Antique Designs", 
-    image: "/images/mahathi.png", 
+    image: "/images/sector/Mahathi.png", 
     slug: "mahathi" 
   },
   { 
     name: "Pouranik Collection", 
     desc: "Heritage-Inspired Pieces", 
-    image: "/images/pournik.png", 
+    image: "/images/sector/Pouranik.png", 
     slug: "pouranik" 
   },
   { 
     name: "Muliya Silveriya", 
     desc: "Premium Silver Jewellery", 
-    image: "/images/silveriya.png", 
+    image: "/images/sector/Silverio_2.png", 
     slug: "silveriya" 
   },
   { 
     name: "Nithya 18k Jewellery Series", 
     desc: "Everyday Elegance In 18k Gold", 
-    image: "/images/nithya.png", 
+    image: "/images/sector/Nithiya.png", 
     slug: "nithya" 
   },
   { 
     name: "Mangalsutra Collection", 
     desc: "Sacred Bonds, Beautiful Designs", 
-    image: "/images/mangalsutra.png", 
+    image: "/images/sector/Mangalsutra.png", 
     slug: "mangalsutra" 
   }
 ].map((col, idx) => (
@@ -1080,9 +1088,8 @@ Our brand is built for every generation—from traditional gold lovers to the co
 
         {/* Testimonials */}
         <div className="relative">
-          {/* Horizontal scrolling container */}
-          <div className="overflow-x-auto pb-8 pt-4 hide-scrollbar">
-            <div className="flex gap-16 px-8 min-w-max">
+          <div className="pb-8 pt-4">
+            <div className="flex flex-wrap justify-center gap-10 px-4">
               {[
                 {
                   name: "Akanksha Khanna",
@@ -1147,7 +1154,7 @@ Our brand is built for every generation—from traditional gold lovers to the co
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.08 }}
-                  className="relative flex-shrink-0"
+                  className="relative"
                   style={{ width: '280px' }}
                 >
                   <div 
@@ -1157,7 +1164,7 @@ Our brand is built for every generation—from traditional gold lovers to the co
                     }}
                   >
                     {/* Polaroid Card */}
-                    <div className="bg-[#ffe4e6] p-3 pb-5 shadow-xl rounded-sm cursor-pointer">
+                    <div className="bg-[#e0f2fe] p-3 pb-5 shadow-xl rounded-sm cursor-pointer">
                       <div className="bg-white aspect-square overflow-hidden mb-4 rounded-sm">
                         <ImageWithFallback
                           src={t.image}
