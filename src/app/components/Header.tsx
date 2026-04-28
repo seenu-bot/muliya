@@ -446,6 +446,8 @@ export function Header() {
                   <nav className="flex flex-col gap-4 mt-6 pb-6 pl-1 pr-1">
                     {mobileMenuSections.map((section) => {
                       const Icon = section.icon;
+                      const children = (section as { children?: readonly { href: string; label: string }[] }).children;
+                      const hasChildren = Array.isArray(children) && children.length > 0;
                       return (
                         <div
                           key={section.label}
@@ -456,7 +458,7 @@ export function Header() {
                               href={section.href}
                               className="flex flex-1 items-center gap-3 py-2 px-2 rounded-md text-base font-medium text-gray-800 hover:text-[#E92247] transition-colors"
                               onClick={(e) => {
-                                if (section.children) {
+                                if (hasChildren) {
                                   e.preventDefault();
                                   setOpenMobileSection((current) =>
                                     current === section.label ? null : section.label,
@@ -469,7 +471,7 @@ export function Header() {
                               <Icon className="w-4 h-4 text-[#E92247] flex-shrink-0" />
                               <span>{section.label}</span>
                             </Link>
-                            {section.children ? (
+                            {hasChildren ? (
                               <button
                                 type="button"
                                 aria-label={`Toggle ${section.label} submenu`}
@@ -489,7 +491,7 @@ export function Header() {
                               </button>
                             ) : null}
                           </div>
-                          {section.children ? (
+                          {hasChildren ? (
                             <div
                               className={
                                 "mt-1 ml-7 flex flex-col gap-1 overflow-hidden transition-all " +
@@ -498,7 +500,7 @@ export function Header() {
                                   : "max-h-0 opacity-0")
                               }
                             >
-                              {section.children.map((item) => (
+                              {children!.map((item) => (
                                 <Link
                                   key={item.href}
                                   href={item.href}

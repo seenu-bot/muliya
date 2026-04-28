@@ -412,8 +412,8 @@ export function Home() {
         <div className="relative">
           <div ref={categoryScrollRef} className="flex overflow-x-auto hide-scrollbar">
             {[
-  { name: "RINGS", slug: "rings", image: "/images/categories/ringimage.jpeg" },
-  { name: "EARRINGS", slug: "earrings", image: "/images/categories/earingimage.jpeg" },
+  { name: "RINGS", slug: "rings", image: "/images/Ring_Sectimn-2.jpg.jpeg" },
+  { name: "EARRINGS", slug: "earrings", image: "/images/Earinggg.jpg.jpeg" },
   { name: "PENDANTS", slug: "pendants", image: "/images/categories/pendentimage.jpeg" },
   { name: "BANGLES", slug: "bangles", image: "/images/categories/bangleimage.jpeg" },
   { name: "BRACELETS", slug: "bracelets", image: "/images/categories/chain2image.jpeg" },
