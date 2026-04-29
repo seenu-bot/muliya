@@ -410,7 +410,7 @@ export function Home() {
 
       <section className="py-0 bg-white">
         <div className="relative">
-          <div ref={categoryScrollRef} className="flex overflow-x-auto hide-scrollbar">
+          <div ref={categoryScrollRef} className="flex overflow-x-auto hide-scrollbar gap-0">
             {[
   { name: "RINGS", slug: "rings", image: "/images/products/Ring.png" },
   { name: "EARRINGS", slug: "earrings", image: "/images/products/Ear.png" },
@@ -428,13 +428,14 @@ export function Home() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: idx * 0.05 }}
                 className="relative flex-shrink-0 w-[25%] min-w-[300px] aspect-[3/5] group cursor-pointer overflow-hidden"
+                style={{ margin: 0, padding: 0 }}
               >
                 <Link href={`/products/${cat.slug}`} className="block w-full h-full">
                   <div className="relative w-full h-full">
                     <ImageWithFallback
                       src={cat.image}
                       alt={cat.name}
-                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                      className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
                     
@@ -443,7 +444,7 @@ export function Home() {
                         {cat.name}
                       </span>
                       
-                      <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-x-4 group-hover:translate-x-0">
+                      <div>
                         <svg 
                           width="32" 
                           height="32" 
@@ -451,7 +452,6 @@ export function Home() {
                           fill="none" 
                           stroke="white" 
                           strokeWidth="1.5"
-                          className="transition-transform duration-300 group-hover:scale-110"
                         >
                           <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
                         </svg>
@@ -616,10 +616,8 @@ Our brand is built for every generation—from traditional gold lovers to the co
         <div className="relative w-full h-[60vh]">
           <ImageBannerSwiper
             images={[
-              "/images/Artboard 1 copy 2.png",
-              "/images/Artboard 1 copy 3.png",
-              "/images/Artboard 1 copy 4.png",
-              "/images/Artboard 1 copy 5.png",
+              "/images/Section%20Banner.png",
+              "/images/Section%20Banner_2.png",
             ]}
             alt="Gold collection"
             className="h-full"
@@ -643,8 +641,80 @@ Our brand is built for every generation—from traditional gold lovers to the co
 
     </h3>
 
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-      
+    {/* Mobile: horizontal scroll | md+: grid */}
+    <div className="md:hidden flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory -mx-4 px-4 hide-scrollbar">
+      {[
+  { 
+    name: "Amuliya Diamonds", 
+    desc: "Exquisite Diamond Craftsmanship", 
+    image: "/images/sector/Amulya.jpg.jpeg", 
+    slug: "amuliya" 
+  },
+  { 
+    name: "Mahathi Antique Collection", 
+    desc: "Timeless Antique Designs", 
+    image: "/images/sector/Mahathi.png", 
+    slug: "mahathi" 
+  },
+  { 
+    name: "Pouranik Collection", 
+    desc: "Heritage-Inspired Pieces", 
+    image: "/images/sector/Pouranik.png", 
+    slug: "pouranik" 
+  },
+  { 
+    name: "Muliya Silveriya", 
+    desc: "Premium Silver Jewellery", 
+    image: "/images/sector/Silverio_2.png", 
+    slug: "silveriya" 
+  },
+  { 
+    name: "Nithya 18k Jewellery Series", 
+    desc: "Everyday Elegance In 18k Gold", 
+    image: "/images/sector/Nithiya.png", 
+    slug: "nithya" 
+  },
+  { 
+    name: "Mangalsutra Collection", 
+    desc: "Sacred Bonds, Beautiful Designs", 
+    image: "/images/sector/Mangalsutra.png", 
+    slug: "mangalsutra" 
+  }
+].map((col, idx) => (
+        <motion.div
+          key={col.slug}
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.45, delay: idx * 0.05 }}
+          className="flex-shrink-0 w-[72vw] snap-start"
+        >
+          <Link href={`/collections/${col.slug}`}>
+            <div className="group cursor-pointer text-center">
+              <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-purple-100 to-purple-50 rounded-xl">
+                <ImageWithFallback
+                  src={col.image}
+                  alt={col.name}
+                  className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+              <div className="mt-3">
+                <h3 className="text-lg font-serif text-gray-900 flex items-center justify-center gap-1 group-hover:text-gray-700 transition-colors">
+                  {col.name}
+                  <ArrowRight className="w-4 h-4 -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </h3>
+                {col.desc && (
+                  <p className="text-sm text-gray-600 mt-1">{col.desc}</p>
+                )}
+              </div>
+            </div>
+          </Link>
+        </motion.div>
+      ))}
+    </div>
+
+    {/* Desktop: grid layout */}
+    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
       {[
   { 
     name: "Amuliya Diamonds", 
@@ -1089,7 +1159,104 @@ Our brand is built for every generation—from traditional gold lovers to the co
         {/* Testimonials */}
         <div className="relative">
           <div className="pb-8 pt-4">
-            <div className="flex flex-wrap justify-center gap-10 px-4">
+
+            {/* Mobile: horizontal scroll */}
+            <div className="md:hidden flex overflow-x-auto gap-6 pb-6 px-6 snap-x snap-mandatory hide-scrollbar">
+              {[
+                {
+                  name: "Akanksha Khanna",
+                  age: "27",
+                  image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80",
+                  text: "Delighted with my engagement ring from Muliya! It's my dream ring. The craftsmanship is stunning and the purity assurance gives me complete confidence.",
+                  rotate: -3,
+                  translateY: 0,
+                },
+                {
+                  name: "Diksha Singh",
+                  age: "29",
+                  image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80",
+                  text: "I was worried about finding good quality jewellery online, but Muliya's customer service gave me full assurance. The delivery was super quick and the quality is certified.",
+                  rotate: 3,
+                  translateY: 0,
+                },
+                {
+                  name: "Nuton Mishra",
+                  age: "33",
+                  image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&q=80",
+                  text: "I got a Nazariya for my baby from Muliya. It's so cute seeing it on my little one's wrist, and it gives me a sense of security knowing it's pure gold.",
+                  rotate: -2,
+                  translateY: 0,
+                },
+                {
+                  name: "Divya Mishra",
+                  age: "26",
+                  image: "https://images.unsplash.com/photo-1504194921103-f8b80cadd5e4?w=400&q=80",
+                  text: "On Valentine's Day, my husband gifted me a necklace from Muliya, and I haven't taken it off ever since. Everyone asks me where it's from. I just LOVE how nice it looks on me!",
+                  rotate: 4,
+                  translateY: 0,
+                },
+                {
+                  name: "Priya Singh",
+                  age: "34",
+                  image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&q=80",
+                  text: "I had trouble finding jewellery that suited my minimalist style, but Muliya's sleek and elegant designs were exactly what I was looking for.",
+                  rotate: -3,
+                  translateY: 0,
+                },
+                {
+                  name: "Avni Sharma",
+                  age: "27",
+                  image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80",
+                  text: "Me and my friends love Muliya's unique designs. I love how their pieces add elegance to my outfits. Their jewellery is stylish, modern and a breath of fresh air.",
+                  rotate: 2,
+                  translateY: 0,
+                },
+                {
+                  name: "Sonaalee Semwal",
+                  age: "28",
+                  image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
+                  text: "I bought a bracelet from Muliya as a birthday gift from me to me. I love how versatile it is. If you want to buy yourself a gift, Muliya is the place to go!",
+                  rotate: -2,
+                  translateY: 0,
+                },
+              ].map((t, idx) => (
+                <motion.div
+                  key={idx}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: idx * 0.05 }}
+                  className="flex-shrink-0 snap-start"
+                  style={{ width: '260px' }}
+                >
+                  <div
+                    className="relative transition-all duration-300 hover:scale-105"
+                    style={{ transform: `rotate(${t.rotate}deg)` }}
+                  >
+                    <div className="bg-[#e0f2fe] p-3 pb-5 shadow-xl rounded-sm cursor-pointer">
+                      <div className="bg-white aspect-square overflow-hidden mb-4 rounded-sm">
+                        <ImageWithFallback
+                          src={t.image}
+                          alt={t.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div className="px-1">
+                        <p className="text-[#E92247] font-semibold text-sm mb-2">
+                          {t.name}, {t.age}
+                        </p>
+                        <p className="text-gray-600 text-xs leading-relaxed line-clamp-4">
+                          {t.text}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Desktop: wrapped flex layout */}
+            <div className="hidden md:flex flex-wrap justify-center gap-10 px-4">
               {[
                 {
                   name: "Akanksha Khanna",
@@ -1185,6 +1352,7 @@ Our brand is built for every generation—from traditional gold lovers to the co
                 </motion.div>
               ))}
             </div>
+
           </div>
         </div>
 
