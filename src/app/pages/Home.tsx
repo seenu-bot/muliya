@@ -412,14 +412,14 @@ export function Home() {
         <div className="relative">
           <div ref={categoryScrollRef} className="flex overflow-x-auto hide-scrollbar">
             {[
-  { name: "RINGS", slug: "rings", image: "/images/Ring_Sectimn-2.jpg.jpeg" },
-  { name: "EARRINGS", slug: "earrings", image: "/images/Earinggg.jpg.jpeg" },
-  { name: "PENDANTS", slug: "pendants", image: "/images/categories/pendentimage.jpeg" },
-  { name: "BANGLES", slug: "bangles", image: "/images/categories/bangleimage.jpeg" },
-  { name: "BRACELETS", slug: "bracelets", image: "/images/categories/chain2image.jpeg" },
-  { name: "MANGALSUTRA", slug: "mangalsutra", image: "/images/categories/mangalsutraimage.jpeg" },
-  { name: "NECKLACE", slug: "necklaces", image: "/images/categories/necklaceimage.jpeg" },
-  { name: "CHAIN", slug: "chains", image: "/images/categories/chain1image.jpeg" },
+  { name: "RINGS", slug: "rings", image: "/images/products/Ring.png" },
+  { name: "EARRINGS", slug: "earrings", image: "/images/products/Ear.png" },
+  { name: "PENDANTS", slug: "pendants", image: "/images/products/Pendent.png" },
+  { name: "BANGLES", slug: "bangles", image: "/images/products/Bangalre.png" },
+  { name: "BRACELETS", slug: "bracelets", image: "/images/products/Brace.png" },
+  { name: "MANGALSUTRA", slug: "mangalsutra", image: "/images/products/Mangalsutra.png" },
+  { name: "NECKLACE", slug: "necklaces", image: "/images/products/Neck.png" },
+  { name: "CHAIN", slug: "chains", image: "/images/products/Chain.png" },
 ].map((cat, idx) => (
               <motion.div
                 key={cat.slug}
