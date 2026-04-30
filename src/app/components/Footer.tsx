@@ -150,6 +150,39 @@ export function Footer() {
               </li>
             </ul>
           </div>
+
+          {/* Contact Us */}
+          <div>
+            <h3 className="text-gray-900 font-semibold mb-5">Contact Us</h3>
+            <ul className="space-y-4 text-sm">
+              <li className="flex gap-3">
+                <span className="mt-0.5 w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-[#E92247] flex-shrink-0">
+                  <MapPin className="w-4 h-4" />
+                </span>
+                <span className="text-gray-700 leading-relaxed">
+                  MANIPAL CENTRE, DICKENSON ROAD,
+                  <br />
+                  BENGALURU, Karnataka 574 201
+                </span>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-0.5 w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-[#E92247] flex-shrink-0">
+                  <Phone className="w-4 h-4" />
+                </span>
+                <a href="tel:+919844692916" className="hover:text-[#E92247] transition-colors text-gray-700">
+                  +91 9844692916
+                </a>
+              </li>
+              <li className="flex gap-3">
+                <span className="mt-0.5 w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-[#E92247] flex-shrink-0">
+                  <Mail className="w-4 h-4" />
+                </span>
+                <a href="mailto:info@muliya.com" className="hover:text-[#E92247] transition-colors text-gray-700">
+                  info@muliya.com
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 

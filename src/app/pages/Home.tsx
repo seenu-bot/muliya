@@ -98,7 +98,7 @@ const identitySteps = [
     desc:
       "A refreshed brand look, the same focus on trust, craftsmanship, and customer-first purity assurance.",
     bullets: ["Heritage-backed trust", "Craftsmanship you can see", "Transparent purity assurance"],
-    leftImage: "/images/luxury-jewellery-display.jpg",
+    leftImage: "/images/freepik_prompt-ultra-realistic-ma_2879164594.png",
     centerVideo: "/images/6248724_Woman_Caucasian_3840x2160.mp4",
     centerPoster: "/images/Muliya-Mascot-1.png",
     centerAlt: "Brand identity",
@@ -901,7 +901,7 @@ Our brand is built for every generation—from traditional gold lovers to the co
             >
               <div className="relative h-[420px] md:h-[520px] rounded-2xl overflow-hidden bg-[#F6F2EE]">
                 <ImageWithFallback
-                  src="/images/luxury-jewellery-display.jpg"
+                  src="/images/freepik_prompt-ultra-realistic-ma_2879164594.png"
                   alt="Muliya jewellery"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
