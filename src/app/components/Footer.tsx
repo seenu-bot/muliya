@@ -106,7 +106,7 @@ export function Footer() {
                 </Link>
               </li>
               <li>
-                <Link href="/store-locator" className="hover:text-[#E92247] transition-colors flex items-center gap-2 group">
+                <Link href="/jewellery-showroom-bangalore" className="hover:text-[#E92247] transition-colors flex items-center gap-2 group">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#E92247] opacity-0 group-hover:opacity-100 transition-opacity"></span>
                   Store Locator
                 </Link>

@@ -140,7 +140,7 @@ const desktopNav = [
   { label: "Silver", href: "/products/silver-jewellery-banglore", icon: Coins },
   { label: "Diamond", href: "/products/diamond-rings-banglore", icon: Coins },
   { label: "Collections", href: "/collections", icon: Coins },
-  { label: "Showrooms", href: "/store-locator", icon: Store },
+  { label: "Showrooms", href: "/jewellery-showroom-bangalore", icon: Store },
   { label: "Gallery", href: "/gallery", icon: ImageIcon },
   { label: "Virtual Tour", href: "/blog", icon: Globe },
   { label: "More", href: "/about", icon: undefined },
@@ -189,7 +189,7 @@ const mobileMenuSections = [
   },
   {
     label: "Showrooms",
-    href: "/store-locator",
+    href: "/jewellery-showroom-bangalore",
     icon: Store,
   },
   {
