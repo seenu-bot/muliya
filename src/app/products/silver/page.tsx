@@ -7,8 +7,8 @@ export default function SilverRedirect() {
   const router = useRouter();
 
   useEffect(() => {
-    // Redirect to the new silver-jewellery-banglore URL
-    router.replace('/products/silver-jewellery-banglore');
+    // Redirect to the new silver-jewellery-bangalore URL
+    router.replace('/products/silver-jewellery-bangalore');
   }, [router]);
 
   // Show a loading message while redirecting

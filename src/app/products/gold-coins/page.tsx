@@ -7,8 +7,8 @@ export default function GoldCoinsRedirect() {
   const router = useRouter();
 
   useEffect(() => {
-    // Redirect to the new gold-coins-banglore URL
-    router.replace('/products/gold-coins-banglore');
+    // Redirect to the new gold-coins-bangalore URL
+    router.replace('/products/gold-coins-bangalore');
   }, [router]);
 
   // Show a loading message while redirecting

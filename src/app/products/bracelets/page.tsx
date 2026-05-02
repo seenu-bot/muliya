@@ -7,8 +7,8 @@ export default function BraceletsRedirect() {
   const router = useRouter();
 
   useEffect(() => {
-    // Redirect to the new gold-bracelets-banglore URL
-    router.replace('/products/gold-bracelets-banglore');
+    // Redirect to the new gold-bracelets-bangalore URL
+    router.replace('/products/gold-bracelets-bangalore');
   }, [router]);
 
   // Show a loading message while redirecting
