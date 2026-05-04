@@ -485,7 +485,7 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="relative min-h-[360px] lg:min-h-[520px]">
               <ImageWithFallback
-                src="/images/Who we are today.png"
+                src="/images/Who%20we%20are%20today%20.png"
                 alt="Who we are today"
                 className="absolute inset-0 h-full w-full object-cover"
               />
