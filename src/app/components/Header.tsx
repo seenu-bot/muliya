@@ -33,62 +33,62 @@ import {
 const categories = [
   {
     name: "Rings",
-    slug: "gold-rings-banglore",
+    slug: "gold-rings-bangalore",
     image: "/category/Gemini_Generated_Image_uacnh2uacnh2uacn.png",
   },
   {
     name: "Earrings",
-    slug: "gold-earrings-banglore",
+    slug: "gold-earrings-bangalore",
     image: "/category/Gemini_Generated_Image_uacnh2uacnh2uacn (1).png",
   },
   {
     name: "Pendants",
-    slug: "gold-pendants-banglore",
+    slug: "gold-pendants-bangalore",
     image: "/category/Gemini_Generated_Image_uacnh2uacnh2uacn (2).png",
   },
   {
     name: "Necklaces",
-    slug: "gold-necklaces-banglore",
+    slug: "gold-necklaces-bangalore",
     image: "/category/Gemini_Generated_Image_uacnh2uacnh2uacn (3).png",
   },
   {
     name: "Haarams",
-    slug: "gold-haarams-banglore",
+    slug: "gold-haarams-bangalore",
     image: "/category/Gemini_Generated_Image_uacnh2uacnh2uacn (4).png",
   },
   {
     name: "Kadaas",
-    slug: "gold-kadaas-banglore",
+    slug: "gold-kadaas-bangalore",
     image: "/category/Gemini_Generated_Image_uacnh2uacnh2uacn (5).png",
   },
   {
     name: "Mangalsutra",
-    slug: "gold-mangalsutra-banglore",
+    slug: "gold-mangalsutra-bangalore",
     image: "/category/Gemini_Generated_Image_uacnh2uacnh2uacn (6).png",
   },
   {
     name: "Bangles",
-    slug: "gold-bangles-banglore",
+    slug: "gold-bangles-bangalore",
     image: "/category/Gemini_Generated_Image_uacnh2uacnh2uacn (7).png",
   },
   {
     name: "Chain",
-    slug: "gold-chain-banglore",
+    slug: "gold-chain-bangalore",
     image: "/category/Gemini_Generated_Image_uacnh2uacnh2uacn (8).png",
   },
   {
     name: "Bracelets",
-    slug: "bracelets",
+    slug: "gold-bracelets-bangalore",
     image: "/category/Gemini_Generated_Image_uacnh2uacnh2uacn (9).png",
   },
   {
     name: "Gold Coins",
-    slug: "gold-coins-banglore",
+    slug: "gold-coins-bangalore",
     image: "/category/Gemini_Generated_Image_uacnh2uacnh2uacn (10).png",
   },
-    {
+  {
     name: "Watches",
-    slug: "watches",
+    slug: "gold-watches-bangalore",
     image: "/category/Gemini_Generated_Image_uacnh2uacnh2uacn (11).png",
   },
 ];
@@ -96,32 +96,32 @@ const categories = [
 const diamondCategories = [
   {
     name: "Rings",
-    slug: "rings-banglore",
+    slug: "rings-bangalore",
     image: "/images/daimond/diamond-ring.jpeg",
   },
   {
     name: "Earrings",
-    slug: "earrings-banglore",
+    slug: "earrings-bangalore",
     image: "/images/daimond/diamond-ring.jpeg",
   },
   {
     name: "Pendants",
-    slug: "pendants-banglore",
+    slug: "pendants-bangalore",
     image: "/images/daimond/diamond-pendant.jpeg",
   },
   {
     name: "Necklaces",
-    slug: "necklace-banglore",
+    slug: "necklace-bangalore",
     image: "/images/daimond/diamond-chain.jpeg",
   },
   {
     name: "Bangles",
-    slug: "bangles-banglore",
+    slug: "bangles-bangalore",
     image: "/images/daimond/diamond- bangles.jpeg",
   },
   {
     name: "Bracelets",
-    slug: "bracelets-banglore",
+    slug: "bracelets-bangalore",
     image: "/images/daimond/diamond-brcelet .jpeg",
   },
 ];
@@ -136,9 +136,9 @@ const collectionsData = [
 ];
 
 const desktopNav = [
-  { label: "Gold", href: "/products/gold-rings-banglore", icon: Coins },
-  { label: "Silver", href: "/products/silver-jewellery-banglore", icon: Coins },
-  { label: "Diamond", href: "/products/diamond-rings-banglore", icon: Coins },
+  { label: "Gold", href: "/products/gold-rings-bangalore", icon: Coins },
+  { label: "Silver", href: "/products/silver-jewellery-bangalore", icon: Coins },
+  { label: "Diamond", href: "/products/diamond-rings-bangalore", icon: Coins },
   { label: "Collections", href: "/collections", icon: Coins },
   { label: "Showrooms", href: "/jewellery-showroom-bangalore", icon: Store },
   { label: "Gallery", href: "/gallery", icon: ImageIcon },
@@ -149,37 +149,37 @@ const desktopNav = [
 const mobileMenuSections = [
   {
     label: "Gold",
-    href: "/products/gold-rings-banglore",
+    href: "/products/gold-rings-bangalore",
     icon: Coins,
     children: [
-      { label: "Rings", href: "/products/gold-rings-banglore" },
-      { label: "Earrings", href: "/products/gold-earrings-banglore" },
-      { label: "Pendants", href: "/products/gold-pendants-banglore" },
-      { label: "Necklaces", href: "/products/gold-necklaces-banglore" },
-      { label: "Haarams", href: "/products/gold-haarams-banglore" },
-      { label: "Kadaas", href: "/products/gold-kadaas-banglore" },
-      { label: "Mangalsutra", href: "/products/gold-mangalsutra-banglore" },
-      { label: "Bangles", href: "/products/gold-bangles-banglore" },
-      { label: "Chain", href: "/products/gold-chain-banglore" },
-      { label: "Bracelets", href: "/products/gold-bracelets-banglore" },
+      { label: "Rings", href: "/products/gold-rings-bangalore" },
+      { label: "Earrings", href: "/products/gold-earrings-bangalore" },
+      { label: "Pendants", href: "/products/gold-pendants-bangalore" },
+      { label: "Necklaces", href: "/products/gold-necklaces-bangalore" },
+      { label: "Haarams", href: "/products/gold-haarams-bangalore" },
+      { label: "Kadaas", href: "/products/gold-kadaas-bangalore" },
+      { label: "Mangalsutra", href: "/products/gold-mangalsutra-bangalore" },
+      { label: "Bangles", href: "/products/gold-bangles-bangalore" },
+      { label: "Chain", href: "/products/gold-chain-bangalore" },
+      { label: "Bracelets", href: "/products/gold-bracelets-bangalore" },
     ],
   },
   {
     label: "Silver",
-    href: "/products/silver-jewellery-banglore",
+    href: "/products/silver-jewellery-bangalore",
     icon: Coins,
   },
   {
     label: "Diamond",
-    href: "/products/diamond-rings-banglore",
+    href: "/products/diamond-rings-bangalore",
     icon: Coins,
     children: [
-      { label: "Rings", href: "/products/diamond-rings-banglore" },
-      { label: "Earrings", href: "/products/diamond-earrings-banglore" },
-      { label: "Pendants", href: "/products/diamond-pendants-banglore" },
-      { label: "Necklaces", href: "/products/diamond-necklace-banglore" },
-      { label: "Bangles", href: "/products/diamond-bangles-banglore" },
-      { label: "Bracelets", href: "/products/diamond-bracelets-banglore" },
+      { label: "Rings", href: "/products/diamond-rings-bangalore" },
+      { label: "Earrings", href: "/products/diamond-earrings-bangalore" },
+      { label: "Pendants", href: "/products/diamond-pendants-bangalore" },
+      { label: "Necklaces", href: "/products/diamond-necklace-bangalore" },
+      { label: "Bangles", href: "/products/diamond-bangles-bangalore" },
+      { label: "Bracelets", href: "/products/diamond-bracelets-bangalore" },
     ],
   },
   {
@@ -233,7 +233,11 @@ export function Header() {
   const [logoError, setLogoError] = useState(false);
   const { totalItems } = useCart();
   const { user, isAuthenticated, logout } = useAuth();
-  const goldRatePerGram = process.env.NEXT_PUBLIC_GOLD_RATE_PER_GRAM || "Rs. 6,500";
+  const goldRates = {
+    "24K": "₹15,093",
+    "22K": "₹13,835",
+    "18K": "₹11,320",
+  };
 
   const megaTabs = [
     "Category",
@@ -263,24 +267,24 @@ export function Header() {
       { label: "Traditional Wear", href: "/products", image: "/images/shiny-gemstone-necklace-reflects-elegance-glamour-generated-by-ai.jpg" },
     ],
     "Gold Coin": [
-      { label: "Special Coins", href: "/products/gold-coins-banglore", },
-      { label: "1 Gram", href: "/products/gold-coins-banglore", },
-      { label: "2 Gram", href: "/products/gold-coins-banglore", },
-      { label: "4 Gram", href: "/products/gold-coins-banglore", },
-      { label: "5 Gram", href: "/products/gold-coins-banglore", },
-      { label: "8 Gram", href: "/products/gold-coins-banglore", },
-      { label: "10 Gram", href: "/products/gold-coins-banglore", },
-      { label: "25 Gram", href: "/products/gold-coins-banglore",  },
-      { label: "50 Gram", href: "/products/gold-coins-banglore",  },
-      { label: "100 Gram", href: "/products/gold-coins-banglore",  },
+      { label: "Special Coins", href: "/products/gold-coins-bangalore", },
+      { label: "1 Gram", href: "/products/gold-coins-bangalore", },
+      { label: "2 Gram", href: "/products/gold-coins-bangalore", },
+      { label: "4 Gram", href: "/products/gold-coins-bangalore", },
+      { label: "5 Gram", href: "/products/gold-coins-bangalore", },
+      { label: "8 Gram", href: "/products/gold-coins-bangalore", },
+      { label: "10 Gram", href: "/products/gold-coins-bangalore", },
+      { label: "25 Gram", href: "/products/gold-coins-bangalore",  },
+      { label: "50 Gram", href: "/products/gold-coins-bangalore",  },
+      { label: "100 Gram", href: "/products/gold-coins-bangalore",  },
     ],
     Men: [
-      { label: "Men's Bracelets", href: "/products/gold-bracelets-banglore",  },
-      { label: "Men's Chains", href: "/products/gold-chain-banglore", },
-      { label: "Men's Engagement Rings", href: "/products/gold-rings-banglore", },
-      { label: "Men's Kadaas", href: "/products/gold-kadaas-banglore",  },
-      { label: "Men's Pendants", href: "/products/gold-pendants-banglore"},
-      { label: "Men's Rings", href: "/products/gold-rings-banglore", },
+      { label: "Men's Bracelets", href: "/products/gold-bracelets-bangalore",  },
+      { label: "Men's Chains", href: "/products/gold-chain-bangalore", },
+      { label: "Men's Engagement Rings", href: "/products/gold-rings-bangalore", },
+      { label: "Men's Kadaas", href: "/products/gold-kadaas-bangalore",  },
+      { label: "Men's Pendants", href: "/products/gold-pendants-bangalore"},
+      { label: "Men's Rings", href: "/products/gold-rings-bangalore", },
     ],
     Metal: [
       { label: "Rose", href: "/products", swatch: "#D8A39D" },
@@ -333,20 +337,13 @@ export function Header() {
           </Link>
 
           {/* Center Navigation - Hidden on mobile */}
-          <div className="hidden lg:flex items-center gap-10 text-sm text-gray-700">
-            <div className="flex items-center gap-2 text-gray-700">
-              <span className="whitespace-nowrap flex items-center gap-2">
-                <img
-                  src="https://media.giphy.com/media/l0ExhcMymdL6TrZ84/giphy.gif"
-                  alt="Animated gold icon"
-                  className="h-4 w-5 rounded-[3px] object-cover ring-1 ring-amber-400/70"
-                  loading="lazy"
-                  decoding="async"
-                />
-                <span>Gold</span>
-              </span>
-              <span className="font-medium text-gray-900 whitespace-nowrap">{goldRatePerGram}/g</span>
-            </div>
+          <div className="hidden lg:flex items-center gap-4 text-[12px]">
+            {Object.entries(goldRates).map(([karat, rate]) => (
+              <div key={karat} className="flex flex-col items-center px-2 py-0.5 bg-amber-50 rounded-lg border border-amber-100 min-w-[80px]">
+                <span className="text-[10px] uppercase tracking-wider font-bold text-amber-700">{karat} Gold</span>
+                <span className="font-semibold text-gray-900">{rate}</span>
+              </div>
+            ))}
           </div>
 
           {/* Right Side Actions */}

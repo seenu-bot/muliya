@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { ChevronRight, PiggyBank, TrendingUp, Check, Download, Phone, MessageCircle, Calculator } from "lucide-react";
-import { ImageBannerSwiper } from "../../components/ImageBannerSwiper";
 
 export default function GoldSchemePage() {
   return (
@@ -21,30 +20,20 @@ export default function GoldSchemePage() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <ImageBannerSwiper
-          images={[
-            "/images/Artboard 1 copy 2.png",
-            "/images/Artboard 1 copy 3.png",
-            "/images/Artboard 1 copy 4.png",
-            "/images/Artboard 1 copy 5.png",
-          ]}
+      <div className="bg-white">
+        <img
+          src="/images/goldscheme.jpeg"
           alt="Gold Scheme Banner"
-          className="h-[50vh] md:h-[60vh]"
+          className="w-full object-cover"
+          style={{ height: "50vh" }}
+          loading="lazy"
+          decoding="async"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/45 via-black/25 to-black/35" />
-        <div className="absolute inset-0">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-            <div className="w-full text-center">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">
-                Gold Buying Plans
-              </h1>
-              <p className="text-white/90 text-xl md:text-2xl max-w-3xl mx-auto font-light">
-                Make your gold dreams a reality
-              </p>
-            </div>
-          </div>
-        </div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-gray-900 mb-4">Gold Buying Plans</h1>
+        <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto font-light">Make your gold dreams a reality</p>
       </div>
 
       {/* Introduction */}

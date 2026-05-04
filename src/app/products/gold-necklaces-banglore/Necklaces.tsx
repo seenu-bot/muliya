@@ -266,7 +266,7 @@ export default function NecklacesPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-4 drop-shadow">Necklaces</h1>
-            <p className="text-white/90 text-lg max-w-2xl mx-auto drop-shadow">Discover our exquisite collection of gold and diamond necklaces. From traditional designs to contemporary styles, find the perfect piece for every occasion.</p>
+            <p className="text-white/90 text-lg max-w-2xl mx-auto drop-shadow">Discover our exquisite collection of diamond and gold necklaces in Bangalore, crafted for every occasion.</p>
           </div>
         </div>
       </div>

@@ -80,41 +80,44 @@ export default function GoldSavingsSchemePage() {
       </div>
 
       {/* Hero */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/Artboard 1 copy 2.png" alt="Gold Savings Scheme Bangalore" fill loading="lazy" className="object-cover" />
-          <div className="absolute inset-0 bg-black/55" />
+      <div className="bg-white">
+        <img
+          src="/images/goldscheme.jpeg"
+          alt="Gold Savings Scheme Bangalore"
+          className="w-full object-cover"
+          style={{ height: "50vh" }}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+        <div className="inline-flex items-center gap-2 bg-[#E92247] text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+          <TrendingUp className="w-4 h-4" />
+          Save Monthly, Wear Forever
         </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-          <div className="text-center">
-            <div className="inline-flex items-center gap-2 bg-[#E92247] text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <TrendingUp className="w-4 h-4" />
-              Save Monthly, Wear Forever
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">
-              Gold Savings Scheme in Bangalore
-            </h1>
-            <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto mb-8">
-              Join Muliya's jewellery monthly scheme in Bangalore and let your savings grow 
-              into beautiful gold jewellery. Pay for 11 months — we pay the 12th!
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <a
-                href="tel:+91XXXXXXXXXX"
-                className="inline-flex items-center gap-2 bg-[#E92247] text-white px-6 py-3 rounded-xl font-medium hover:bg-[#d11f3f] transition-all shadow-lg"
-              >
-                <Phone className="w-4 h-4" />
-                Enrol Now
-              </a>
-              <Link
-                href="#how-it-works"
-                className="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-xl font-medium hover:bg-gray-100 transition-all shadow-lg"
-              >
-                How It Works
-                <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
-          </div>
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-gray-900 mb-6">
+          Gold Savings Scheme in Bangalore
+        </h1>
+        <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto mb-8">
+          Join Muliya's jewellery monthly scheme in Bangalore and let your savings grow 
+          into beautiful gold jewellery. Pay for 11 months — we pay the 12th!
+        </p>
+        <div className="flex flex-wrap justify-center gap-4">
+          <a
+            href="tel:+91XXXXXXXXXX"
+            className="inline-flex items-center gap-2 bg-[#E92247] text-white px-6 py-3 rounded-xl font-medium hover:bg-[#d11f3f] transition-all shadow-lg"
+          >
+            <Phone className="w-4 h-4" />
+            Enrol Now
+          </a>
+          <Link
+            href="#how-it-works"
+            className="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-xl font-medium hover:bg-gray-100 transition-all shadow-lg"
+          >
+            How It Works
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
 

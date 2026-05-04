@@ -88,59 +88,43 @@ export default function CareersPage() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative overflow-hidden min-h-[320px] sm:min-h-[400px] lg:min-h-[520px]">
+      <div className="bg-white">
         <picture>
-          <source media="(max-width: 768px)" srcSet="/images/Artboard 1 copy 6.png" />
+          <source media="(max-width: 768px)" srcSet="/images/carrerimage.jpeg" />
           <img
-            src="/images/Artboard 1 copy 5.png"
+            src="/images/carrerimage.jpeg"
             alt="Careers banner"
-            className="absolute inset-0 h-full w-full object-cover object-center"
+            className="w-full object-cover"
+            style={{ height: "50vh" }}
+            loading="lazy"
+            decoding="async"
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#081a2f]/80 via-[#0d2a47]/60 to-[#081a2f]/45" />
-        <div className="absolute top-10 left-6 sm:left-16 h-40 w-40 rounded-full bg-sky-300/20 blur-3xl" />
-        <div className="absolute bottom-10 right-6 sm:right-16 h-48 w-48 rounded-full bg-blue-200/20 blur-3xl" />
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 lg:py-32">
-          <div className="max-w-3xl">
-            <p className="mb-3 text-sm font-medium tracking-[0.3em] text-sky-100 uppercase">
-              Careers At Muliya
-            </p>
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-white mb-4 sm:mb-6 leading-tight">
-              Careers
-            </h1>
-            <p className="text-white/90 text-base sm:text-lg md:text-xl max-w-2xl">
-              Join the team behind Karnataka&apos;s trusted jewellery legacy and build meaningful work in a culture shaped by craftsmanship, care, and growth.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <a
-                href="#openings"
-                className="inline-flex items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-medium text-[#0d2a47] shadow-lg transition hover:bg-sky-50"
-              >
-                Explore Open Roles
-                <ArrowRight className="w-4 h-4" />
-              </a>
-              <a
-                href="mailto:careers@muliyajewels.com"
-                className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/30 bg-white/10 px-6 py-3 text-sm font-medium text-white backdrop-blur-sm transition hover:bg-white/20"
-              >
-                Send Your Resume
-                <Mail className="w-4 h-4" />
-              </a>
-            </div>
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4">
-              <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4 backdrop-blur-sm">
-                <p className="text-2xl font-serif text-white">81+</p>
-                <p className="text-sm text-white/80 mt-1">Years of trust</p>
-              </div>
-              <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4 backdrop-blur-sm">
-                <p className="text-2xl font-serif text-white">7</p>
-                <p className="text-sm text-white/80 mt-1">Showrooms across Karnataka</p>
-              </div>
-              <div className="rounded-2xl border border-white/15 bg-white/10 px-4 py-4 backdrop-blur-sm">
-                <p className="text-2xl font-serif text-white">People First</p>
-                <p className="text-sm text-white/80 mt-1">Culture rooted in care</p>
-              </div>
-            </div>
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="max-w-3xl">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-serif text-gray-900 mb-4 sm:mb-6 leading-tight">
+            Careers
+          </h1>
+          <p className="text-gray-600 text-base sm:text-lg md:text-xl max-w-2xl">
+            Join the team behind Karnataka&apos;s trusted jewellery legacy and build meaningful work in a culture shaped by craftsmanship, care, and growth.
+          </p>
+          <div className="mt-8 flex flex-col sm:flex-row gap-4">
+            <a
+              href="#openings"
+              className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#E92247] px-6 py-3 text-sm font-medium text-white shadow-lg transition hover:bg-[#E92247]/90"
+            >
+              Explore Open Roles
+              <ArrowRight className="w-4 h-4" />
+            </a>
+            <a
+              href="mailto:careers@muliyajewels.com"
+              className="inline-flex items-center justify-center gap-2 rounded-xl border border-gray-200 bg-white px-6 py-3 text-sm font-medium text-gray-900 transition hover:bg-gray-50"
+            >
+              Send Your Resume
+              <Mail className="w-4 h-4" />
+            </a>
           </div>
         </div>
       </div>

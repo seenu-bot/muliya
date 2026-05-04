@@ -166,27 +166,22 @@ export default function StoreLocatorPage() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       {/* Hero Section */}
-      <div className="relative bg-[#E92247] overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-          }} />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28">
-          <div className="text-center">
-            <nav className="flex items-center justify-center gap-2 text-sm text-white/70 mb-8">
-              <Link href="/" className="hover:text-white transition-colors">Home</Link>
-              <span>/</span>
-              <span className="text-white">Showrooms</span>
-            </nav>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">
-              Our Showrooms
-            </h1>
-            <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto">
-              Visit our exclusive showrooms across Karnataka and experience the finest gold and diamond jewellery
-            </p>
-          </div>
-        </div>
+      <div className="bg-white">
+        <img
+          src="/images/ourshowroomimage.jpeg"
+          alt="Our Showrooms Banner"
+          className="w-full object-cover"
+          style={{ height: "50vh" }}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 text-center">
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-gray-900 mb-4">Our Showrooms</h1>
+        <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
+         Experience the finest gold and diamond jewellery at the best jewellery showroom in Bangalore. 
+        </p>
       </div>
 
       {/* Search & Filter Section */}

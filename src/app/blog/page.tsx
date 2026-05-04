@@ -65,20 +65,23 @@ export default function BlogPage() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative overflow-hidden">
-        <div className="absolute inset-0">
-          <Image src="/images/Artboard 1 copy 2.png" alt="Blog banner" fill loading="lazy" className="object-cover" />
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-          <div className="text-center">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">
-              Blog
-            </h1>
-            <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto">
-              Stories, insights, and updates from Muliya Gold & Diamonds
-            </p>
-          </div>
+      <div className="bg-white">
+        <img
+          src="/images/blogimage.jpeg"
+          alt="Blog banner"
+          className="w-full object-cover"
+          style={{ height: "50vh" }}
+          loading="lazy"
+          decoding="async"
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        <div className="text-center">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-gray-900 mb-4">Blog</h1>
+          <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
+            Stories, insights, and updates from Muliya Gold & Diamonds
+          </p>
         </div>
       </div>
 

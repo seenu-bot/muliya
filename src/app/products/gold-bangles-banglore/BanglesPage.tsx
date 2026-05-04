@@ -248,7 +248,7 @@ export default function BanglesPage() {
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-4 drop-shadow">Bangles</h1>
-            <p className="text-white/90 text-lg max-w-2xl mx-auto drop-shadow">The melodious sound of tradition. Discover our collection of exquisite gold and diamond bangles for every occasion.</p>
+            <p className="text-white/90 text-lg max-w-2xl mx-auto drop-shadow">Discover gold bangles in Bangalore, featuring elegant gold bangles for women for every occasion.</p>
           </div>
         </div>
       </div>

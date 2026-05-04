@@ -376,7 +376,7 @@ export default function RingDetailPage() {
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
                 <span className="text-gray-600">Gold Rate (per gram)</span>
-                <span className="text-gray-900 font-medium">Rs. 6,500</span>
+                <span className="text-gray-900 font-medium">₹13,835</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-600">Gold Weight</span>
@@ -408,7 +408,7 @@ export default function RingDetailPage() {
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
                 <span className="text-gray-600">Gold Rate (per gram)</span>
-                <span className="text-gray-900 font-medium">Rs. 6,500</span>
+                <span className="text-gray-900 font-medium">₹13,835</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span className="text-gray-600">Gold Weight</span>
