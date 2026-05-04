@@ -203,43 +203,55 @@ const detailCards = [
     id: "trusted",
     icon: Star,
     title: "Trusted Since 1944",
-    description: "Heritage-backed quality and consistency across generations.",
+    description: "A legacy of trust, built over decades and carried forward through generations with unwavering consistency.",
   },
   {
     id: "purity",
     icon: Shield,
-    title: "Gold Purity Analyzer + HUID",
-    description: "More transparency for every purchase, with customer visibility.",
+    title: "Gold Purity Analyzer + HUID Certified",
+    description: "Complete transparency in every purchase, backed by certified purity standards and real-time verification.",
   },
   {
     id: "diamond",
     icon: Award,
     title: "Customer-Facing CVD Diamond Analyzer",
-    description: "Verified purity checks designed for confidence at the counter.",
+    description: "Advanced in-store verification that lets you experience clarity and authenticity with complete confidence.",
   },
   {
     id: "showroom",
     icon: TrendingUp,
     title: "Enhanced Showroom Experience",
-    description: "A spacious, curated experience for your jewellery discovery journey.",
+    description: "Step into thoughtfully designed spaces that elevate your jewellery discovery into a refined, seamless experience.",
   },
   {
     id: "watches",
     icon: Star,
     title: "Curated Premium Watch Collection",
-    description: "Luxury handpicked to match your lifestyle and taste.",
+    description: "A handpicked selection of luxury timepieces, chosen to complement your style with timeless sophistication.",
   },
   {
     id: "silveriya",
     icon: Star,
     title: "Silveriya Showrooms",
-    description: "A new-age silver experience for today’s youth.",
+    description: "A contemporary silver destination crafted for modern tastes, blending elegance with everyday versatility.",
   },
   {
     id: "plans",
     icon: TrendingUp,
     title: "Flexible Gold Buying Plans",
-    description: "Save monthly and buy when you’re ready, with clear benefits.",
+    description: "Smart, structured plans that make owning gold effortless, with clarity, flexibility, and assured value.",
+  },
+  {
+    id: "certified",
+    icon: Shield,
+    title: "Certified Diamonds & Hallmarked Jewellery",
+    description: "Every piece is backed by trusted certifications, ensuring authenticity, quality, and complete peace of mind.",
+  },
+  {
+    id: "consultation",
+    icon: Award,
+    title: "Personalised Jewellery Consultation",
+    description: "Expert guidance tailored to your preferences, helping you find pieces that truly reflect your style and occasion.",
   },
 ];
 
@@ -587,10 +599,11 @@ Our brand is built for every generation—from traditional gold lovers to the co
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-4">
-                Our Story Begins In 1944
+                Our Story Began In 1944
               </h2>
               <p className="text-gray-700 text-lg leading-relaxed">
-               Founded On Integrity And Built With Transparency, Muliya Has Grown Into A Trusted Name—Connecting Craftsmanship With Customer-First Service Across Generations.
+               Built on unwavering integrity and shaped by a commitment to transparency, Muliya has grown into a name that generations continue to trust.
+What began as a vision rooted in craftsmanship has evolved into a legacy - where every creation reflects precision, every interaction is guided by care, and every customer becomes a part of our enduring journey. 
               </p>
               <div className="mt-8">
                 <Button variant="outline" size="lg" asChild>
@@ -932,11 +945,6 @@ Our brand is built for every generation—from traditional gold lovers to the co
                     <p className="text-gray-800">{b}</p>
                   </div>
                 ))}
-              </div>
-
-              <div className="mt-8 rounded-2xl border border-gray-200 bg-white p-5">
-                <p className="text-[#E92247] font-semibold">Creating Happiness</p>
-                <p className="text-gray-700 text-sm mt-2">The emotion behind every ornament we craft.</p>
               </div>
             </motion.div>
           </div>
