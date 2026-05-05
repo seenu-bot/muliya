@@ -158,7 +158,7 @@ export const collections: Collection[] = [
   {
     id: "col-003",
     name: "Indian Bridal",
-    slug: "indian-bridal",
+    slug: "bridal-wedding-jewellery-bangalore",
     bannerImage: "/images/mangalsutra.png",
     thumbnailImage: "/images/Indian-bridal-s.png",
     description: "Make your special day unforgettable. Exquisite bridal jewellery for the Indian bride.",

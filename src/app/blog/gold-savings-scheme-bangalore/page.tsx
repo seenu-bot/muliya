@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import GoldSaving from "./GoldSaving";
 
 export const metadata: Metadata = {
-  title: " Muliya",
+  title: "Gold Savings Scheme Bangalore | Muliya",
   description:
-    "Explore Offer in Bangalore at Muliya.",
+    "Learn about Muliya's gold savings scheme jewellery plan and the jewellery monthly scheme Bangalore customers love. Simple, transparent, and rewarding.",
   keywords: [
     "gold savings scheme jewellery",
     "jewellery monthly scheme Bangalore",
   ],
   alternates: {
-    canonical: "https://muliya.in/gold-savings-scheme-bangalore/",
+    canonical: "https://muliya.in/blog/gold-savings-scheme-bangalore/",
   },
 };
 

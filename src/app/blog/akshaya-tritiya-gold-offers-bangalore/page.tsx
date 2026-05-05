@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import AshayaPage from "./AshayaPage";
 
 export const metadata: Metadata = {
-  title: " Muliya",
+  title: "Akshaya Tritiya Gold Offers Bangalore | Muliya",
   description:
-    "Explore Offer in Bangalore at Muliya. Discover elegant MG Road rings  for women with traditional and modern designs.",
+    "Discover Akshaya Tritiya gold offers Bangalore at Muliya, including gold coin offers Bangalore and festive deals on jewellery collections.",
   keywords: [
     "Akshaya Tritiya gold offers Bangalore",
     "gold coin offers Bangalore",
   ],
   alternates: {
-    canonical: "https://muliya.in/akshaya-tritiya-gold-offers-bangalore/",
+    canonical: "https://muliya.in/blog/akshaya-tritiya-gold-offers-bangalore/",
   },
 };
 

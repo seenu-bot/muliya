@@ -129,7 +129,7 @@ const diamondCategories = [
 const collectionsData = [
   { name: "Mahathi", slug: "mahathi", image: "/images/Mahathi - s.png" },
   { name: "Amuliya", slug: "amuliya", image: "/images/Amuliya-s.png" },
-  { name: "Indian Bridal", slug: "indian-bridal", image: "/images/Indian-bridal-s.png" },
+  { name: "Indian Bridal", slug: "bridal-wedding-jewellery-bangalore", image: "/images/Indian-bridal-s.png", isExternal: true },
   { name: "Indian Ethnic", slug: "indian-ethnic", image: "/images/Indian-Ethnic-s.png" },
   { name: "Ruby and Emerald", slug: "ruby-and-emerald", image: "/images/Ruby-and-Emerald-s.png" },
   { name: "Apsara", slug: "apsara", image: "/images/Apsara-s.png" },
@@ -236,7 +236,6 @@ export function Header() {
   const goldRates = {
     "24K": "₹15,093",
     "22K": "₹13,835",
-    "18K": "₹11,320",
   };
 
   const megaTabs = [
@@ -901,7 +900,7 @@ export function Header() {
                                 {collectionsData.map((col) => (
                                   <Link
                                     key={col.slug}
-                                    href={`/collections/${col.slug}`}
+                                    href={col.isExternal ? `/${col.slug}` : `/collections/${col.slug}`}
                                     className="relative rounded-xl overflow-hidden group cursor-pointer h-[120px]"
                                   >
                                     <img

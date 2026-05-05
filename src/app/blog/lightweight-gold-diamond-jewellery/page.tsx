@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import Lightweigth from "./Lightweigth";
 
 export const metadata: Metadata = {
-  title: " Muliya",
+  title: "Lightweight Gold & Diamond Jewellery | Muliya",
   description:
-    "Explore Offer in Bangalore at Muliya.",
+    "Explore lightweight gold jewellery and lightweight diamond jewellery picks from Muliya—comfortable, elegant designs for everyday and occasion wear.",
   keywords: [
     "lightweight gold jewellery",
     "lightweight diamond jewellery",
   ],
   alternates: {
-    canonical: "https://muliya.in/gold-savings-scheme-bangalore/",
+    canonical: "https://muliya.in/blog/lightweight-gold-diamond-jewellery/",
   },
 };
 

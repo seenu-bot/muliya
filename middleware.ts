@@ -10,11 +10,10 @@ export function middleware(request: NextRequest) {
     return NextResponse.redirect(url, 301);
   }
 
-  // Keep site functional while routes still live under the old folder name.
-  if (pathname.includes("bangalore")) {
+  if (pathname.endsWith("/collections/indian-bridal") || pathname.endsWith("/collections/bridal-wedding-jewellery-bangalore")) {
     const url = request.nextUrl.clone();
-    url.pathname = pathname.replace(/bangalore/g, "banglore");
-    return NextResponse.rewrite(url);
+    url.pathname = "/bridal-wedding-jewellery-bangalore";
+    return NextResponse.redirect(url, 301);
   }
 
   return NextResponse.next();

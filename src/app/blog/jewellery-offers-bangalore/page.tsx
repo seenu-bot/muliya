@@ -2,15 +2,15 @@ import type { Metadata } from "next";
 import Offerpage from "./Offerpage";
 
 export const metadata: Metadata = {
-  title: " Muliya",
+  title: "Jewellery Offers Bangalore | Muliya",
   description:
-    "Explore Offer in Bangalore at Muliya. Discover elegant MG Road rings  for women with traditional and modern designs.",
+    "Explore jewellery offers Bangalore at Muliya. Discover wedding jewellery offers Bangalore and the latest deals across gold and diamond collections.",
   keywords: [
     "jewellery offers Bangalore",
     "wedding jewellery offers Bangalore",
   ],
   alternates: {
-    canonical: "https://muliya.in/jewellery-offers-bangalore/",
+    canonical: "https://muliya.in/blog/jewellery-offers-bangalore/",
   },
 };
 

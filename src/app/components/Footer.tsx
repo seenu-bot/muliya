@@ -2,13 +2,10 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Facebook, Instagram, Mail, Phone, MapPin, ArrowRight } from "lucide-react";
-import { Input } from "./ui/input";
-import { Button } from "./ui/button";
+import { Facebook, Instagram, Mail, Phone, MapPin } from "lucide-react";
 
 export function Footer() {
   const [logoError, setLogoError] = useState(false);
-  const [email, setEmail] = useState("");
 
   return (
     <footer className="bg-white text-gray-700 relative overflow-hidden">
@@ -18,30 +15,6 @@ export function Footer() {
         <div className="absolute w-80 h-80 bg-sky-100/30 rounded-full blur-3xl top-20 right-10"></div>
         <div className="absolute w-72 h-72 bg-blue-50/50 rounded-full blur-3xl bottom-10 left-1/3"></div>
         <div className="absolute w-64 h-64 bg-sky-50/40 rounded-full blur-3xl -bottom-10 right-1/4"></div>
-      </div>
-
-      {/* Newsletter Section */}
-      <div className="relative z-10 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h3 className="text-2xl font-serif text-gray-900 mb-2">Stay Updated</h3>
-              <p className="text-sm text-gray-600">Subscribe to get the latest updates on new collections and offers.</p>
-            </div>
-            <div className="flex gap-3 w-full md:w-auto">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="w-full md:w-64 bg-white/80 border-gray-300"
-              />
-              <Button className="bg-[#E92247] hover:bg-[#E92247]/90 text-white">
-                <ArrowRight className="w-4 h-4" />
-              </Button>
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Main Footer */}

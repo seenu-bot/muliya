@@ -1,185 +1,281 @@
 "use client";
 
-import { Check, ArrowRight, Crown, Gem, Heart } from "lucide-react";
-import { motion } from "framer-motion";
+import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
-import { Button } from "../components/ui/button";
-import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { useState, use } from "react";
+import { collections, getCollectionBySlug, formatPrice } from "@/app/data/collections";
+import { ChevronRight, Heart, ChevronDown } from "lucide-react";
+import { ProductFilter } from "@/app/components/ProductFilter";
 
 export default function BridalJewelleryClient() {
+  // We use the data from the 'bridal-wedding-jewellery-bangalore' slug (previously indian-bridal)
+  const collection = getCollectionBySlug("bridal-wedding-jewellery-bangalore");
+  
+  if (!collection) {
+    notFound();
+  }
+
+  const [filteredProducts, setFilteredProducts] = useState(collection.products);
+  const [sortOption, setSortOption] = useState("latest");
+
+  const handleSortChange = (sort: string) => {
+    setSortOption(sort);
+    let sorted = [...collection.products];
+    switch (sort) {
+      case "price-asc":
+        sorted.sort((a, b) => a.price - b.price);
+        break;
+      case "price-desc":
+        sorted.sort((a, b) => b.price - a.price);
+        break;
+      case "discount":
+        sorted.sort((a, b) => {
+          const discountA = a.originalPrice ? (a.originalPrice - a.price) / a.originalPrice : 0;
+          const discountB = b.originalPrice ? (b.originalPrice - b.price) / b.originalPrice : 0;
+          return discountB - discountA;
+        });
+        break;
+      default:
+        break;
+    }
+    setFilteredProducts(sorted);
+  };
+
+  const handlePriceRangeChange = (range: string) => {
+    const [min, max] = range.split("-").map(v => v === "+" ? Infinity : parseInt(v.replace("+", "")));
+    const filtered = collection.products.filter(product => {
+      const price = product.price;
+      if (max === Infinity) return price >= min;
+      return price >= min && price <= max;
+    });
+    setFilteredProducts(filtered);
+  };
+
+  const handleMaterialChange = (material: string) => {
+    const filtered = collection.products.filter(product => 
+      product.metal?.toLowerCase().includes(material)
+    );
+    setFilteredProducts(filtered);
+  };
+
+  const handleWeightChange = (weight: string) => {
+    const [min, max] = weight.split("-").map(v => v === "+" ? Infinity : parseFloat(v));
+    const filtered = collection.products.filter(product => {
+      if (!product.weight) return false;
+      const weightNum = parseFloat(product.weight.replace(/[^0-9.]/g, ""));
+      if (max === Infinity) return weightNum >= min;
+      return weightNum >= min && weightNum <= max;
+    });
+    setFilteredProducts(filtered);
+  };
+
+  const handleDiscountChange = (discount: string) => {
+    const filtered = collection.products.filter(product => product.originalPrice !== undefined);
+    setFilteredProducts(filtered);
+  };
+
+  const handleClearFilters = () => {
+    setFilteredProducts(collection.products);
+    setSortOption("latest");
+  };
+
   return (
-    <main className="container mx-auto px-4 py-10 space-y-20">
-
-      {/* HERO */}
-      <section>
-        <h1 className="text-4xl md:text-5xl font-serif mb-4 max-w-3xl">
-          Bridal Jewellery in Bangalore –{" "}
-          <span className="italic">Elegant Wedding Jewellery for Your Special Day</span>
-        </h1>
-
-        <p className="text-lg text-gray-600 max-w-2xl">
-          Discover premium bridal jewellery in Bangalore at Muliya. From traditional
-          bridal gold jewellery to modern bridal diamond jewellery in Bangalore,
-          explore exquisite wedding jewellery collections designed to make your
-          big day unforgettable.
-        </p>
-      </section>
-
-      {/* COLLECTION TYPES */}
-      <section>
-        <h2 className="text-3xl font-serif mb-6">
-          Explore Wedding Jewellery Collections
-        </h2>
-
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            "Bridal Gold Jewellery Sets",
-            "Diamond Bridal Jewellery",
-            "Temple Jewellery",
-            "Kundan & Polki Sets",
-            "Bridal Necklaces & Haram",
-            "Custom Wedding Jewellery",
-          ].map((item) => (
-            <div key={item} className="p-6 border rounded-xl hover:shadow-lg transition">
-              <Crown className="mb-3 text-[#E92247]" />
-              <h3 className="font-semibold">{item}</h3>
-              <p className="text-sm text-gray-600 mt-2">
-                Premium {item.toLowerCase()} crafted for brides.
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* WHY CHOOSE */}
-      <section>
-        <h2 className="text-3xl font-serif mb-6">
-          Why Choose Our Bridal Jewellery in Bangalore?
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {[
-            "Exclusive bridal gold jewellery collections",
-            "Certified bridal diamond jewellery Bangalore",
-            "Traditional & modern wedding designs",
-            "Custom bridal jewellery design services",
-            "Trusted jewellery brand with decades of experience",
-            "Perfect for weddings, receptions & ceremonies",
-          ].map((item) => (
-            <div key={item} className="flex gap-3">
-              <Check className="text-[#E92247]" />
-              <p>{item}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* IMAGE + CONTENT */}
-      <section className="grid md:grid-cols-2 gap-10 items-center">
-        <ImageWithFallback
-          src="/images/bridal-jewellery-display.jpg"
-          alt="Bridal jewellery Bangalore wedding gold diamond collection"
-          className="rounded-xl"
-        />
-
-        <div>
-          <h2 className="text-3xl font-serif mb-4">
-            Wedding Jewellery in Bangalore for Every Bride
-          </h2>
-          <p className="text-gray-600 mb-4">
-            Our wedding jewellery in Bangalore includes gold, diamond, and
-            traditional sets crafted to match your bridal look. Whether you prefer
-            classic elegance or modern designs, we have the perfect jewellery for you.
-          </p>
-
-          <Button asChild>
-            <Link href="/products">
-              Explore Bridal Collection <ArrowRight className="ml-2 w-4 h-4" />
+    <main className="min-h-screen bg-gray-50">
+      {/* Breadcrumb */}
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <nav className="flex items-center gap-2 text-sm text-gray-600">
+            <Link href="/" className="hover:text-[#E92247] transition-colors">
+              Home
             </Link>
-          </Button>
+            <ChevronRight className="w-4 h-4" />
+            <Link href="/collections" className="hover:text-[#E92247] transition-colors">
+              Collections
+            </Link>
+            <ChevronRight className="w-4 h-4" />
+            <span className="text-[#E92247] font-medium">{collection.name}</span>
+          </nav>
         </div>
-      </section>
+      </div>
 
-      {/* GOLD VS DIAMOND */}
-      <section>
-        <h2 className="text-3xl font-serif mb-6">
-          Bridal Gold Jewellery vs Diamond Jewellery
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="p-6 border rounded-xl">
-            <h3 className="font-semibold mb-2">Bridal Gold Jewellery Bangalore</h3>
-            <p className="text-gray-600 text-sm">
-              Traditional gold jewellery is timeless and perfect for weddings.
-              It represents culture, heritage, and long-term value.
-            </p>
-          </div>
-
-          <div className="p-6 border rounded-xl">
-            <h3 className="font-semibold mb-2">Bridal Diamond Jewellery Bangalore</h3>
-            <p className="text-gray-600 text-sm">
-              Diamond jewellery adds elegance and sparkle, ideal for modern brides
-              looking for a luxurious and stylish look.
-            </p>
-          </div>
+      {/* Collection Banner */}
+      <section className="relative h-[400px] md:h-[500px] overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src={collection.bannerImage}
+            alt={collection.name}
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-transparent" />
         </div>
-      </section>
-
-      {/* FAQ */}
-      <section>
-        <h2 className="text-3xl font-serif mb-6">
-          Frequently Asked Questions
-        </h2>
-
-        <div className="space-y-4">
-          {[
-            {
-              q: "Where can I buy bridal jewellery in Bangalore?",
-              a: "You can buy bridal jewellery in Bangalore from trusted stores like Muliya offering gold and diamond collections.",
-            },
-            {
-              q: "What jewellery is required for a wedding bride?",
-              a: "Bridal jewellery typically includes necklaces, earrings, bangles, rings, and traditional sets.",
-            },
-            {
-              q: "Do you offer custom bridal jewellery?",
-              a: "Yes, we provide custom wedding jewellery design services for brides.",
-            },
-          ].map((faq) => (
-            <div key={faq.q} className="p-4 border rounded-lg">
-              <p className="font-semibold">{faq.q}</p>
-              <p className="text-gray-600 text-sm mt-1">{faq.a}</p>
+        
+        <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center">
+          <div className="max-w-xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-4">
+              {collection.name}
+            </h1>
+            <p className="text-lg md:text-xl text-white/90 mb-6">
+              {collection.description}
+            </p>
+            <div className="flex items-center gap-4 text-white/80 text-sm">
+              <span>{collection.products.length} Products</span>
+              <span>•</span>
+              <span>Starting from {formatPrice(Math.min(...collection.products.map(p => p.price)))}</span>
             </div>
-          ))}
+          </div>
         </div>
       </section>
 
-      {/* INTERNAL LINKS */}
-      <section className="text-sm text-gray-600">
-        Explore more:
-        <Link href="/gold-jewellery-bangalore" className="ml-2 text-[#E92247] underline">
-          Gold Jewellery
-        </Link>
-        <Link href="/diamond-jewellery-bangalore" className="ml-4 text-[#E92247] underline">
-          Diamond Jewellery
-        </Link>
+      {/* Products Section */}
+      <section className="py-12 md:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row gap-6 lg:gap-8">
+            {/* Sidebar - Desktop */}
+            <ProductFilter
+              onSortChange={handleSortChange}
+              onPriceRangeChange={handlePriceRangeChange}
+              onMaterialChange={handleMaterialChange}
+              onWeightChange={handleWeightChange}
+              onDiscountChange={handleDiscountChange}
+              onClearFilters={handleClearFilters}
+            />
+            
+            {/* Products */}
+            <div className="flex-1">
+              {/* Section Header */}
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl md:text-3xl font-serif text-gray-900">
+                  {collection.name} Products
+                </h2>
+                <span className="text-gray-600 text-sm">
+                  Showing {filteredProducts.length} items
+                </span>
+              </div>
+
+              {/* Products Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredProducts.map((product) => (
+                  <Link
+                    key={product.id}
+                    href={`/collections/${collection.slug}/products/${product.id.replace(":", "-")}`}
+                    className="group bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300"
+                  >
+                    {/* Product Image */}
+                    <div className="relative aspect-square overflow-hidden bg-gray-50 p-4">
+                      <Image
+                        src={product.image}
+                        alt={product.name}
+                        fill
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-contain group-hover:scale-105 transition-transform duration-500"
+                      />
+                      
+                      {/* Product ID Badge */}
+                      <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-md">
+                        <span className="text-xs font-medium text-[#8B4513]">
+                          {product.id}
+                        </span>
+                      </div>
+                      
+                      {/* Wishlist Button */}
+                      <button className="absolute top-3 right-3 w-8 h-8 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity hover:bg-[#E92247] hover:text-white shadow-sm">
+                        <Heart className="w-4 h-4" />
+                      </button>
+                    </div>
+
+                    {/* Product Info */}
+                    <div className="p-4">
+                      <h3 className="font-medium text-gray-900 mb-1 line-clamp-1">
+                        {product.name}
+                      </h3>
+                      
+                      {product.description && (
+                        <p className="text-sm text-gray-500 mb-2 line-clamp-2">
+                          {product.description}
+                        </p>
+                      )}
+                      
+                      {/* Metal & Weight */}
+                      {(product.metal || product.weight) && (
+                        <div className="flex items-center gap-2 text-xs text-gray-500 mb-3">
+                          {product.metal && <span>{product.metal}</span>}
+                          {product.metal && product.weight && <span>•</span>}
+                          {product.weight && <span>{product.weight}</span>}
+                        </div>
+                      )}
+                      
+                      {/* Price */}
+                      <div className="flex items-center gap-2">
+                        <span className="text-lg font-semibold text-[#E92247]">
+                          {formatPrice(product.price)}
+                        </span>
+                        {product.originalPrice && (
+                          <span className="text-sm text-gray-400 line-through">
+                            {formatPrice(product.originalPrice)}
+                          </span>
+                        )}
+                      </div>
+                      
+                      {/* Discount Badge */}
+                      <div className="mt-2 h-6">
+                        {product.originalPrice && (
+                          <div className="inline-block bg-green-100 text-green-700 text-xs px-2 py-1 rounded">
+                            {Math.round((1 - product.price / product.originalPrice) * 100)}% OFF
+                          </div>
+                        )}
+                      </div>
+                      
+                      {/* Buy Now Button */}
+                      <button className="mt-4 w-full bg-[#E92247] text-white py-2 rounded-lg text-sm font-medium hover:bg-[#d11f3f] transition-colors">
+                        Buy Now
+                      </button>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
-      {/* CTA */}
-      <section className="p-8 bg-gray-100 rounded-xl text-center">
-        <h2 className="text-2xl font-semibold mb-2">
-          Discover the Perfect Bridal Jewellery in Bangalore
-        </h2>
-        <p className="text-gray-600 mb-4">
-          Make your wedding unforgettable with elegant bridal jewellery collections.
-        </p>
-        <Button asChild>
-          <Link href="/products">
-            Shop Bridal Jewellery <ArrowRight className="ml-2 w-4 h-4" />
-          </Link>
-        </Button>
+      {/* Related Collections */}
+      <section className="py-12 md:py-16 bg-white border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-2xl md:text-3xl font-serif text-gray-900 mb-8">
+            Explore Other Collections
+          </h2>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {collections
+              .filter(c => c.slug !== collection.slug)
+              .slice(0, 5)
+              .map((otherCollection) => (
+                <Link
+                  key={otherCollection.id}
+                  href={`/collections/${otherCollection.slug}`}
+                  className="group relative rounded-xl overflow-hidden aspect-[4/3]"
+                >
+                  <Image
+                    src={otherCollection.thumbnailImage}
+                    alt={otherCollection.name}
+                    fill
+                    sizes="(max-width: 768px) 50vw, 20vw"
+                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <p className="text-white font-medium text-sm">
+                      {otherCollection.name}
+                    </p>
+                  </div>
+                </Link>
+              ))}
+          </div>
+        </div>
       </section>
-
     </main>
   );
 }

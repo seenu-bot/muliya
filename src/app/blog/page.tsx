@@ -45,6 +45,38 @@ const blogPosts: BlogPost[] = [
     date: "April 22, 2024",
     slug: "enhance-your-beauty-with-traditional-jewellery",
     image: "/images/Traditional-jewellery-blog-b4.jpg"
+  },
+  {
+    id: "17",
+    title: "Jewellery Offers Bangalore",
+    excerpt: "Explore jewellery offers Bangalore and wedding jewellery offers Bangalore with exclusive deals on bridal sets, gold coins, diamond jewellery, and more.",
+    date: "May 5, 2026",
+    slug: "jewellery-offers-bangalore",
+    image: "/images/blogimage.jpeg"
+  },
+  {
+    id: "18",
+    title: "Akshaya Tritiya Gold Offers Bangalore",
+    excerpt: "Discover Akshaya Tritiya gold offers Bangalore including gold coin offers Bangalore and festive deals across jewellery collections.",
+    date: "May 5, 2026",
+    slug: "akshaya-tritiya-gold-offers-bangalore",
+    image: "/images/akshaya-tritiya-blog-b3.jpg"
+  },
+  {
+    id: "19",
+    title: "Gold Savings Scheme Bangalore",
+    excerpt: "Learn about our gold savings scheme jewellery plan and jewellery monthly scheme Bangalore customers trust — pay for 11 months and we pay the 12th.",
+    date: "May 5, 2026",
+    slug: "gold-savings-scheme-bangalore",
+    image: "/images/goldscheme.jpeg"
+  },
+  {
+    id: "20",
+    title: "Lightweight Gold & Diamond Jewellery",
+    excerpt: "Explore lightweight gold jewellery and lightweight diamond jewellery designs that are comfortable, elegant, and perfect for everyday wear.",
+    date: "May 5, 2026",
+    slug: "lightweight-gold-diamond-jewellery",
+    image: "/images/Traditional-jewellery-blog-b4.jpg"
   }
 ];
 
