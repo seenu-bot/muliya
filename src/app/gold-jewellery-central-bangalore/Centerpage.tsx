@@ -79,10 +79,10 @@ export default function CentralBangalorePage() {
           <div className="text-center max-w-3xl mx-auto">
             <p className="text-white/80 text-sm uppercase tracking-widest mb-3 font-medium">Gold Jewellery · Bengaluru</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-5 leading-tight">
-              Gold Jewellery in<br />Central Bangalore
+              Timeless Gold Creations in the Heart of<br />Central Bangalore
             </h1>
             <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto">
-              Shop certified BIS hallmarked gold jewellery at our gold shop in Central Bangalore — necklaces, bangles, rings, and complete bridal sets, all under one roof.
+              Discover refined craftsmanship, iconic bridal artistry, and contemporary elegance at Muliya — a destination where every gold creation is designed to celebrate tradition with a modern expression of luxury.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
               <a
@@ -174,14 +174,17 @@ export default function CentralBangalorePage() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-4">
-            Your Trusted Gold Shop in Central Bangalore
+            A Legacy of Elegance & Craftsmanship
           </h2>
           <div className="w-16 h-0.5 bg-[#E92247] mx-auto mb-6" />
           <p className="text-gray-600 text-lg leading-relaxed">
-            Muliya Gold &amp; Diamonds is a legacy jewellery brand with three decades of trust across Karnataka. Our <strong>gold jewellery showroom in Central Bangalore</strong> at Sivanchetti Gardens is the destination for discerning buyers who demand the finest quality and craftsmanship.
+            Experience the finest Gold Jewellery in Central Bangalore with collections thoughtfully curated for every celebration, milestone, and everyday statement of style. From intricately crafted necklaces to contemporary bangles and heirloom-inspired bridal sets, every piece reflects exceptional artistry and enduring beauty.
           </p>
           <p className="text-gray-600 text-lg leading-relaxed mt-4">
-            From daily-wear gold chains to elaborate bridal sets, every piece in our Central Bangalore gold shop is BIS hallmarked and priced transparently at live gold rates. Our team of experienced jewellery consultants offers personalised guidance to help you find the perfect piece.
+           Recognised as a trusted Gold Shop in Central Bangalore, Muliya blends heritage craftsmanship with personalised luxury to create a jewellery experience that feels timeless, refined, and memorable.
+          </p>
+          <p className="text-gray-600 text-lg leading-relaxed mt-4">
+           Every creation is crafted with certified purity, meticulous detailing, and a commitment to excellence admired across generations.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">

@@ -34,10 +34,10 @@ const stores = [
 ];
 
 const highlights = [
-  { name: "Best Jewellery Showroom in Madikeri", desc: "A flagship destination for Kodagu's finest gold and diamond jewellery, trusted by generations of families.", icon: "🏆" },
-  { name: "Engagement Rings in Madikeri", desc: "Certified solitaire diamond rings and custom engagement rings for your most cherished moments.", icon: "💍" },
-  { name: "Gold Necklaces in Madikeri", desc: "22K and 18K gold necklaces — traditional, temple, and contemporary — all BIS hallmarked.", icon: "📿" },
-  { name: "Bridal Sets", desc: "Complete bridal jewellery packages in gold and diamonds for Kodava and South Indian weddings.", icon: "👑" },
+  { name: "Luxury Diamond Creations", desc: "Elegant solitaires, statement rings, pendants, and timeless diamond artistry.", icon: "🏆" },
+  { name: "Engagement Rings", desc: "Exquisite Engagement Rings in Madikere crafted to celebrate life’s most meaningful moments.", icon: "💍" },
+  { name: "Gold Necklaces", desc: "Elegant Gold Necklace in Madikere collections inspired by tradition and contemporary sophistication.", icon: "📿" },
+  { name: "Bridal Jewellery Collections", desc: "Refined bridal ensembles designed for grand celebrations and timeless memories. ", icon: "👑" },
 ];
 
 const faqs = [
@@ -85,10 +85,11 @@ export default function MadikeriPage() {
           <div className="text-center max-w-3xl mx-auto">
             <p className="text-white/80 text-sm uppercase tracking-widest mb-3 font-medium">Kodagu · Karnataka</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-5 leading-tight">
-              Jewellery Shop<br />Madikeri (Coorg)
+              Madikeri’s Destination<br />for Gold Necklace & Engagement Ring Elegance
+
             </h1>
             <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto">
-              Madikeri's most trusted jewellery showroom — offering the finest engagement rings, gold necklaces, and bridal jewellery in Kodagu since decades.
+              Celebrate life’s finest moments with handcrafted jewellery designed to reflect heritage, sophistication, and exceptional artistry - curated for generations across Kodagu.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
               <a
@@ -183,14 +184,17 @@ export default function MadikeriPage() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-4">
-            The Best Jewellery Showroom in Madikeri
+            Crafted for Generations of Elegance
           </h2>
           <div className="w-16 h-0.5 bg-[#E92247] mx-auto mb-6" />
           <p className="text-gray-600 text-lg leading-relaxed">
-            Muliya Gold &amp; Diamonds has been serving the people of Kodagu for over three decades. Our <strong>jewellery shop in Madikeri</strong> is renowned across Coorg for its exquisite collection of <strong>gold necklaces in Madikeri</strong>, <strong>engagement rings in Madikeri</strong>, and complete bridal jewellery sets for traditional Kodava weddings and beyond.
+            Recognised as the Best Jewellery Showroom in Madikere, Muliya brings together timeless gold artistry, exquisite diamond creations, and personalised luxury experiences for families across Kodagu. Every collection is thoughtfully designed to reflect sophistication, tradition, and enduring beauty.
           </p>
           <p className="text-gray-600 text-lg leading-relaxed mt-4">
-            With two showrooms in the Kodagu district — one at Mahadev Pet Road, Madikeri and another at Somwarpet — we bring world-class jewellery craftsmanship to the coffee capital of Karnataka.
+            From contemporary statement pieces to bridal heirlooms inspired by South Indian heritage, our showroom showcases jewellery crafted with certified purity, exceptional detailing, and master craftsmanship admired for decades.
+          </p>
+          <p className="text-gray-600 text-lg leading-relaxed mt-4">
+            Whether you are searching for signature bridal jewellery, elegant daily wear, or finely crafted diamond creations, every visit is designed to feel refined, memorable, and deeply personal.
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -213,7 +217,7 @@ export default function MadikeriPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-4">
-              What Makes Our Madikeri Showroom Special
+              Discover Signature Collections at Our Madikeri Showroom
             </h2>
             <div className="w-16 h-0.5 bg-[#E92247] mx-auto" />
           </div>

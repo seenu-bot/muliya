@@ -68,10 +68,10 @@ export default function MGRoadPage() {
           <div className="text-center max-w-3xl mx-auto">
             <p className="text-white/80 text-sm uppercase tracking-widest mb-3 font-medium">Bengaluru Flagship</p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-5 leading-tight">
-              Jewellery Showroom<br />MG Road, Bangalore
+              An Iconic Jewellery Destination at<br />MG Road, Bangalore
             </h1>
             <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto">
-              Discover an exquisite collection of diamond jewellery and gold jewellery at our flagship showroom near MG Road, Bangalore — where craftsmanship meets luxury.
+              Step into a world of refined craftsmanship, timeless elegance, and exceptional artistry at Muliya’s flagship jewellery showroom MG Road Bangalore - thoughtfully curated for those who seek extraordinary gold and diamond creations in the heart of the city.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mt-10">
               <a
@@ -176,23 +176,26 @@ export default function MGRoadPage() {
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-4">
-            Premier Jewellery Showroom Near MG Road, Bangalore
+            A Luxury Jewellery Experience in the Heart of Bengaluru
           </h2>
           <div className="w-16 h-0.5 bg-[#E92247] mx-auto mb-6" />
           <p className="text-gray-600 text-lg leading-relaxed">
-            Muliya Gold &amp; Diamonds brings decades of heritage craftsmanship to the heart of Bengaluru. Located at the prestigious Manipal Centre on Gangadhara Chetty Road — steps from MG Road — our showroom offers an unmatched selection of <strong>diamond jewellery on MG Road Bangalore</strong> and <strong>gold jewellery on MG Road Bangalore</strong>.
+            Located moments away from the city’s most celebrated landmarks, Muliya brings together heritage craftsmanship and contemporary sophistication through an exquisite collection of fine jewellery. From statement bridal masterpieces to modern everyday elegance, every creation reflects precision, purity, and timeless design.
           </p>
           <p className="text-gray-600 text-lg leading-relaxed mt-4">
-            Whether you are searching for a solitaire engagement ring, a traditional gold necklace, or a complete bridal set, our expert jewellery consultants at our MG Road showroom will guide you through our curated collections with personalised care.
+            Recognised for offering exceptional diamond jewellery MG Road Bangalore collections, our showroom is designed to deliver a seamless and personalised luxury experience for every customer who walks through our doors.
+          </p>
+          <p className="text-gray-600 text-lg leading-relaxed mt-4">
+            Whether you are selecting a signature solitaire, a timeless heirloom, or exploring a premium gold jewellery showroom MG Road Bangalore, our experts ensure every visit feels truly memorable.
           </p>
         </div>
 
         {/* Trust Badges */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
           {[
-            { icon: <Shield className="w-6 h-6 text-[#E92247]" />, title: "BIS Hallmarked", desc: "All gold certified to Indian standards" },
-            { icon: <Award className="w-6 h-6 text-[#E92247]" />, title: "Certified Diamonds", desc: "IGI / GIA certified on every stone" },
-            { icon: <Star className="w-6 h-6 text-[#E92247]" />, title: "30+ Years Legacy", desc: "Trusted by families across Karnataka" },
+            { icon: <Shield className="w-6 h-6 text-[#E92247]" />, title: "BIS Hallmarked Excellence", desc: "Crafted with certified purity and uncompromising quality." },
+            { icon: <Award className="w-6 h-6 text-[#E92247]" />, title: "Internationally Certified Diamonds", desc: "Expertly selected stones with exceptional brilliance." },
+            { icon: <Star className="w-6 h-6 text-[#E92247]" />, title: "81 Years of Trusted Legacy", desc: "A heritage admired across generations of jewellery connoisseurs." },
           ].map((b) => (
             <div key={b.title} className="bg-gray-50 rounded-2xl p-6 text-center">
               <div className="w-12 h-12 bg-[#E92247]/10 rounded-full flex items-center justify-center mx-auto mb-4">{b.icon}</div>
