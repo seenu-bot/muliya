@@ -58,8 +58,18 @@ export default function LightweightJewelleryPage() {
               <span className="text-sm">November 10, 2024</span>
             </div>
             <h1 className="text-2xl md:text-4xl lg:text-5xl font-serif text-white leading-tight">
-              Lightweight Gold & Diamond Jewellery: Style Without the Weight
+              Lightweight Jewellery Crafted For Everyday Elegance
             </h1>
+            <p className="text-white/90 text-lg">Minimal in weight, refined in design, and timeless in appeal - discover jewellery collections created for effortless modern styling.</p>
+            <div className="mt-6">
+              <Link
+                href="/collections"
+                className="inline-flex items-center gap-2 bg-[#E92247] text-white px-6 py-3 rounded-xl font-medium hover:bg-[#d11f3f] transition-all shadow-lg"
+              >
+                Explore Collections
+                <ArrowRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -68,12 +78,11 @@ export default function LightweightJewelleryPage() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         <article className="prose prose-lg max-w-none">
           <div className="space-y-6">
+            <h2 className="text-2xl md:text-3xl font-serif text-gray-900 mb-6">
+              Jewellery Designed For Comfort & Sophistication
+            </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
-              In today's world, jewellery is no longer just for special occasions. Modern 
-              women and men want beautiful, well-crafted pieces they can wear every day — 
-              to work, to casual outings, or to festive gatherings — without discomfort. 
-              That's exactly where lightweight gold jewellery and lightweight diamond 
-              jewellery shine.
+              Modern jewellery is all about effortless beauty that complements every moment of your day. Our lightweight gold jewellery collections are thoughtfully crafted to deliver elegance, versatility, and comfort while maintaining the rich craftsmanship and luxury that define timeless jewellery.
             </p>
 
             <p className="text-gray-700 leading-relaxed">
@@ -96,7 +105,7 @@ export default function LightweightJewelleryPage() {
             </div>
 
             {/* Why it's trending */}
-            <h2 className="text-2xl font-serif text-gray-900">Why Lightweight Jewellery is Trending</h2>
+            <h2 className="text-2xl font-serif text-gray-900">Refined Designs For Every Occasion</h2>
             <p className="text-gray-700 leading-relaxed">
               The demand for lightweight gold jewellery has grown significantly, driven by 
               the modern woman's lifestyle. Here's why it's become a staple in contemporary 
@@ -107,23 +116,23 @@ export default function LightweightJewelleryPage() {
               {[
                 {
                   icon: "💼",
-                  title: "Office-Ready Elegance",
-                  desc: "Light earrings, delicate chains, and slim bangles are perfect for professional settings without being distracting."
+                  title: "Everyday Gold Essentials",
+                  desc: "Graceful jewellery pieces designed to elevate your daily wardrobe with subtle luxury."
                 },
                 {
                   icon: "🌟",
-                  title: "All-Day Comfort",
-                  desc: "Wearing heavy jewellery for long hours can cause discomfort. Lightweight pieces allow you to look great without fatigue."
+                  title: "Contemporary Diamond Elegance",
+                  desc: "Finely crafted lightweight diamond jewellery collections that bring brilliance to both everyday wear and special occasions."
                 },
                 {
                   icon: "💰",
-                  title: "More Affordable",
-                  desc: "Since less gold is used, lightweight jewellery is often more budget-friendly while retaining visual impact."
+                  title: "Modern Minimal Styling",
+                  desc: "Elegant designs curated for office wear, casual outings, celebrations, and gifting moments."
                 },
                 {
                   icon: "🔄",
-                  title: "Versatile Styling",
-                  desc: "Mix and match lightweight pieces effortlessly. Layer necklaces, stack rings, or pile bangles with ease."
+                  title: "Comfort Meets Luxury",
+                  desc: "Beautifully balanced craftsmanship created for effortless wear throughout the day."
                 },
               ].map((item) => (
                 <div key={item.title} className="bg-gray-50 p-4 rounded-xl">

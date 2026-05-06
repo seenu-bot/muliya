@@ -94,11 +94,10 @@ export default function JewelleryOffersPage() {
               Exclusive Offers — Limited Period
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6">
-              Jewellery Offers in Bangalore
+              Celebrations Shine Brighter With Exceptional Jewellery Privileges
             </h1>
             <p className="text-white/90 text-lg md:text-xl max-w-3xl mx-auto mb-8">
-              Discover unbeatable deals on gold, diamond, and traditional jewellery. 
-              Special wedding jewellery offers in Bangalore — crafted with love since 1944.
+              Exclusive festive savings, timeless bridal elegance, and thoughtfully curated collections crafted for every special moment at Muliya Jewellers.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="tel:+91XXXXXXXXXX" className="inline-flex items-center gap-2 bg-[#E92247] text-white px-6 py-3 rounded-xl font-medium hover:bg-[#d11f3f] transition-all shadow-lg">
@@ -106,7 +105,7 @@ export default function JewelleryOffersPage() {
                 Call for Offers
               </a>
               <Link href="#offers" className="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-xl font-medium hover:bg-gray-100 transition-all shadow-lg">
-                View All Offers
+                Explore Offers
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -135,11 +134,10 @@ export default function JewelleryOffersPage() {
       <div id="offers" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-4">
-            Current Jewellery Offers in Bangalore
+            Designed Around Every Grand Celebration
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            From wedding jewellery offers to gold coin deals, find the best jewellery offers 
-            in Bangalore at Muliya Gold & Diamonds.
+            A legacy of fine craftsmanship now paired with exclusive privileges that make every purchase even more memorable. Discover handpicked collections, festive benefits, bridal privileges, and elegant savings created for those who believe jewellery should feel as extraordinary as the occasion itself.
           </p>
         </div>
 
@@ -201,15 +199,15 @@ export default function JewelleryOffersPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-4">
-              Why Choose Muliya for Jewellery Offers in Bangalore?
+              Luxury Offers Crafted For Every Occasion
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: "🏆", title: "80+ Years of Trust", desc: "Serving Bangalore and Karnataka since 1944 with integrity and excellence." },
-              { icon: "💯", title: "BIS Hallmarked Gold", desc: "Every piece of gold jewellery is certified and hallmarked for purity." },
-              { icon: "🔄", title: "Best Exchange Rates", desc: "Get the highest value for your old gold jewellery in Bangalore." },
-              { icon: "🎁", title: "EMI & Savings Schemes", desc: "Flexible payment options and monthly gold savings plans available." },
+              { icon: "🏆", title: "Bridal Privileges", desc: "Elegant benefits curated for weddings, engagements, and milestone celebrations with exclusive wedding jewellery offers Bangalore customers truly value." },
+              { icon: "💯", title: "Diamond Celebrations", desc: "Special privileges on radiant diamond collections designed to elevate every memorable moment." },
+              { icon: "🔄", title: "Gold Savings", desc: "Thoughtfully curated seasonal benefits across timeless gold jewellery collections." },
+              { icon: "🎁", title: "Exclusive Store Events", desc: "Signature showcases and festive experiences featuring exceptional jewellery offers Bangalore jewellery lovers can explore across our collections." },
             ].map((item) => (
               <div key={item.title} className="bg-white p-6 rounded-2xl text-center shadow-sm border border-gray-100">
                 <div className="text-4xl mb-4">{item.icon}</div>
@@ -226,11 +224,10 @@ export default function JewelleryOffersPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Tag className="w-12 h-12 text-white/80 mx-auto mb-4" />
           <h2 className="text-3xl md:text-4xl font-serif text-white mb-4">
-            Don't Miss Out on Exclusive Jewellery Offers
+            Celebrate Your Next Milestone With Timeless Elegance
           </h2>
           <p className="text-white/90 mb-8 text-lg max-w-2xl mx-auto">
-            Visit your nearest Muliya showroom in Bangalore or call us to know about the 
-            latest jewellery offers, wedding jewellery offers, and seasonal discounts.
+            Visit our showroom and discover handcrafted jewellery collections paired with exclusive festive privileges.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <a
@@ -244,7 +241,7 @@ export default function JewelleryOffersPage() {
               href="/store-locator"
               className="inline-flex items-center gap-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-xl font-medium hover:bg-white/10 transition-all"
             >
-              Find a Store
+              Visit Showroom
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

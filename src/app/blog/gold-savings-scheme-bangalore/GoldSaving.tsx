@@ -7,26 +7,26 @@ import { ChevronRight, Phone, ArrowRight, CheckCircle, TrendingUp, Shield, Calen
 const schemeSteps = [
   {
     step: "01",
-    title: "Choose Your Monthly Amount",
-    desc: "Select a convenient monthly instalment amount starting from as low as ₹500 per month.",
+    title: "Easy Monthly Contributions",
+    desc: "Choose a comfortable monthly amount and build your jewellery savings steadily with complete convenience.",
     icon: "💰",
   },
   {
     step: "02",
-    title: "Pay for 11 Months",
-    desc: "Make monthly deposits at any Muliya showroom or through our easy payment options.",
+    title: "Ideal For Weddings & Festive Purchases",
+    desc: "Perfect for bridal shopping, gifting, anniversaries, and future family celebrations.",
     icon: "📅",
   },
   {
     step: "03",
-    title: "Muliya Adds the 12th Month",
-    desc: "On completion, Muliya Gold & Diamonds contributes the 12th instalment as a bonus.",
+    title: "Trusted Legacy & Transparency",
+    desc: "Experience a secure and seamless savings journey backed by decades of trust and customer confidence.",
     icon: "🎁",
   },
   {
     step: "04",
-    title: "Redeem for Jewellery",
-    desc: "Use the accumulated amount to purchase gold jewellery of your choice from any Muliya showroom.",
+    title: "Designed For Smart Jewellery Buyers",
+    desc: "A refined jewellery monthly scheme Bangalore customers prefer for planned and meaningful jewellery investments.",
     icon: "💍",
   },
 ];
@@ -97,11 +97,10 @@ export default function GoldSavingsSchemePage() {
           Save Monthly, Wear Forever
         </div>
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-gray-900 mb-6">
-          Gold Savings Scheme in Bangalore
+          Turn Monthly Savings Into Timeless Gold Jewellery
         </h1>
         <p className="text-gray-600 text-lg md:text-xl max-w-3xl mx-auto mb-8">
-          Join Muliya's jewellery monthly scheme in Bangalore and let your savings grow 
-          into beautiful gold jewellery. Pay for 11 months — we pay the 12th!
+          A flexible and rewarding savings plan designed to help you celebrate life’s most meaningful moments with elegance, trust, and lasting value.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <a
@@ -115,7 +114,7 @@ export default function GoldSavingsSchemePage() {
             href="#how-it-works"
             className="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-xl font-medium hover:bg-gray-100 transition-all shadow-lg"
           >
-            How It Works
+            Join The Scheme
             <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
@@ -144,11 +143,10 @@ export default function GoldSavingsSchemePage() {
       <div id="how-it-works" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-4">
-            How the Jewellery Monthly Scheme Works
+            A Smarter Way To Plan Your Jewellery Purchases
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Our gold savings scheme in Bangalore is simple, transparent, and designed to 
-            help you own beautiful jewellery without financial strain.
+            Every grand celebration begins with thoughtful planning. Our gold savings scheme jewellery plan helps you build your jewellery aspirations month by month while enjoying the confidence of investing with a trusted legacy brand known for exceptional craftsmanship and timeless collections.
           </p>
         </div>
 
@@ -176,7 +174,7 @@ export default function GoldSavingsSchemePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-6">
-                Benefits of Muliya's Gold Savings Scheme
+                Why Choose Our Gold Savings Scheme
               </h2>
               <p className="text-gray-600 mb-8 leading-relaxed text-lg">
                 Whether you're saving for a wedding, a festival, or simply as a financial 
@@ -273,7 +271,7 @@ export default function GoldSavingsSchemePage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <Calendar className="w-12 h-12 text-white/80 mx-auto mb-4" />
           <h2 className="text-3xl md:text-4xl font-serif text-white mb-4">
-            Start Your Gold Savings Journey Today
+           Start Your Jewellery Savings Journey Today 
           </h2>
           <p className="text-white/90 mb-8 text-lg max-w-2xl mx-auto">
             Join thousands of happy customers who have used Muliya's gold savings scheme 
@@ -285,7 +283,7 @@ export default function GoldSavingsSchemePage() {
               className="inline-flex items-center gap-2 bg-white text-[#E92247] px-8 py-4 rounded-xl font-medium hover:bg-gray-100 transition-all shadow-lg"
             >
               <Phone className="w-5 h-5" />
-              Enrol Now
+              Enroll Now
             </a>
             <Link
               href="/store-locator"

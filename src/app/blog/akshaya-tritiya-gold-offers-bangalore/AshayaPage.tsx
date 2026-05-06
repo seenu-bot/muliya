@@ -15,19 +15,24 @@ const goldCoinOptions = [
 
 const traditions = [
   {
-    title: "What is Akshaya Tritiya?",
+    title: "Elegant Gold Collections",
     content:
-      "Akshaya Tritiya falls on the third tithi of Shukla Paksha in the month of Vaishakha. The word 'Akshaya' means 'never diminishing'. It is one of the most auspicious days in the Hindu calendar and is considered ideal for new beginnings, investments, and buying gold.",
+      "Explore timeless necklaces, bangles, earrings, bridal jewellery, and contemporary festive designs.",
   },
   {
-    title: "Why Buy Gold on Akshaya Tritiya?",
+    title: "Festive Savings & Rewards",
     content:
-      "Gold purchased on Akshaya Tritiya is believed to bring everlasting prosperity and good fortune. It is considered a day blessed by Lord Vishnu and Goddess Lakshmi — the deities of wealth and abundance. Any investment made on this day is said to grow endlessly.",
+      "Special seasonal privileges thoughtfully curated to make every purchase even more memorable.",
   },
   {
-    title: "Gold Coin Offers in Bangalore",
+    title: "Gold Coin Benefits",
     content:
-      "At Muliya Gold & Diamonds, we offer special Akshaya Tritiya gold coin offers in Bangalore with minimal to zero making charges. Our gold coins are BIS hallmarked and come in a range of weights, making them perfect for gifting or investment.",
+      "Celebrate prosperity with exclusive gold coin offers Bangalore customers can enjoy during the festive season.",
+  },
+  {
+    title: "Perfect For Gifting & Celebrations",
+    content:
+      "Meaningful jewellery creations designed for family occasions, weddings, and festive gifting traditions.",
   },
 ];
 
@@ -77,12 +82,10 @@ export default function AkshayaTritiyaPage() {
               Most Auspicious Day to Buy Gold
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-white mb-6 leading-tight">
-              Akshaya Tritiya Gold Offers in Bangalore
+              Celebrate Akshaya Tritiya With Timeless Gold Elegance
             </h1>
             <p className="text-white/90 text-lg md:text-xl mb-8 leading-relaxed">
-              Celebrate the auspicious occasion of Akshaya Tritiya with exclusive gold coin 
-              offers in Bangalore. Zero making charges, BIS hallmarked gold, and special 
-              jewellery discounts at Muliya Gold & Diamonds.
+              Mark the season of prosperity with handcrafted jewellery collections, festive privileges, and meaningful gold purchases designed for every cherished celebration.
             </p>
             <div className="flex flex-wrap gap-4">
               <a
@@ -96,7 +99,7 @@ export default function AkshayaTritiyaPage() {
                 href="#gold-coins"
                 className="inline-flex items-center gap-2 bg-white text-gray-900 px-6 py-3 rounded-xl font-medium hover:bg-gray-100 transition-all shadow-lg"
               >
-                View Gold Coins
+                Explore Festive Collections
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
@@ -127,12 +130,15 @@ export default function AkshayaTritiyaPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-4">
-            The Significance of Akshaya Tritiya
+            A Celebration Of Prosperity, Tradition & Timeless Beauty
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Understand why Akshaya Tritiya is the most auspicious day to buy gold and how 
-            it brings lasting prosperity.
+           Akshaya Tritiya is one of the most auspicious occasions to invest in gold and celebrate new beginnings. At Muliya Jewellers, discover exquisite festive collections paired with exclusive Akshaya Tritiya gold offers Bangalore jewellery lovers look forward to every year.
           </p>
+          
+          <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-4 mt-6">
+            Exclusive Privileges For Your Festive Purchase
+          </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {traditions.map((item, i) => (
