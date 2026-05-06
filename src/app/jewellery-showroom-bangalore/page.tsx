@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import { MapPin, Phone, Clock, Navigation, Search, Store, Mail } from "lucide-react";
 
 interface StoreLocation {
@@ -19,6 +20,7 @@ interface StoreLocation {
   lng: number;
   image: string;
   mapUrl: string;
+  pageUrl?: string;
 }
 
 const stores: StoreLocation[] = [
@@ -66,6 +68,23 @@ const stores: StoreLocation[] = [
     lng: 77.614599,
     image: "/images/Bengaluru-showroom.jpg",
     mapUrl: "https://www.google.com/maps?ll=12.974814,77.614599&z=10&t=m&hl=en-GB&gl=US&mapclient=embed&cid=3046056327507354644",
+    pageUrl: "/gold-jewellery-central-bangalore",
+  },
+  {
+    id: "9",
+    name: "Muliya Gold & Diamonds MG Road Bengaluru",
+    address: "2 42/28, S-112/B, Sivanchetti Gardens, Gangadhara Chetty Road, Manipal Centre South Block",
+    city: "Bengaluru",
+    state: "Karnataka",
+    pincode: "560042",
+    phone: ["+91 9844692916", "+91 9844701916"],
+    email: "info@muliyajewels.com",
+    hours: "10:00 AM - 8:00 PM",
+    lat: 12.974814,
+    lng: 77.614599,
+    image: "/images/Bengaluru-showroom.jpg",
+    mapUrl: "https://www.google.com/maps?ll=12.974814,77.614599&z=10&t=m&hl=en-GB&gl=US&mapclient=embed&cid=3046056327507354644",
+    pageUrl: "/jewellery-showroom-mg-road-bangalore",
   },
   {
     id: "4",
@@ -81,6 +100,7 @@ const stores: StoreLocation[] = [
     lng: 75.737784,
     image: "/images/Madikeri-Showroom.jpg",
     mapUrl: "https://www.google.com/maps?ll=12.425611,75.737784&z=10&t=m&hl=en-GB&gl=US&mapclient=embed&cid=5900960138870449343",
+    pageUrl: "/jewellery-shop-madikere",
   },
   {
     id: "5",
@@ -147,6 +167,7 @@ const stores: StoreLocation[] = [
 const cities = ["All", "Puttur", "Belthangady", "Bengaluru", "Madikeri", "Gonikoppal", "Somwarpet", "Nelyadi"];
 
 export default function StoreLocatorPage() {
+  const router = useRouter();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCity, setSelectedCity] = useState("All");
 
@@ -161,6 +182,11 @@ export default function StoreLocatorPage() {
 
   const handleGetDirections = (store: StoreLocation) => {
     window.open(store.mapUrl, "_blank");
+  };
+
+  const handleMoreDetails = (store: StoreLocation) => {
+    if (!store.pageUrl) return;
+    router.push(store.pageUrl);
   };
 
   return (
@@ -329,6 +355,15 @@ export default function StoreLocatorPage() {
                       <Navigation className="w-4 h-4" />
                       Directions
                     </button>
+                    {store.pageUrl && (
+                      <button
+                        onClick={() => handleMoreDetails(store)}
+                        className="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-200 text-gray-700 hover:border-[#E92247] hover:text-[#E92247] transition-all font-medium text-sm"
+                      >
+                        <Store className="w-4 h-4" />
+                        More Details
+                      </button>
+                    )}
                     <a
                       href={`mailto:${store.email}`}
                       className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl border border-gray-200 text-gray-700 hover:border-[#E92247] hover:text-[#E92247] transition-all font-medium text-sm"
