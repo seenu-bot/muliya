@@ -497,7 +497,7 @@ export function Home() {
                   <p>
 Today, Muliya – Gold & Diamonds is a symbol of elegance, trust, and forward-thinking craftsmanship. With over 81 years of heritage, we proudly serve customers through 7 showrooms across Karnataka, including Dakshina Kannada’s largest showroom in Puttur, spanning 10,000 sq. ft.
 
-Our brand is built for every generation—from traditional gold lovers to the contemporary bride, from silver seekers to diamond connoisseurs. Every collection at Muliya is designed to make you feel proud, celebrated, and connected.
+Our brand is built for every generation, from traditional gold lovers to the contemporary bride, from silver seekers to diamond connoisseurs. Every collection at Muliya is designed to make you feel proud, celebrated, and connected.
                   </p>
                   <p>
                     Our commitment to excellence has got us a reputation for creating quality jewellery of refined craftsmanship and pure elegance.

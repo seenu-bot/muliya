@@ -5,7 +5,6 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import {
   Heart,
-  ShoppingCart,
   Share2,
   Shield,
   TruckIcon,
@@ -243,14 +242,6 @@ export function ProductDetail() {
                 {productData.inStock ? (
                   <>
                     <div className="flex gap-3">
-                      <Button
-                        size="lg"
-                        className="flex-1 bg-amber-600 hover:bg-amber-700"
-                        onClick={() => toast.success("Added to cart!")}
-                      >
-                        <ShoppingCart className="w-5 h-5 mr-2" />
-                        Add to Cart
-                      </Button>
                       <Button
                         size="lg"
                         variant="outline"

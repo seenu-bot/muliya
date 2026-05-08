@@ -279,7 +279,6 @@ export default function PendantsPage() {
               <div className="relative aspect-square overflow-hidden bg-gray-100 flex-shrink-0">
                 <ImageWithFallbackNext src={pendant.image} alt={pendant.name} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
                 <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
-                  <button onClick={(e) => handleAddToCart(pendant, e)} className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-[#E92247] hover:bg-[#E92247] hover:text-white transition-colors" title="Add to Cart"><ShoppingCart className="w-5 h-5" /></button>
                   <button onClick={(e) => e.stopPropagation()} className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-[#E92247] transition-colors" title="Add to Wishlist"><Heart className="w-5 h-5" /></button>
                 </div>
                 <div className="absolute top-4 left-4"><span className="bg-[#E92247] text-white px-3 py-1 rounded-full text-xs font-medium">{pendant.category}</span></div>
@@ -292,8 +291,12 @@ export default function PendantsPage() {
                   {pendant.originalPrice && <span className="text-sm text-gray-400 line-through">₹{formatINR(pendant.originalPrice)}</span>}
                 </div>
                 <div className="flex gap-2 mt-auto">
-                  <button onClick={(e) => handleAddToCart(pendant, e)} className="flex-1 flex items-center justify-center gap-2 bg-white text-gray-900 border border-gray-200 py-2 rounded-xl hover:bg-[#E92247] hover:text-white hover:border-[#E92247] transition-colors font-medium text-sm"><ShoppingCart className="w-4 h-4" />Add to Cart</button>
-                  <button onClick={(e) => handleBuyNow(pendant, e)} className="flex-1 bg-[#E92247] text-white py-2 rounded-xl hover:bg-[#d11f3f] transition-colors font-medium text-sm">Buy Now</button>
+                  <button 
+                    onClick={(e) => handleBuyNow(pendant, e)}
+                    className="flex-1 bg-[#E92247] text-white py-2 rounded-xl hover:bg-[#d11f3f] transition-colors font-medium text-sm"
+                  >
+                    Buy Now
+                  </button>
                 </div>
               </div>
             </div>

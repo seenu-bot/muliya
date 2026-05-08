@@ -3,11 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useCart } from "@/app/context/CartContext";
 import { useAuth } from "@/app/context/AuthContext";
-import { Badge } from "./ui/badge";
 import {
-  ShoppingCart,
   Heart,
   User,
   Menu,
@@ -231,7 +228,6 @@ export function Header() {
   >("Category");
   const router = useRouter();
   const [logoError, setLogoError] = useState(false);
-  const { totalItems } = useCart();
   const { user, isAuthenticated, logout } = useAuth();
   const goldRates = {
     "24K": "₹15,093",
@@ -368,16 +364,6 @@ export function Header() {
                 <Search className="w-4 h-4" />
               </button>
             </form>
-
-            {/* Cart */}
-            <Link href="/cart" className="relative hidden lg:flex items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-colors">
-              <ShoppingCart className="w-5 h-5 text-gray-700" />
-              {totalItems > 0 && (
-                <Badge className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs bg-[#E92247] text-white border-0">
-                  {totalItems}
-                </Badge>
-              )}
-            </Link>
 
             {/* User Auth */}
             {isAuthenticated ? (

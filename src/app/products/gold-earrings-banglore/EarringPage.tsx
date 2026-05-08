@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronRight, ShoppingCart, Heart } from "lucide-react";
+import { ChevronRight, Heart } from "lucide-react";
 import { useCart } from "@/app/context/CartContext";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -143,20 +143,6 @@ export default function EarringsPage() {
   const router = useRouter();
   const [filteredEarrings, setFilteredEarrings] = useState(earrings);
   const [sortOption, setSortOption] = useState("latest");
-
-  const handleAddToCart = (product: Product, e?: React.MouseEvent) => {
-    e?.stopPropagation();
-    addToCart({
-      id: product.id,
-      name: product.name,
-      price: product.price,
-      originalPrice: product.originalPrice,
-      image: product.image,
-      collection: product.category,
-      collectionSlug: "gold-earrings-banglore",
-    });
-    toast.success(`${product.name} added to cart!`);
-  };
 
   const handleBuyNow = (product: Product, e?: React.MouseEvent) => {
     e?.stopPropagation();
@@ -315,13 +301,6 @@ export default function EarringsPage() {
                 {/* Quick Actions */}
                 <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                   <button 
-                    onClick={(e) => handleAddToCart(earring, e)}
-                    className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-[#E92247] hover:bg-[#E92247] hover:text-white transition-colors"
-                    title="Add to Cart"
-                  >
-                    <ShoppingCart className="w-5 h-5" />
-                  </button>
-                  <button 
                     onClick={(e) => e.stopPropagation()}
                     className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-[#E92247] transition-colors"
                     title="Add to Wishlist"
@@ -357,13 +336,6 @@ export default function EarringsPage() {
 
                 {/* Add to Cart Button - mt-auto pushes to bottom */}
                 <div className="flex gap-2 mt-auto">
-                  <button 
-                    onClick={(e) => handleAddToCart(earring, e)}
-                    className="flex-1 flex items-center justify-center gap-2 bg-white text-gray-900 border border-gray-200 py-2 rounded-xl hover:bg-[#E92247] hover:text-white hover:border-[#E92247] transition-colors font-medium text-sm"
-                  >
-                    <ShoppingCart className="w-4 h-4" />
-                    Add to Cart
-                  </button>
                   <button 
                     onClick={(e) => handleBuyNow(earring, e)}
                     className="flex-1 bg-[#E92247] text-white py-2 rounded-xl hover:bg-[#d11f3f] transition-colors font-medium text-sm"

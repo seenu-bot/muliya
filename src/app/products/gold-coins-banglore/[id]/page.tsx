@@ -309,13 +309,6 @@ export default function GoldCoinDetailPage({ params }: { params: Promise<{ id: s
                   >
                     Buy Now
                   </button>
-                  <button
-                    className="flex-1 border border-[#E92247] text-[#E92247] px-6 py-3 rounded-lg hover:bg-[#E92247] hover:text-white transition-colors font-medium"
-                    onClick={handleAddToCart}
-                  >
-                    <ShoppingCart className="w-5 h-5 inline mr-2" />
-                    Add to Cart
-                  </button>
                 </div>
               </div>
 

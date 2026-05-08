@@ -2,7 +2,7 @@
 
 import React from "react";
 import Link from "next/link";
-import { ChevronRight, ShoppingCart, Heart } from "lucide-react";
+import { ChevronRight, Heart } from "lucide-react";
 import { useCart } from "@/app/context/CartContext";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -75,7 +75,7 @@ export default function WatchesPage() {
   const { addToCart } = useCart();
   const router = useRouter();
 
-  const handleAddToCart = (product: Product, e: React.MouseEvent) => {
+  const handleBuyNow = (product: Product, e: React.MouseEvent) => {
     e.stopPropagation();
     addToCart({
       id: product.id,
@@ -86,7 +86,10 @@ export default function WatchesPage() {
       collection: product.category,
       collectionSlug: "watches",
     });
-    toast.success(`${product.name} added to cart!`);
+    toast.success(`${product.name} added to cart! Redirecting to checkout...`);
+    setTimeout(() => {
+      router.push("/checkout");
+    }, 1000);
   };
 
   const handleProductClick = (productId: string) => {
@@ -137,13 +140,6 @@ export default function WatchesPage() {
                 />
                 <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                   <button
-                    onClick={(e) => handleAddToCart(watch, e)}
-                    className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-[#E92247] hover:bg-[#E92247] hover:text-white transition-colors"
-                    title="Add to Cart"
-                  >
-                    <ShoppingCart className="w-5 h-5" />
-                  </button>
-                  <button
                     onClick={(e) => e.stopPropagation()}
                     className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-[#E92247] transition-colors"
                     title="Add to Wishlist"
@@ -171,11 +167,10 @@ export default function WatchesPage() {
                 </div>
 
                 <button
-                  onClick={(e) => handleAddToCart(watch, e)}
-                  className="w-full flex items-center justify-center gap-2 bg-white text-gray-900 border border-gray-200 py-3 rounded-xl hover:bg-[#E92247] hover:text-white hover:border-[#E92247] transition-colors font-medium mt-auto"
+                  onClick={(e) => handleBuyNow(watch, e)}
+                  className="w-full flex items-center justify-center gap-2 bg-[#E92247] text-white border border-[#E92247] py-3 rounded-xl hover:bg-[#d11f3f] hover:border-[#d11f3f] transition-colors font-medium mt-auto"
                 >
-                  <ShoppingCart className="w-4 h-4" />
-                  Add to Cart
+                  Buy Now
                 </button>
               </div>
             </div>
