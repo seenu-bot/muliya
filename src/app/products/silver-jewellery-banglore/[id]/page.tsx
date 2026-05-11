@@ -346,12 +346,6 @@ export default function SilverProductDetailPage() {
             {/* Action Buttons */}
             <div className="flex gap-3 pt-4">
               <button 
-                onClick={handleAddToCart} 
-                className="flex-1 flex items-center justify-center gap-2 bg-white text-gray-900 border border-gray-200 py-4 rounded-xl hover:bg-[#E92247] hover:text-white hover:border-[#E92247] transition-colors font-medium"
-              >
-                <ShoppingCart className="w-5 h-5" />Add to Cart
-              </button>
-              <button 
                 onClick={handleBuyNow} 
                 className="flex-1 flex items-center justify-center gap-2 bg-[#E92247] text-white py-4 rounded-xl hover:bg-[#c91a3d] transition-colors font-medium"
               >

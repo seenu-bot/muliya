@@ -365,13 +365,6 @@ export default function RingsPage() {
                 {/* Action Buttons - mt-auto pushes to bottom */}
                 <div className="flex gap-2 mt-auto">
                   <button 
-                    onClick={(e) => handleAddToCart(ring, e)}
-                    className="flex-1 flex items-center justify-center gap-2 bg-white text-gray-900 border border-gray-200 py-2 rounded-xl hover:bg-[#E92247] hover:text-white hover:border-[#E92247] transition-colors font-medium text-sm"
-                  >
-                    <ShoppingCart className="w-4 h-4" />
-                    Add to Cart
-                  </button>
-                  <button 
                     onClick={(e) => handleBuyNow(ring, e)}
                     className="flex-1 bg-[#E92247] text-white py-2 rounded-xl hover:bg-[#d11f3f] transition-colors font-medium text-sm"
                   >

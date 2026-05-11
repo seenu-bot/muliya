@@ -179,23 +179,6 @@ export default function ProductPage({ params }: ProductPageProps) {
               {/* Action Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 mb-6">
                 <button 
-                  onClick={() => addToCart({
-                    id: product.id,
-                    name: product.name,
-                    price: product.price,
-                    originalPrice: product.originalPrice,
-                    image: product.image,
-                    collection: collection.name,
-                    collectionSlug: collection.slug,
-                    metal: product.metal,
-                    weight: product.weight,
-                  })}
-                  className="flex-1 bg-white text-black border border-gray-300 py-3 px-6 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-gray-50 transition-colors"
-                >
-                  <ShoppingCart className="w-5 h-5" />
-                  Add to Cart
-                </button>
-                <button 
                   onClick={() => {
                     addToCart({
                       id: product.id,

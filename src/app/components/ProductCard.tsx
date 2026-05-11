@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Heart, ShoppingCart } from "lucide-react";
+import { Heart } from "lucide-react";
 import { Button } from "./ui/button";
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
@@ -33,11 +33,6 @@ export function ProductCard({
   isNew,
   isTrending,
 }: ProductCardProps) {
-  const handleAddToCart = (e: React.MouseEvent) => {
-    e.preventDefault();
-    toast.success("Added to cart!");
-  };
-
   const handleAddToWishlist = (e: React.MouseEvent) => {
     e.preventDefault();
     toast.success("Added to wishlist!");
@@ -77,13 +72,6 @@ export function ProductCard({
           </Button>
 
           {/* Quick Add to Cart */}
-          <Button
-            className="absolute bottom-3 left-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity bg-amber-600 hover:bg-amber-700"
-            onClick={handleAddToCart}
-          >
-            <ShoppingCart className="w-4 h-4 mr-2" />
-            Add to Cart
-          </Button>
         </div>
 
         <CardContent className="p-4">

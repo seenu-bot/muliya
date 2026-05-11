@@ -4,6 +4,7 @@ import "./globals.css";
 import { AppShell } from "@/app/components/AppShell";
 import { Toaster } from "@/app/components/ui/sonner";
 import { ParallaxWrapper } from "@/app/components/ParallaxWrapper";
+import { HideAddToCart } from "@/app/components/HideAddToCart";
 import { CartProvider } from "@/app/context/CartContext";
 import { AuthProvider } from "@/app/context/AuthContext";
 
@@ -27,6 +28,7 @@ export default function RootLayout({
         <AuthProvider>
           <CartProvider>
             <ParallaxWrapper>
+              <HideAddToCart />
               <AppShell>{children}</AppShell>
               <Toaster position="top-right" />
             </ParallaxWrapper>

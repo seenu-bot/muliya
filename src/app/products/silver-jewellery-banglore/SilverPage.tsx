@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { ChevronRight, ShoppingCart, Heart } from "lucide-react";
+import { ChevronRight, Heart } from "lucide-react";
 import { useCart } from "@/app/context/CartContext";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
@@ -365,13 +365,6 @@ export default function SilverPage() {
                       <ImageWithFallbackNext src={product.image} alt={product.name} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
                       <div className="absolute top-4 right-4 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity z-10">
                         <button 
-                          onClick={(e) => handleAddToCart(product, e)} 
-                          className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-[#E92247] hover:bg-[#E92247] hover:text-white transition-colors" 
-                          title="Add to Cart"
-                        >
-                          <ShoppingCart className="w-5 h-5" />
-                        </button>
-                        <button 
                           onClick={(e) => e.stopPropagation()} 
                           className="w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center text-gray-600 hover:text-[#E92247] transition-colors" 
                           title="Add to Wishlist"
@@ -397,12 +390,6 @@ export default function SilverPage() {
                         )}
                       </div>
                       <div className="flex gap-2 mt-auto">
-                        <button 
-                          onClick={(e) => handleAddToCart(product, e)} 
-                          className="flex-1 flex items-center justify-center gap-2 bg-white text-gray-900 border border-gray-200 py-2 rounded-xl hover:bg-[#E92247] hover:text-white hover:border-[#E92247] transition-colors font-medium text-sm"
-                        >
-                          <ShoppingCart className="w-4 h-4" />Add to Cart
-                        </button>
                         <button 
                           onClick={(e) => handleBuyNow(product, e)} 
                           className="flex-1 bg-[#E92247] text-white py-2 rounded-xl hover:bg-[#d11f3f] transition-colors font-medium text-sm"
