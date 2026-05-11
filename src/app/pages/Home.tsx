@@ -15,34 +15,66 @@ import VideoGallery from "@/app/components/VideoCarousel";
 const collections = [
   {
     id: 1,
-    name: "Diamond Rings",
+    name: "Rings",
     category: "rings",
-    image: "https://images.unsplash.com/photo-1742240439165-60790db1ee93?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-    description: "Exquisite diamond rings for your special moments",
+    image: "/images/categories/ringimage.jpeg",
+    description: "Exquisite rings for your special moments",
     pieces: "250+ Designs",
   },
   {
     id: 2,
-    name: "Gold Necklaces",
-    category: "necklaces",
-    image: "https://images.unsplash.com/photo-1755151606128-7ca2f97e46ae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-    description: "Elegant necklaces crafted with pure gold",
-    pieces: "180+ Designs",
+    name: "Earrings",
+    category: "earrings",
+    image: "/images/categories/earingimage.jpeg",
+    description: "Stunning earrings to complement your style",
+    pieces: "200+ Designs",
   },
   {
     id: 3,
-    name: "Traditional Bangles",
+    name: "Pendants",
+    category: "pendants",
+    image: "/images/categories/pendentimage.jpeg",
+    description: "Beautiful pendants for every occasion",
+    pieces: "180+ Designs",
+  },
+  {
+    id: 4,
+    name: "Bangles",
     category: "bangles",
-    image: "https://images.unsplash.com/photo-1760786933035-32da5ebb881c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
+    image: "/images/categories/bangleimage.jpeg",
     description: "Classic gold bangles for timeless elegance",
     pieces: "320+ Designs",
   },
   {
-    id: 4,
-    name: "Gold Earrings",
-    category: "earrings",
-    image: "https://images.unsplash.com/photo-1629224316810-9d8805b95e76?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080",
-    description: "Stunning earrings to complement your style",
+    id: 5,
+    name: "Bracelets",
+    category: "bracelets",
+    image: "/images/categories/chain1image.jpeg",
+    description: "Elegant bracelets for modern style",
+    pieces: "150+ Designs",
+  },
+  {
+    id: 6,
+    name: "Mangalsutra",
+    category: "mangalsutra",
+    image: "/images/categories/mangalsutraimage.jpeg",
+    description: "Traditional mangalsutra designs",
+    pieces: "100+ Designs",
+  },
+  {
+    id: 7,
+    name: "Necklaces",
+    category: "necklaces",
+    image: "/images/categories/necklaceimage.jpeg",
+    description: "Elegant necklaces crafted with pure gold",
+    pieces: "180+ Designs",
+  },
+  {
+    id: 8,
+    name: "Chains",
+    category: "chains",
+    image: "/images/categories/chain2image.jpeg",
+    description: "Beautiful chains for everyday wear",
     pieces: "200+ Designs",
   },
 ];
@@ -424,14 +456,14 @@ export function Home() {
         <div className="relative">
           <div ref={categoryScrollRef} className="flex overflow-x-auto hide-scrollbar gap-0">
             {[
-  { name: "RINGS", slug: "rings", image: "/images/products/Ring.png" },
-  { name: "EARRINGS", slug: "earrings", image: "/images/products/Ear.png" },
-  { name: "PENDANTS", slug: "pendants", image: "/images/products/Pendent.png" },
-  { name: "BANGLES", slug: "bangles", image: "/images/products/Bangalre.png" },
-  { name: "BRACELETS", slug: "bracelets", image: "/images/products/Brace.png" },
-  { name: "MANGALSUTRA", slug: "mangalsutra", image: "/images/products/Mangalsutra.png" },
-  { name: "NECKLACE", slug: "necklaces", image: "/images/products/Neck.png" },
-  { name: "CHAIN", slug: "chains", image: "/images/products/Chain.png" },
+  { name: "RINGS", slug: "rings", image: "/images/categories/ringimage.jpeg" },
+  { name: "EARRINGS", slug: "earrings", image: "/images/categories/earingimage.jpeg" },
+  { name: "PENDANTS", slug: "pendants", image: "/images/categories/pendentimage.jpeg" },
+  { name: "BANGLES", slug: "bangles", image: "/images/categories/bangleimage.jpeg" },
+  { name: "BRACELETS", slug: "bracelets", image: "/images/categories/chain1image.jpeg" },
+  { name: "MANGALSUTRA", slug: "mangalsutra", image: "/images/categories/mangalsutraimage.jpeg" },
+  { name: "NECKLACE", slug: "necklaces", image: "/images/categories/necklaceimage.jpeg" },
+  { name: "CHAIN", slug: "chains", image: "/images/categories/chain2image.jpeg" },
 ].map((cat, idx) => (
               <motion.div
                 key={cat.slug}
@@ -449,7 +481,6 @@ export function Home() {
                       alt={cat.name}
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
                     
                     <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between">
                       <span className="text-white text-lg font-medium tracking-wider uppercase">
@@ -704,7 +735,7 @@ What began as a vision rooted in craftsmanship has evolved into a legacy - where
         >
           <Link href={`/collections/${col.slug}`}>
             <div className="group cursor-pointer text-center">
-              <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-purple-100 to-purple-50 rounded-xl">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <ImageWithFallback
                   src={col.image}
                   alt={col.name}
@@ -776,7 +807,7 @@ What began as a vision rooted in craftsmanship has evolved into a legacy - where
           <Link href={`/collections/${col.slug}`}>
             <div className="group cursor-pointer text-center">
 
-              <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-purple-100 to-purple-50">
+              <div className="relative aspect-[4/3] overflow-hidden">
                 <ImageWithFallback
                   src={col.image}
                   alt={col.name}
