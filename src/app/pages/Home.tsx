@@ -862,19 +862,19 @@ What began as a vision rooted in craftsmanship has evolved into a legacy - where
               {/* Stats */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
                 <div className="text-center p-4 bg-white rounded-xl shadow-sm border border-amber-100">
-                  <p className="text-2xl font-serif text-[#E92247]">11+1</p>
+                  <p className="text-xl sm:text-2xl font-medium tracking-tight uppercase text-[#E92247]">11+1</p>
                   <p className="text-xs text-gray-600 mt-1">Months Plan</p>
                 </div>
                 <div className="text-center p-4 bg-white rounded-xl shadow-sm border border-amber-100">
-                  <p className="text-2xl font-serif text-[#E92247]">100%</p>
+                  <p className="text-xl sm:text-2xl font-medium tracking-tight uppercase text-[#E92247]">100%</p>
                   <p className="text-xs text-gray-600 mt-1">Bonus</p>
                 </div>
                 <div className="text-center p-4 bg-white rounded-xl shadow-sm border border-amber-100">
-                  <p className="text-2xl font-serif text-[#E92247]">0%</p>
+                  <p className="text-xl sm:text-2xl font-medium tracking-tight uppercase text-[#E92247]">0%</p>
                   <p className="text-xs text-gray-600 mt-1">Interest</p>
                 </div>
                 <div className="text-center p-4 bg-white rounded-xl shadow-sm border border-amber-100">
-                  <p className="text-2xl font-serif text-[#E92247]">BIS</p>
+                  <p className="text-xl sm:text-2xl font-medium tracking-tight uppercase text-[#E92247]">BIS</p>
                   <p className="text-xs text-gray-600 mt-1">Certified</p>
                 </div>
               </div>
