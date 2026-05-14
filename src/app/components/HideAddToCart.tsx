@@ -2,9 +2,10 @@
 
 import { useEffect } from "react";
 
-const ADD_TO_CART_TEXT = "add to cart";
+/** Phrases matched case-insensitively on title, aria-label, or textContent. */
+const HIDDEN_CTA_PHRASES = ["add to cart", "buy now"] as const;
 
-function hideAddToCartElements() {
+function hideCommerceCtaElements() {
   const clickableSelectors = [
     "button",
     "[role='button']",
@@ -24,22 +25,26 @@ function hideAddToCartElements() {
       .toLowerCase();
     const text = (element.textContent || "").trim().toLowerCase();
 
-    if (
-      title.includes(ADD_TO_CART_TEXT) ||
-      ariaLabel.includes(ADD_TO_CART_TEXT) ||
-      text.includes(ADD_TO_CART_TEXT)
-    ) {
+    const matches = HIDDEN_CTA_PHRASES.some(
+      (phrase) =>
+        title.includes(phrase) ||
+        ariaLabel.includes(phrase) ||
+        text.includes(phrase),
+    );
+
+    if (matches) {
       element.style.display = "none";
     }
   });
 }
 
+/** Globally hides Add to Cart and Buy Now controls without editing each page. */
 export function HideAddToCart() {
   useEffect(() => {
-    hideAddToCartElements();
+    hideCommerceCtaElements();
 
     const observer = new MutationObserver(() => {
-      hideAddToCartElements();
+      hideCommerceCtaElements();
     });
 
     observer.observe(document.body, {

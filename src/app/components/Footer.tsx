@@ -138,19 +138,25 @@ export function Footer() {
                   BENGALURU, Karnataka 574 201
                 </span>
               </li>
-              <li className="flex gap-3">
-                <span className="mt-0.5 w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-[#E92247] flex-shrink-0">
+              <li className="flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-[#E92247] flex-shrink-0">
                   <Phone className="w-4 h-4" />
                 </span>
-                <a href="tel:+919844692916" className="hover:text-[#E92247] transition-colors text-gray-700">
+                <a
+                  href="tel:+919844692916"
+                  className="inline-flex items-center hover:text-[#E92247] transition-colors text-gray-700 leading-normal"
+                >
                   +91 9844692916
                 </a>
               </li>
-              <li className="flex gap-3">
-                <span className="mt-0.5 w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-[#E92247] flex-shrink-0">
+              <li className="flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center text-[#E92247] flex-shrink-0">
                   <Mail className="w-4 h-4" />
                 </span>
-                <a href="mailto:info@muliya.com" className="hover:text-[#E92247] transition-colors text-gray-700">
+                <a
+                  href="mailto:info@muliya.com"
+                  className="inline-flex items-center hover:text-[#E92247] transition-colors text-gray-700 leading-normal"
+                >
                   info@muliya.com
                 </a>
               </li>
