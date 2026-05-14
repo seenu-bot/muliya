@@ -18,13 +18,13 @@ function categoryPublicImage(filename: string) {
 
 /** Hero strip tiles — files in `public/images/category`. Reorder `file` to match your assets. */
 const homeCategoryStripItems = [
-  { name: "RINGS", slug: "rings", file: "2.jpg (1).jpeg" },
-  { name: "EARRINGS", slug: "earrings", file: "3.jpg.jpeg" },
-  { name: "PENDANTS", slug: "pendants", file: "4.jpg.jpeg" },
-  { name: "BANGLES", slug: "bangles", file: "5.jpg.jpeg" },
+  { name: "EARRINGS", slug: "rings", file: "2.jpg (1).jpeg" },
+  { name: "PENDANTS", slug: "earrings", file: "3.jpg.jpeg" },
+  { name: "BANGLES", slug: "pendants", file: "4.jpg.jpeg" },
+  { name: "NECKLACE", slug: "bangles", file: "5.jpg.jpeg" },
   { name: "BRACELETS", slug: "bracelets", file: "6.jpg.jpeg" },
   { name: "MANGALSUTRA", slug: "mangalsutra", file: "7.jpg.jpeg" },
-  { name: "NECKLACE", slug: "necklaces", file: "Artboard 1.jpg.jpeg" },
+  { name: "RINGS", slug: "necklaces", file: "Artboard 1.jpg.jpeg" },
   { name: "CHAIN", slug: "chains", file: "6.jpg.jpeg" },
 ] as const;
 
