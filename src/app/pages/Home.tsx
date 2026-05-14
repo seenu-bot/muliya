@@ -12,6 +12,22 @@ import { ImageBannerSwiper } from "@/app/components/ImageBannerSwiper";
 import AboutSection from "../components/AboutSection";
 import VideoGallery from "@/app/components/VideoCarousel";
 
+function categoryPublicImage(filename: string) {
+  return `/images/category/${encodeURIComponent(filename)}`;
+}
+
+/** Hero strip tiles — files in `public/images/category`. Reorder `file` to match your assets. */
+const homeCategoryStripItems = [
+  { name: "RINGS", slug: "rings", file: "2.jpg (1).jpeg" },
+  { name: "EARRINGS", slug: "earrings", file: "3.jpg.jpeg" },
+  { name: "PENDANTS", slug: "pendants", file: "4.jpg.jpeg" },
+  { name: "BANGLES", slug: "bangles", file: "5.jpg.jpeg" },
+  { name: "BRACELETS", slug: "bracelets", file: "6.jpg.jpeg" },
+  { name: "MANGALSUTRA", slug: "mangalsutra", file: "7.jpg.jpeg" },
+  { name: "NECKLACE", slug: "necklaces", file: "Artboard 1.jpg.jpeg" },
+  { name: "CHAIN", slug: "chains", file: "6.jpg.jpeg" },
+] as const;
+
 const collections = [
   {
     id: 1,
@@ -455,16 +471,7 @@ export function Home() {
       <section className="py-0 bg-white">
         <div className="relative">
           <div ref={categoryScrollRef} className="flex overflow-x-auto hide-scrollbar gap-0">
-            {[
-  { name: "RINGS", slug: "rings", image: "/images/categories/ringimage.jpeg" },
-  { name: "EARRINGS", slug: "earrings", image: "/images/categories/earingimage.jpeg" },
-  { name: "PENDANTS", slug: "pendants", image: "/images/categories/pendentimage.jpeg" },
-  { name: "BANGLES", slug: "bangles", image: "/images/categories/bangleimage.jpeg" },
-  { name: "BRACELETS", slug: "bracelets", image: "/images/categories/chain1image.jpeg" },
-  { name: "MANGALSUTRA", slug: "mangalsutra", image: "/images/categories/mangalsutraimage.jpeg" },
-  { name: "NECKLACE", slug: "necklaces", image: "/images/categories/necklaceimage.jpeg" },
-  { name: "CHAIN", slug: "chains", image: "/images/categories/chain2image.jpeg" },
-].map((cat, idx) => (
+            {homeCategoryStripItems.map((cat, idx) => (
               <motion.div
                 key={cat.slug}
                 initial={{ opacity: 0 }}
@@ -477,7 +484,7 @@ export function Home() {
                 <Link href={`/products/${cat.slug}`} className="block w-full h-full">
                   <div className="relative w-full h-full">
                     <ImageWithFallback
-                      src={cat.image}
+                      src={categoryPublicImage(cat.file)}
                       alt={cat.name}
                       className="w-full h-full object-cover"
                     />
