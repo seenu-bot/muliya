@@ -146,7 +146,7 @@ const identitySteps = [
     desc:
       "A refreshed brand look, the same focus on trust, craftsmanship, and customer-first purity assurance.",
     bullets: ["Heritage-backed trust", "Craftsmanship you can see", "Transparent purity assurance"],
-    leftImage: "/images/freepik_prompt-ultra-realistic-ma_2879164594.png",
+    leftImage: "public/images/category/Artboard 4.jpg.jpeg",
     centerVideo: "/images/6248724_Woman_Caucasian_3840x2160.mp4",
     centerPoster: "/images/Muliya-Mascot-1.png",
     centerAlt: "Brand identity",
@@ -667,7 +667,7 @@ What began as a vision rooted in craftsmanship has evolved into a legacy - where
         <div className="relative w-full h-[60vh]">
           <ImageBannerSwiper
             images={[
-              "/images/Section%20Banner.png",
+              categoryPublicImage("Artboard 3.jpg.jpeg"),
               "/images/Section%20Banner_2.png",
             ]}
             alt="Gold collection"
@@ -952,7 +952,7 @@ What began as a vision rooted in craftsmanship has evolved into a legacy - where
             >
               <div className="relative h-[420px] md:h-[520px] rounded-2xl overflow-hidden bg-[#F6F2EE]">
                 <ImageWithFallback
-                  src="/images/freepik_prompt-ultra-realistic-ma_2879164594.png"
+                  src={categoryPublicImage("Artboard 4.jpg.jpeg")}
                   alt="Muliya jewellery"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
