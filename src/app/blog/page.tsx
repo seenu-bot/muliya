@@ -80,6 +80,15 @@ const blogPosts: BlogPost[] = [
   }
 ];
 
+function blogPostTimestamp(dateLabel: string): number {
+  const t = new Date(dateLabel).getTime();
+  return Number.isNaN(t) ? 0 : t;
+}
+
+const sortedBlogPosts = [...blogPosts].sort(
+  (a, b) => blogPostTimestamp(b.date) - blogPostTimestamp(a.date),
+);
+
 export default function BlogPage() {
   return (
     <main className="min-h-screen bg-white">
@@ -120,7 +129,7 @@ export default function BlogPage() {
       {/* Blog Posts */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {blogPosts.map((post) => (
+          {sortedBlogPosts.map((post) => (
             <article 
               key={post.id}
               className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300"

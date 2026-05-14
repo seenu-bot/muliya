@@ -313,6 +313,11 @@ const blogPosts: BlogPost[] = [
   }
 ];
 
+function blogPostTimestamp(dateLabel: string): number {
+  const t = new Date(dateLabel).getTime();
+  return Number.isNaN(t) ? 0 : t;
+}
+
 export default function BlogPostPage() {
   const params = useParams();
   const slug = params?.slug as string;
@@ -403,10 +408,11 @@ export default function BlogPostPage() {
             More Stories
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {blogPosts
-              .filter(p => p.id !== post.id)
+            {[...blogPosts]
+              .filter((p) => p.id !== post.id)
+              .sort((a, b) => blogPostTimestamp(b.date) - blogPostTimestamp(a.date))
               .slice(0, 3)
-              .map(relatedPost => (
+              .map((relatedPost) => (
                 <Link 
                   key={relatedPost.id}
                   href={`/blog/${relatedPost.slug}`}
