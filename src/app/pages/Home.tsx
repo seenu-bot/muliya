@@ -5,6 +5,13 @@ import Link from "next/link";
 import { motion } from "motion/react";
 import { ArrowRight, Shield, Award, TrendingUp, Star, Check } from "lucide-react";
 import { Button } from "../components/ui/button";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../components/ui/carousel";
 import { Card, CardContent } from "../components/ui/card";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import { HeroParallaxBanner } from "@/app/components/HeroParallaxBanner";
@@ -16,17 +23,109 @@ function categoryPublicImage(filename: string) {
   return `/images/category/${encodeURIComponent(filename)}`;
 }
 
-/** Hero strip tiles — files in `public/images/category`. Reorder `file` to match your assets. */
-const homeCategoryStripItems = [
-  { name: "EARRINGS", slug: "rings", file: "2.jpg (1).jpeg" },
-  { name: "PENDANTS", slug: "earrings", file: "3.jpg.jpeg" },
-  { name: "BANGLES", slug: "pendants", file: "4.jpg.jpeg" },
-  { name: "NECKLACE", slug: "bangles", file: "5.jpg.jpeg" },
-  { name: "BRACELETS", slug: "bracelets", file: "6.jpg.jpeg" },
-  { name: "MANGALSUTRA", slug: "mangalsutra", file: "7.jpg.jpeg" },
-  { name: "RINGS", slug: "necklaces", file: "Artboard 1.jpg.jpeg" },
-  { name: "CHAIN", slug: "chains", file: "6.jpg.jpeg" },
+function testimonialInitials(fullName: string): string {
+  const parts = fullName.trim().split(/\s+/).filter(Boolean);
+  if (parts.length === 0) return "?";
+  if (parts.length === 1) return parts[0].slice(0, 2).toUpperCase();
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase();
+}
+
+const muliyaAndMeAvatarGradients = [
+  "bg-gradient-to-br from-sky-600 via-sky-400 to-cyan-100",
+  "bg-gradient-to-br from-emerald-700 via-teal-500 to-lime-200",
+  "bg-gradient-to-br from-fuchsia-600 via-purple-500 to-pink-200",
+  "bg-gradient-to-br from-green-700 via-emerald-500 to-green-200",
+  "bg-gradient-to-br from-violet-700 via-purple-500 to-indigo-200",
+  "bg-gradient-to-br from-rose-600 via-pink-500 to-amber-100",
+  "bg-gradient-to-br from-indigo-700 via-blue-600 to-sky-200",
 ] as const;
+
+function MuliyaTestimonialAvatarBlock({
+  name,
+  gradientClass,
+}: {
+  name: string;
+  gradientClass: string;
+}) {
+  const initials = testimonialInitials(name);
+  return (
+    <div className="relative mb-4 aspect-square overflow-hidden rounded-lg" aria-hidden>
+      <div className={`absolute inset-0 ${gradientClass}`} />
+      <svg className="pointer-events-none absolute inset-0 h-full w-full" viewBox="0 0 100 100" fill="none">
+        {[44, 34, 24].map((r) => (
+          <circle
+            key={r}
+            cx="50"
+            cy="50"
+            r={r}
+            stroke="white"
+            strokeWidth="0.45"
+            strokeOpacity={0.42}
+          />
+        ))}
+      </svg>
+      <svg
+        className="pointer-events-none absolute left-1/2 top-[56%] h-[64%] w-[64%] -translate-x-1/2 -translate-y-1/2 text-white/28"
+        viewBox="0 0 100 118"
+        fill="currentColor"
+      >
+        <ellipse cx="50" cy="36" rx="22" ry="26" />
+        <path d="M6 116c2-30 20-50 44-50s42 20 44 50H6z" />
+      </svg>
+      <div className="absolute inset-0 z-10 flex items-center justify-center">
+        <span className="font-sans text-[1.65rem] font-semibold tracking-[0.14em] text-white drop-shadow-md sm:text-3xl">
+          {initials}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+/** Shop by categories — Tanishq-style grid (2×4): image tile + label; last cell is View All. */
+const shopByCategoryGridItems = [
+  {
+    label: "EARRINGS",
+    href: "/products/gold-earrings-bangalore",
+    image: "/category/2.jpg.jpeg",
+  },
+  {
+    label: "FINGER RINGS",
+    href: "/products/gold-rings-bangalore",
+    image: "/category/Artboard 1.jpg.jpeg",
+  },
+  {
+    label: "PENDANTS",
+    href: "/products/gold-pendants-bangalore",
+    image: "/category/3.jpg.jpeg",
+  },
+  {
+    label: "MANGALSUTRA",
+    href: "/products/gold-mangalsutra-bangalore",
+    image: "/category/7.jpg.jpeg",
+  },
+  {
+    label: "BRACELETS",
+    href: "/products/gold-bracelets-bangalore",
+    image: "/category/6.jpg.jpeg",
+  },
+  {
+    label: "BANGLES",
+    href: "/products/gold-bangles-bangalore",
+    image: "/category/4.jpg.jpeg",
+  },
+  {
+    label: "CHAINS",
+    href: "/products/gold-chain-bangalore",
+    image: "/category/5.jpg.jpeg",
+  },
+] as const;
+
+const shopByCategoryViewAll = {
+  label: "VIEW ALL",
+  href: "/gold-jewellery-bangalore",
+  count: "10+",
+  sublabel: "Categories to choose from",
+} as const;
 
 const collections = [
   {
@@ -138,6 +237,58 @@ const testimonials = [
     comment: "Best place for traditional gold jewelry. The gold scheme helped me save and invest smartly.",
   },
 ];
+
+const muliyaAndMeCards = [
+  {
+    name: "Akanksha Khanna",
+    age: "27",
+    text: "Delighted with my engagement ring from Muliya! It's my dream ring. The craftsmanship is stunning and the purity assurance gives me complete confidence.",
+    rotate: -8,
+    translateY: 15,
+  },
+  {
+    name: "Diksha Singh",
+    age: "29",
+    text: "I was worried about finding good quality jewellery online, but Muliya's customer service gave me full assurance. The delivery was super quick and the quality is certified.",
+    rotate: 5,
+    translateY: 5,
+  },
+  {
+    name: "Nuton Mishra",
+    age: "33",
+    text: "I got a Nazariya for my baby from Muliya. It's so cute seeing it on my little one's wrist, and it gives me a sense of security knowing it's pure gold.",
+    rotate: -4,
+    translateY: 20,
+  },
+  {
+    name: "Divya Mishra",
+    age: "26",
+    text: "On Valentine's Day, my husband gifted me a necklace from Muliya, and I haven't taken it off ever since. Everyone asks me where it's from. I just LOVE how nice it looks on me!",
+    rotate: 7,
+    translateY: 0,
+  },
+  {
+    name: "Priya Singh",
+    age: "34",
+    text: "I had trouble finding jewellery that suited my minimalist style, but Muliya's sleek and elegant designs were exactly what I was looking for.",
+    rotate: -6,
+    translateY: 10,
+  },
+  {
+    name: "Avni Sharma",
+    age: "27",
+    text: "Me and my friends love Muliya's unique designs. I love how their pieces add elegance to my outfits. Their jewellery is stylish, modern and a breath of fresh air.",
+    rotate: 4,
+    translateY: 18,
+  },
+  {
+    name: "Sonaalee Semwal",
+    age: "28",
+    text: "I bought a bracelet from Muliya as a birthday gift from me to me. I love how versatile it is. If you want to buy yourself a gift, Muliya is the place to go!",
+    rotate: -5,
+    translateY: 8,
+  },
+] as const;
 
 const identitySteps = [
   {
@@ -379,30 +530,6 @@ export function Home() {
 
   const activeIdentity = identitySteps[identityStep] ?? identitySteps[0];
 
-  const categoryScrollRef = React.useRef<HTMLDivElement | null>(null);
-
-  React.useEffect(() => {
-    const el = categoryScrollRef.current;
-    if (!el) return;
-
-    const id = window.setInterval(() => {
-      const node = categoryScrollRef.current;
-      if (!node) return;
-
-      const nearEnd = node.scrollLeft + node.clientWidth >= node.scrollWidth - 8;
-
-      if (nearEnd) {
-        node.scrollTo({ left: 0, behavior: "smooth" });
-        return;
-      }
-
-      const step = Math.max(240, Math.floor(node.clientWidth * 0.8));
-      node.scrollBy({ left: step, behavior: "smooth" });
-    }, 4000);
-
-    return () => window.clearInterval(id);
-  }, []);
-
   return (
     <div className="min-h-screen bg-white">
       {/* Hero */}
@@ -468,49 +595,64 @@ export function Home() {
       </section> */}
       <HeroParallaxBanner />
 
-      <section className="py-0 bg-white">
-        <div className="relative">
-          <div ref={categoryScrollRef} className="flex overflow-x-auto hide-scrollbar gap-0">
-            {homeCategoryStripItems.map((cat, idx) => (
+      <section className="bg-[#f5f4f2] py-14 md:py-20">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="font-serif text-3xl tracking-tight text-neutral-900 sm:text-4xl md:text-[2.75rem] md:leading-tight">
+              Find Your Perfect Match
+            </h2>
+            <p className="mt-2 font-serif text-lg text-neutral-500 sm:text-xl md:text-2xl">
+              Shop by Categories
+            </p>
+          </div>
+
+          <div className="mt-10 grid grid-cols-2 gap-5 md:mt-14 md:gap-6 lg:grid-cols-4">
+            {shopByCategoryGridItems.map((cat, idx) => (
               <motion.div
-                key={cat.slug}
-                initial={{ opacity: 0 }}
-                whileInView={{ opacity: 1 }}
+                key={cat.href}
+                initial={{ opacity: 0, y: 12 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: idx * 0.05 }}
-                className="relative flex-shrink-0 w-[25%] min-w-[300px] aspect-[3/5] group cursor-pointer overflow-hidden"
-                style={{ margin: 0, padding: 0 }}
+                transition={{ duration: 0.45, delay: idx * 0.04 }}
+                className="group"
               >
-                <Link href={`/products/${cat.slug}`} className="block w-full h-full">
-                  <div className="relative w-full h-full">
+                <Link href={cat.href} className="block">
+                  <div className="relative aspect-[3/4] overflow-hidden rounded-2xl shadow-sm ring-1 ring-black/5 transition-shadow duration-300 group-hover:shadow-md">
                     <ImageWithFallback
-                      src={categoryPublicImage(cat.file)}
-                      alt={cat.name}
-                      className="w-full h-full object-cover"
+                      src={cat.image}
+                      alt={cat.label}
+                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     />
-                    
-                    <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between">
-                      <span className="text-white text-lg font-medium tracking-wider uppercase">
-                        {cat.name}
-                      </span>
-                      
-                      <div>
-                        <svg 
-                          width="32" 
-                          height="32" 
-                          viewBox="0 0 24 24" 
-                          fill="none" 
-                          stroke="white" 
-                          strokeWidth="1.5"
-                        >
-                          <path d="M5 12h14M12 5l7 7-7 7" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                      </div>
-                    </div>
                   </div>
+                  <p className="mt-4 text-center font-serif text-xs uppercase tracking-[0.14em] text-neutral-900 sm:text-sm md:text-[0.95rem]">
+                    {cat.label}
+                  </p>
                 </Link>
               </motion.div>
             ))}
+
+            <motion.div
+              key={shopByCategoryViewAll.href}
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.45, delay: shopByCategoryGridItems.length * 0.04 }}
+              className="group"
+            >
+              <Link href={shopByCategoryViewAll.href} className="block">
+                <div className="relative flex aspect-[3/4] flex-col items-center justify-center rounded-2xl border border-neutral-300 bg-white px-4 text-center shadow-sm transition-shadow duration-300 group-hover:shadow-md">
+                  <span className="font-serif text-4xl text-[#6b1414] sm:text-5xl md:text-6xl">
+                    {shopByCategoryViewAll.count}
+                  </span>
+                  <span className="mt-2 max-w-[11rem] text-xs leading-snug text-neutral-800 sm:text-sm">
+                    {shopByCategoryViewAll.sublabel}
+                  </span>
+                </div>
+                <p className="mt-4 text-center font-serif text-xs uppercase tracking-[0.14em] text-neutral-900 sm:text-sm md:text-[0.95rem]">
+                  {shopByCategoryViewAll.label}
+                </p>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
@@ -1186,13 +1328,14 @@ What began as a vision rooted in craftsmanship has evolved into a legacy - where
     
 
       {/* Testimonials - BlueStone Style */}
-      <section className="py-8 bg-white relative overflow-hidden">
-        {/* Decorative gold circles */}
-        <div className="absolute top-10 left-10 w-80 h-80 bg-amber-100/25 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute bottom-10 right-20 w-72 h-72 bg-yellow-50/35 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="absolute top-1/2 left-1/3 w-56 h-56 bg-amber-50/30 rounded-full blur-3xl pointer-events-none"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="text-center mb-12">
+      <section className="relative bg-white py-6 md:py-8">
+        <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden>
+          <div className="absolute top-10 left-10 w-80 h-80 bg-amber-100/25 rounded-full blur-3xl" />
+          <div className="absolute bottom-10 right-20 w-72 h-72 bg-yellow-50/35 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/3 w-56 h-56 bg-amber-50/30 rounded-full blur-3xl" />
+        </div>
+        <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 md:mb-10">
             <h2 className="text-4xl md:text-5xl font-serif text-gray-900 mb-4">
               Muliya & Me
             </h2>
@@ -1202,204 +1345,61 @@ What began as a vision rooted in craftsmanship has evolved into a legacy - where
           </div>
         </div>
 
-        {/* Testimonials */}
-        <div className="relative">
-          <div className="pb-8 pt-4">
-
-            {/* Mobile: horizontal scroll */}
-            <div className="md:hidden flex overflow-x-auto gap-6 pb-6 px-6 snap-x snap-mandatory hide-scrollbar">
-              {[
-                {
-                  name: "Akanksha Khanna",
-                  age: "27",
-                  image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80",
-                  text: "Delighted with my engagement ring from Muliya! It's my dream ring. The craftsmanship is stunning and the purity assurance gives me complete confidence.",
-                  rotate: -3,
-                  translateY: 0,
-                },
-                {
-                  name: "Diksha Singh",
-                  age: "29",
-                  image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80",
-                  text: "I was worried about finding good quality jewellery online, but Muliya's customer service gave me full assurance. The delivery was super quick and the quality is certified.",
-                  rotate: 3,
-                  translateY: 0,
-                },
-                {
-                  name: "Nuton Mishra",
-                  age: "33",
-                  image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&q=80",
-                  text: "I got a Nazariya for my baby from Muliya. It's so cute seeing it on my little one's wrist, and it gives me a sense of security knowing it's pure gold.",
-                  rotate: -2,
-                  translateY: 0,
-                },
-                {
-                  name: "Divya Mishra",
-                  age: "26",
-                  image: "https://images.unsplash.com/photo-1504194921103-f8b80cadd5e4?w=400&q=80",
-                  text: "On Valentine's Day, my husband gifted me a necklace from Muliya, and I haven't taken it off ever since. Everyone asks me where it's from. I just LOVE how nice it looks on me!",
-                  rotate: 4,
-                  translateY: 0,
-                },
-                {
-                  name: "Priya Singh",
-                  age: "34",
-                  image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&q=80",
-                  text: "I had trouble finding jewellery that suited my minimalist style, but Muliya's sleek and elegant designs were exactly what I was looking for.",
-                  rotate: -3,
-                  translateY: 0,
-                },
-                {
-                  name: "Avni Sharma",
-                  age: "27",
-                  image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80",
-                  text: "Me and my friends love Muliya's unique designs. I love how their pieces add elegance to my outfits. Their jewellery is stylish, modern and a breath of fresh air.",
-                  rotate: 2,
-                  translateY: 0,
-                },
-                {
-                  name: "Sonaalee Semwal",
-                  age: "28",
-                  image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
-                  text: "I bought a bracelet from Muliya as a birthday gift from me to me. I love how versatile it is. If you want to buy yourself a gift, Muliya is the place to go!",
-                  rotate: -2,
-                  translateY: 0,
-                },
-              ].map((t, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: idx * 0.05 }}
-                  className="flex-shrink-0 snap-start"
-                  style={{ width: '260px' }}
+        {/* Full-bleed row: no max-width box; extra gap between slides; smooth Embla scroll */}
+        <div className="relative z-10 w-full">
+          <Carousel
+            opts={{
+              align: "start",
+              loop: false,
+              duration: 52,
+              dragFree: false,
+            }}
+            className="relative w-full px-5 sm:px-10 md:px-14 lg:px-16"
+          >
+            <CarouselContent
+              viewportClassName="py-12 sm:py-14 md:py-20 pl-10 sm:pl-14 md:pl-20 pr-8 sm:pr-14 md:pr-20"
+              className="-ml-10 sm:-ml-12"
+            >
+              {muliyaAndMeCards.map((t, idx) => (
+                <CarouselItem
+                  key={`${t.name}-${idx}`}
+                  className="pl-10 sm:pl-12 basis-[min(280px,86vw)] sm:basis-[288px]"
                 >
-                  <div
-                    className="relative transition-all duration-300 hover:scale-105"
-                    style={{ transform: `rotate(${t.rotate}deg)` }}
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: Math.min(idx * 0.05, 0.35) }}
+                    className="relative w-full"
                   >
-                    <div className="bg-[#e0f2fe] p-3 pb-5 shadow-xl rounded-sm cursor-pointer">
-                      <div className="bg-white aspect-square overflow-hidden mb-4 rounded-sm">
-                        <ImageWithFallback
-                          src={t.image}
-                          alt={t.name}
-                          className="w-full h-full object-cover"
+                    <div
+                      className="relative transition-all duration-300 hover:scale-105"
+                      style={{
+                        transform: `rotate(${t.rotate}deg) translateY(${t.translateY}px)`,
+                      }}
+                    >
+                      <div className="bg-[#e0f2fe] p-3 pb-5 rounded-sm cursor-pointer shadow-[0_4px_16px_rgba(15,23,42,0.08)] ring-1 ring-black/[0.04]">
+                        <MuliyaTestimonialAvatarBlock
+                          name={t.name}
+                          gradientClass={muliyaAndMeAvatarGradients[idx % muliyaAndMeAvatarGradients.length]}
                         />
-                      </div>
-                      <div className="px-1">
-                        <p className="text-[#E92247] font-semibold text-sm mb-2">
-                          {t.name}, {t.age}
-                        </p>
-                        <p className="text-gray-600 text-xs leading-relaxed line-clamp-4">
-                          {t.text}
-                        </p>
+                        <div className="px-1">
+                          <p className="text-[#E92247] font-semibold text-sm mb-2">
+                            {t.name}, {t.age}
+                          </p>
+                          <p className="text-gray-600 text-xs leading-relaxed line-clamp-4">
+                            {t.text}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                </motion.div>
+                  </motion.div>
+                </CarouselItem>
               ))}
-            </div>
-
-            {/* Desktop: wrapped flex layout */}
-            <div className="hidden md:flex flex-wrap justify-center gap-10 px-4">
-              {[
-                {
-                  name: "Akanksha Khanna",
-                  age: "27",
-                  image: "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=80",
-                  text: "Delighted with my engagement ring from Muliya! It's my dream ring. The craftsmanship is stunning and the purity assurance gives me complete confidence.",
-                  rotate: -8,
-                  translateY: 15,
-                },
-                {
-                  name: "Diksha Singh",
-                  age: "29",
-                  image: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80",
-                  text: "I was worried about finding good quality jewellery online, but Muliya's customer service gave me full assurance. The delivery was super quick and the quality is certified.",
-                  rotate: 5,
-                  translateY: 5,
-                },
-                {
-                  name: "Nuton Mishra",
-                  age: "33",
-                  image: "https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&q=80",
-                  text: "I got a Nazariya for my baby from Muliya. It's so cute seeing it on my little one's wrist, and it gives me a sense of security knowing it's pure gold.",
-                  rotate: -4,
-                  translateY: 20,
-                },
-                {
-                  name: "Divya Mishra",
-                  age: "26",
-                  image: "https://images.unsplash.com/photo-1504194921103-f8b80cadd5e4?w=400&q=80",
-                  text: "On Valentine's Day, my husband gifted me a necklace from Muliya, and I haven't taken it off ever since. Everyone asks me where it's from. I just LOVE how nice it looks on me!",
-                  rotate: 7,
-                  translateY: 0,
-                },
-                {
-                  name: "Priya Singh",
-                  age: "34",
-                  image: "https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?w=400&q=80",
-                  text: "I had trouble finding jewellery that suited my minimalist style, but Muliya's sleek and elegant designs were exactly what I was looking for.",
-                  rotate: -6,
-                  translateY: 10,
-                },
-                {
-                  name: "Avni Sharma",
-                  age: "27",
-                  image: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=400&q=80",
-                  text: "Me and my friends love Muliya's unique designs. I love how their pieces add elegance to my outfits. Their jewellery is stylish, modern and a breath of fresh air.",
-                  rotate: 4,
-                  translateY: 18,
-                },
-                {
-                  name: "Sonaalee Semwal",
-                  age: "28",
-                  image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80",
-                  text: "I bought a bracelet from Muliya as a birthday gift from me to me. I love how versatile it is. If you want to buy yourself a gift, Muliya is the place to go!",
-                  rotate: -5,
-                  translateY: 8,
-                },
-              ].map((t, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: idx * 0.08 }}
-                  className="relative"
-                  style={{ width: '280px' }}
-                >
-                  <div 
-                    className="relative transition-all duration-300 hover:scale-105"
-                    style={{ 
-                      transform: `rotate(${t.rotate}deg) translateY(${t.translateY}px)`,
-                    }}
-                  >
-                    {/* Polaroid Card */}
-                    <div className="bg-[#e0f2fe] p-3 pb-5 shadow-xl rounded-sm cursor-pointer">
-                      <div className="bg-white aspect-square overflow-hidden mb-4 rounded-sm">
-                        <ImageWithFallback
-                          src={t.image}
-                          alt={t.name}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="px-1">
-                        <p className="text-[#E92247] font-semibold text-sm mb-2">
-                          {t.name}, {t.age}
-                        </p>
-                        <p className="text-gray-600 text-xs leading-relaxed line-clamp-4">
-                          {t.text}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-
-          </div>
+            </CarouselContent>
+            <CarouselPrevious className="top-1/2 z-10 size-9 border-neutral-200/80 bg-white/90 text-neutral-700 shadow-sm backdrop-blur-sm -translate-y-1/2 left-2 sm:left-4 md:left-6" />
+            <CarouselNext className="top-1/2 z-10 size-9 border-neutral-200/80 bg-white/90 text-neutral-700 shadow-sm backdrop-blur-sm -translate-y-1/2 right-2 sm:right-4 md:right-6" />
+          </Carousel>
         </div>
 
         <style>{`
