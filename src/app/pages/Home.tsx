@@ -84,15 +84,16 @@ function MuliyaTestimonialAvatarBlock({
 /** Shop by categories — Tanishq-style grid (2×4): image tile + label; last cell is View All. */
 const shopByCategoryGridItems = [
   {
+    label: "RINGS",
+    href: "/products/gold-rings-bangalore",
+    image: "/category/Artboard 1.jpg.jpeg",
+  },
+  {
     label: "EARRINGS",
     href: "/products/gold-earrings-bangalore",
     image: "/category/2.jpg.jpeg",
   },
-  {
-    label: "FINGER RINGS",
-    href: "/products/gold-rings-bangalore",
-    image: "/category/Artboard 1.jpg.jpeg",
-  },
+  
   {
     label: "PENDANTS",
     href: "/products/gold-pendants-bangalore",
@@ -102,6 +103,11 @@ const shopByCategoryGridItems = [
     label: "MANGALSUTRA",
     href: "/products/gold-mangalsutra-bangalore",
     image: "/category/7.jpg.jpeg",
+  },
+   {
+    label: "CHAINS",
+    href: "/products/gold-chain-bangalore",
+    image: "/category/5.jpg.jpeg",
   },
   {
     label: "BRACELETS",
@@ -113,11 +119,13 @@ const shopByCategoryGridItems = [
     href: "/products/gold-bangles-bangalore",
     image: "/category/4.jpg.jpeg",
   },
+ 
   {
-    label: "CHAINS",
-    href: "/products/gold-chain-bangalore",
-    image: "/category/5.jpg.jpeg",
-  },
+    label: "NECKLACES",
+    href: "/products/gold-necklaces-bangalore",
+    image: "/category/8image.png",
+  }
+  
 ] as const;
 
 const shopByCategoryViewAll = {
@@ -631,28 +639,7 @@ export function Home() {
               </motion.div>
             ))}
 
-            <motion.div
-              key={shopByCategoryViewAll.href}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.45, delay: shopByCategoryGridItems.length * 0.04 }}
-              className="group"
-            >
-              <Link href={shopByCategoryViewAll.href} className="block">
-                <div className="relative flex aspect-[3/4] flex-col items-center justify-center rounded-2xl border border-neutral-300 bg-white px-4 text-center shadow-sm transition-shadow duration-300 group-hover:shadow-md">
-                  <span className="font-serif text-4xl text-[#6b1414] sm:text-5xl md:text-6xl">
-                    {shopByCategoryViewAll.count}
-                  </span>
-                  <span className="mt-2 max-w-[11rem] text-xs leading-snug text-neutral-800 sm:text-sm">
-                    {shopByCategoryViewAll.sublabel}
-                  </span>
-                </div>
-                <p className="mt-4 text-center font-serif text-xs uppercase tracking-[0.14em] text-neutral-900 sm:text-sm md:text-[0.95rem]">
-                  {shopByCategoryViewAll.label}
-                </p>
-              </Link>
-            </motion.div>
+            
           </div>
         </div>
       </section>

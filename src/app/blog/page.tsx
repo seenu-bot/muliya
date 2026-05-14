@@ -111,7 +111,7 @@ export default function BlogPage() {
           src="/images/blogimage.jpeg"
           alt="Blog banner"
           className="w-full object-cover"
-          style={{ height: "50vh" }}
+          style={{ height: "70vh" }}
           loading="lazy"
           decoding="async"
         />
