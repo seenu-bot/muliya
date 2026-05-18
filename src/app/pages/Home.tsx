@@ -641,7 +641,7 @@ export function Home() {
         </div>
       </section>
 
-      <section className="bg-white my-10 relative overflow-hidden">
+      <section className="bg-white my-8 relative overflow-hidden">
         {/* Decorative gold circles */}
         <div className="absolute top-10 right-10 w-72 h-72 bg-amber-50/50 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-10 left-1/4 w-56 h-56 bg-yellow-100/30 rounded-full blur-3xl pointer-events-none"></div>
@@ -657,7 +657,7 @@ export function Home() {
             <div className="flex items-center py-12 lg:py-16">
               <div className="w-full max-w-xl px-2 sm:px-6 lg:px-14">
                 <h2 className="text-3xl md:text-4xl font-serif text-gray-900">Who we are today</h2>
-                <div className="mt-6 space-y-4 text-sm md:text-base leading-relaxed text-gray-700">
+                <div className="mt-6 space-y-4 text-sm md:text-base leading-relaxed text-gray-700 text-justify">
                   <p>
 Today, Muliya – Gold & Diamonds is a symbol of elegance, trust, and forward-thinking craftsmanship. With over 81 years of heritage, we proudly serve customers through 7 showrooms across Karnataka, including Dakshina Kannada’s largest showroom in Puttur, spanning 10,000 sq. ft.
 

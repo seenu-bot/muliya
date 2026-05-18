@@ -17,8 +17,15 @@ export function ImageBannerSwiper({
   className?: string;
 }) {
   return (
-    <section className={`relative w-full overflow-hidden bg-white ${className}`.trim()}>
+    <section className={`relative w-full max-w-none overflow-hidden bg-white ${className}`.trim()}>
       <style jsx global>{`
+        .imageBannerSwiper,
+        .imageBannerSwiper .swiper-wrapper,
+        .imageBannerSwiper .swiper-slide {
+          max-width: none;
+          width: 100%;
+        }
+
         .imageBannerSwiper .swiper-button-prev,
         .imageBannerSwiper .swiper-button-next {
           display: none;
@@ -100,14 +107,15 @@ export function ImageBannerSwiper({
         loop
         navigation={{ prevEl: ".imageBannerSwiperPrev", nextEl: ".imageBannerSwiperNext" }}
         pagination={{ clickable: true }}
-        className="imageBannerSwiper w-full h-full"
+        className="imageBannerSwiper w-full h-full max-w-none"
       >
         {images.map((src, idx) => (
-          <SwiperSlide key={src}>
+          <SwiperSlide key={src} className="w-full h-full">
             <img
               src={src}
               alt={alt}
-              className="w-full h-full object-cover object-left object-top md:object-[50%_25%]"
+              className="min-w-full w-full h-full min-h-full object-contain sm:object-cover object-left object-top md:object-[50%_25%]"
+              style={{ width: "100%", minWidth: "100%", minHeight: "100%" }}
               loading={idx === 0 ? "eager" : "lazy"}
               fetchPriority={idx === 0 ? "high" : "auto"}
               decoding="async"
