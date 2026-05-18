@@ -106,12 +106,12 @@ const shopByCategoryGridItems = [
   {
     label: "CHAINS",
     href: "/products/gold-chain-bangalore",
-    image: "/images/blue_category/Slider3_muliya.webp",
+    image: "/images/blue_category/Slider3_muliya.png",
   },
   {
     label: "BRACELETS",
     href: "/products/gold-bracelets-bangalore",
-    image: "/images/blue_category/Slider7_muliya.webp",
+    image: "/images/blue_category/Slider3_muliya.webp",
   },
   {
     label: "BANGLES",
