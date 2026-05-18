@@ -86,42 +86,42 @@ const shopByCategoryGridItems = [
   {
     label: "RINGS",
     href: "/products/gold-rings-bangalore",
-    image: "/images/blue_category/Slider1_muliya.webp",
+    image: "/images/blue_category/Slider1_muliya.png",
   },
   {
     label: "EARRINGS",
     href: "/products/gold-earrings-bangalore",
-    image: "/images/blue_category/Slider6_muliya.webp",
+    image: "/images/blue_category/Slider6_muliya.png",
   },
   {
     label: "PENDANTS",
     href: "/products/gold-pendants-bangalore",
-    image: "/images/blue_category/Slider4_muliya.webp",
+    image: "/images/blue_category/Slider4_muliya.png",
   },
   {
     label: "MANGALSUTRA",
     href: "/products/gold-mangalsutra-bangalore",
-    image: "/images/blue_category/Slider5_muliya.webp",
+    image: "/images/blue_category/Slider5_muliya.png",
   },
   {
     label: "CHAINS",
     href: "/products/gold-chain-bangalore",
-    image: "/images/blue_category/Slider3_muliya.png",
+    image: "/images/blue_category/Slider3_muliya_chain.png",
   },
   {
     label: "BRACELETS",
     href: "/products/gold-bracelets-bangalore",
-    image: "/images/blue_category/Slider3_muliya.webp",
+    image: "/images/blue_category/Slider3_muliya.png",
   },
   {
     label: "BANGLES",
     href: "/products/gold-bangles-bangalore",
-    image: "/images/blue_category/Slider2_muliya.webp",
+    image: "/images/blue_category/Slider2_muliya.png",
   },
   {
     label: "NECKLACES",
     href: "/products/gold-necklaces-bangalore",
-    image: "/images/blue_category/Slider8_muliya.webp",
+    image: "/images/blue_category/Slider8_muliya.png",
   }
 ] as const;
 
