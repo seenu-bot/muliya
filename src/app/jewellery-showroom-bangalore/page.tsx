@@ -1,10 +1,10 @@
 "use client";
 
-import { useState } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { MapPin, Phone, Clock, Navigation, Search, Store, Mail } from "lucide-react";
+import { getImageUrl } from "@/lib/api";
 
 interface StoreLocation {
   id: string;
@@ -23,7 +23,55 @@ interface StoreLocation {
   pageUrl?: string;
 }
 
-const stores: StoreLocation[] = [
+interface ApiBranch {
+  _id?: string;
+  name?: string;
+  address?: string;
+  city?: string;
+  state?: string;
+  pincode?: string;
+  phone?: string | string[];
+  email?: string;
+  hours?: string;
+  workingHours?: string;
+  lat?: number;
+  lng?: number;
+  image?: string;
+  imageUrl?: string;
+  googleMapsUrl?: string;
+  mapUrl?: string;
+  description?: string;
+  pageUrl?: string;
+  isActive?: boolean;
+}
+
+function mapBranch(b: ApiBranch, idx: number): StoreLocation {
+  const rawPhone = b.phone ?? "";
+  const phones: string[] = Array.isArray(rawPhone)
+    ? rawPhone.filter(Boolean)
+    : rawPhone
+    ? [rawPhone]
+    : [];
+
+  return {
+    id: b._id ?? String(idx),
+    name: b.name ?? "Muliya Showroom",
+    address: b.address ?? "",
+    city: b.city ?? "",
+    state: b.state ?? "Karnataka",
+    pincode: b.pincode ?? "",
+    phone: phones,
+    email: b.email ?? "info@muliyajewels.com",
+    hours: b.hours ?? b.workingHours ?? "10:00 AM - 8:00 PM",
+    lat: b.lat ?? 0,
+    lng: b.lng ?? 0,
+    image: getImageUrl(b.image ?? b.imageUrl),
+    mapUrl: b.googleMapsUrl ?? b.mapUrl ?? "",
+    pageUrl: b.pageUrl ?? undefined,
+  };
+}
+
+const STATIC_STORES: StoreLocation[] = [
   {
     id: "1",
     name: "Shyama Muliya Gold & Diamonds Puttur",
@@ -164,12 +212,34 @@ const stores: StoreLocation[] = [
   },
 ];
 
-const cities = ["All", "Puttur", "Belthangady", "Bengaluru", "Madikeri", "Gonikoppal", "Somwarpet", "Nelyadi"];
-
 export default function StoreLocatorPage() {
   const router = useRouter();
+  const [stores, setStores] = useState<StoreLocation[]>(STATIC_STORES);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCity, setSelectedCity] = useState("All");
+
+  useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+    fetch(`${apiUrl}/branches/getBranches`)
+      .then((r) => r.json())
+      .then((res) => {
+        const list: ApiBranch[] = res?.branchList ?? res?.branches ?? [];
+        const active = list.filter((b) => b.isActive !== false);
+        if (active.length > 0) {
+          setStores(active.map(mapBranch));
+          setSelectedCity("All"); // reset filter when new data arrives
+        }
+      })
+      .catch(() => {
+        // network error — keep static stores
+      });
+  }, []);
+
+  // Derive unique cities dynamically from current store list
+  const cities = [
+    "All",
+    ...Array.from(new Set(stores.map((s) => s.city).filter(Boolean))),
+  ];
 
   const filteredStores = stores.filter((store) => {
     const matchesSearch =
@@ -197,7 +267,7 @@ export default function StoreLocatorPage() {
           src="/images/ourshowroomimage.jpeg"
           alt="Our Showrooms Banner"
           className="w-full object-cover"
-          style={{ height: "50vh" }}
+          style={{ height: "80vh" }}
           loading="lazy"
           decoding="async"
         />

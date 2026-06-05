@@ -25,6 +25,7 @@ export default function LoginPage() {
     password: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [serverError, setServerError] = useState("");
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -51,6 +52,7 @@ export default function LoginPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setServerError("");
 
     if (!validateForm()) return;
 
@@ -60,6 +62,8 @@ export default function LoginPage() {
 
     if (success) {
       router.push("/");
+    } else {
+      setServerError("Invalid credentials. Please check your email/phone and password.");
     }
   };
 
@@ -134,7 +138,7 @@ export default function LoginPage() {
                 <input
                   type={loginMethod === "email" ? "email" : "tel"}
                   value={formData.emailOrPhone}
-                  onChange={(e) => setFormData({ ...formData, emailOrPhone: e.target.value })}
+                  onChange={(e) => { setFormData({ ...formData, emailOrPhone: e.target.value }); setServerError(""); }}
                   className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E92247]/20 focus:border-[#E92247] outline-none"
                   placeholder={loginMethod === "email" ? "Enter your email" : "Enter your phone number"}
                 />
@@ -154,7 +158,7 @@ export default function LoginPage() {
                 <input
                   type={showPassword ? "text" : "password"}
                   value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  onChange={(e) => { setFormData({ ...formData, password: e.target.value }); setServerError(""); }}
                   className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E92247]/20 focus:border-[#E92247] outline-none"
                   placeholder="Enter your password"
                 />
@@ -177,6 +181,14 @@ export default function LoginPage() {
                 Forgot Password?
               </Link>
             </div>
+
+            {/* Server error */}
+            {serverError && (
+              <div className="flex items-start gap-2 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3">
+                <span className="mt-0.5">⚠</span>
+                <span>{serverError}</span>
+              </div>
+            )}
 
             {/* Submit Button */}
             <button

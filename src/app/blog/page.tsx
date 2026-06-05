@@ -1,196 +1,94 @@
-"use client";
-
+import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
-import { ChevronRight, Calendar, ArrowRight } from "lucide-react";
+import { ArrowRight, Calendar } from "lucide-react";
+import { getPublishedBlogs } from "@/lib/data";
 
-interface BlogPost {
-  id: string;
-  title: string;
-  excerpt: string;
-  date: string;
-  slug: string;
-  image: string;
-}
+export const metadata: Metadata = {
+  title: "Blog | Hindustan Gold Company | Gold Buying Tips & News",
+  description: "Read articles about gold buying, gold prices, how to sell gold, pledged gold release and more from Hindustan Gold Company.",
+  alternates: { canonical: "https://hindustangoldcompany.com/blog" },
+};
 
-const blogPosts: BlogPost[] = [
-  {
-    id: "1",
-    title: "Free hair donation camp on September 11 for cancer sufferers by \"Seeds of Hope\".",
-    excerpt: "Join us in our initiative to support cancer patients through hair donation. Every contribution counts towards bringing hope and confidence to those in need.",
-    date: "September 5, 2024",
-    slug: "free-hair-donation-camp",
-    image: "/images/Seeds-of-Hope-2022-Kannada-b11.jpg"
-  },
-  {
-    id: "2",
-    title: "Muliya Jewels Founder's day – Social Responsibility on the path of Excellence",
-    excerpt: "Celebrating our commitment to excellence and giving back to the community. Learn about our initiatives and how we make a difference.",
-    date: "August 15, 2024",
-    slug: "muliya-jewels-founders-day-social-responsibility-on-the-path-of-excellence",
-    image: "/images/muliya-founders-day-featured-b2.jpg"
-  },
-  {
-    id: "3",
-    title: "Why purchasing gold on Akshaya Tritiya is considered as a good fortune?",
-    excerpt: "Discover the significance of buying gold on this auspicious day and why it has been a cherished tradition for generations.",
-    date: "May 10, 2024",
-    slug: "why-purchasing-gold-on-akshaya-tritiya-is-considered-as-a-good-fortune",
-    image: "/images/akshaya-tritiya-blog-b3.jpg"
-  },
-  {
-    id: "4",
-    title: "Enhance Your Beauty with Traditional Jewellery",
-    excerpt: "Explore the timeless elegance of traditional Indian jewellery and how it complements modern fashion while preserving cultural heritage.",
-    date: "April 22, 2024",
-    slug: "enhance-your-beauty-with-traditional-jewellery",
-    image: "/images/Traditional-jewellery-blog-b4.jpg"
-  },
-  {
-    id: "17",
-    title: "Jewellery Offers Bangalore",
-    excerpt: "Explore jewellery offers Bangalore and wedding jewellery offers Bangalore with exclusive deals on bridal sets, gold coins, diamond jewellery, and more.",
-    date: "May 5, 2026",
-    slug: "jewellery-offers-bangalore",
-    image: "/images/blogimage.jpeg"
-  },
-  {
-    id: "18",
-    title: "Akshaya Tritiya Gold Offers Bangalore",
-    excerpt: "Discover Akshaya Tritiya gold offers Bangalore including gold coin offers Bangalore and festive deals across jewellery collections.",
-    date: "May 5, 2026",
-    slug: "akshaya-tritiya-gold-offers-bangalore",
-    image: "/images/akshaya-tritiya-blog-b3.jpg"
-  },
-  {
-    id: "19",
-    title: "Gold Savings Scheme Bangalore",
-    excerpt: "Learn about our gold savings scheme jewellery plan and jewellery monthly scheme Bangalore customers trust — pay for 11 months and we pay the 12th.",
-    date: "May 5, 2026",
-    slug: "gold-savings-scheme-bangalore",
-    image: "/images/goldscheme.jpeg"
-  },
-  {
-    id: "20",
-    title: "Lightweight Gold & Diamond Jewellery",
-    excerpt: "Explore lightweight gold jewellery and lightweight diamond jewellery designs that are comfortable, elegant, and perfect for everyday wear.",
-    date: "May 5, 2026",
-    slug: "lightweight-gold-diamond-jewellery",
-    image: "/images/Traditional-jewellery-blog-b4.jpg"
-  }
+export const revalidate = 60;
+
+const BASE = "https://hindustangoldcompany.com";
+
+const staticPosts = [
+  { _id: "s1", slug: "gold-earnings-with-price", title: "Gold Earnings with Price", excerpt: "Gold is the most valuable asset, and the fluctuation of the gold price changes with time. Learn how gold has appreciated from Rs.63 per 10g in 1964 to over Rs.52,670 in 2022.", publishedAt: "2023-03-03", category: "Gold Price", featuredImage: `${BASE}/static/img/gold.webp` },
+  { _id: "s2", slug: "gold-biscuit", title: "Gold Biscuit - Investment Guide", excerpt: "A Gold Biscuit is a bullion or ingot of solid gold of a specific weight. Learn why gold biscuits are a superior investment choice.", publishedAt: "2023-02-28", category: "Gold Investment", featuredImage: `${BASE}/static/img/best-gold.jpg` },
+  { _id: "s3", slug: "value-of-gold", title: "Value of Gold - What Determines It?", excerpt: "The value of gold fluctuates based on supply, demand, interest rates, and global economic conditions. Understand what drives gold prices in India.", publishedAt: "2023-02-23", category: "Gold Price", featuredImage: `${BASE}/static/img/trusted_gold.jpg` },
+  { _id: "s4", slug: "gold-online-rate", title: "Gold Online Rate - How It Works", excerpt: "Gold rates are determined by factors like demand and supply, interest rates, inflation, and currency fluctuations. Know how to get the best rate.", publishedAt: "2023-02-22", category: "Gold Price", featuredImage: `${BASE}/static/img/side2.webp` },
+  { _id: "s5", slug: "i-went-to-sell-gold", title: "I Want to Sell Gold - Complete Guide", excerpt: "Get immediate estimation of the gold jewellery you are selling. Hindustan Gold Company gives you the right value without middleman losses.", publishedAt: "2023-02-09", category: "Sell Gold", featuredImage: `${BASE}/static/img/sell_gold.jpg` },
+  { _id: "s6", slug: "gold-buyers-near-me", title: "Gold Buyers Near Me - Find the Best", excerpt: "Looking for reliable gold buyers near you? Complete guide to finding trusted gold buyers with the best price and instant cash.", publishedAt: "2024-03-15", category: "Gold Buying", featuredImage: `${BASE}/static/img/Gold-Buyers.webp` },
+  { _id: "s7", slug: "release-pledged-gold-near-me", title: "How to Release Pledged Gold Near Me", excerpt: "Struggling with pledged gold? Learn how Hindustan Gold Company helps you release gold from banks and NBFCs quickly.", publishedAt: "2024-03-10", category: "Pledged Gold", featuredImage: `${BASE}/static/img/door_step_gold.jpg` },
+  { _id: "s8", slug: "sell-gold-for-cash", title: "How to Sell Gold for Cash", excerpt: "Complete guide on how to sell gold for cash safely and get instant payment at the best market rate.", publishedAt: "2024-03-05", category: "Sell Gold", featuredImage: `${BASE}/static/img/sell_gold.jpg` },
+  { _id: "s9", slug: "cash-for-gold-near-me", title: "Cash for Gold Near Me - Instant Payment", excerpt: "Find the best cash for gold services near you. Hindustan Gold Company offers instant cash at current gold market rates across 89+ branches.", publishedAt: "2024-02-28", category: "Cash for Gold", featuredImage: `${BASE}/static/img/Gold-Buyers.webp` },
 ];
 
-function blogPostTimestamp(dateLabel: string): number {
-  const t = new Date(dateLabel).getTime();
-  return Number.isNaN(t) ? 0 : t;
-}
+const categoryColors: Record<string, string> = {
+  "Gold Price": "bg-amber-100 text-amber-800",
+  "Gold Investment": "bg-yellow-100 text-yellow-800",
+  "Pledged Gold": "bg-blue-100 text-blue-800",
+  "Sell Gold": "bg-green-100 text-green-800",
+  "Cash for Gold": "bg-orange-100 text-orange-800",
+  "Gold Buying": "bg-red-100 text-red-800",
+};
 
-const sortedBlogPosts = [...blogPosts].sort(
-  (a, b) => blogPostTimestamp(b.date) - blogPostTimestamp(a.date),
-);
+export default async function BlogPage() {
+  const dbPosts = await getPublishedBlogs();
+  const posts = dbPosts.length > 0 ? dbPosts : staticPosts;
 
-export default function BlogPage() {
   return (
-    <main className="min-h-screen bg-white">
-      {/* Breadcrumb */}
-      <div className="bg-gray-50 border-b border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <nav className="flex items-center gap-2 text-sm text-gray-600">
-            <Link href="/" className="hover:text-[#E92247] transition-colors">
-              Home
-            </Link>
-            <ChevronRight className="w-4 h-4" />
-            <span className="text-gray-900 font-medium">Blog</span>
-          </nav>
+    <div className="min-h-screen">
+      <section className="bg-gradient-to-br from-[#1a1a1a] to-[#3d0000] py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-4xl sm:text-5xl font-bold text-white">Blog &amp; Updates</h1>
+          <p className="text-gray-300 mt-3 text-lg">Gold buying tips, price updates, and industry knowledge.</p>
         </div>
-      </div>
+      </section>
 
-      {/* Hero Section */}
-      <div className="bg-white">
-        <img
-          src="/images/blogimage.jpeg"
-          alt="Blog banner"
-          className="w-full object-cover"
-          style={{ height: "70vh" }}
-          loading="lazy"
-          decoding="async"
-        />
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-gray-900 mb-4">Blog</h1>
-          <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto">
-            Stories, insights, and updates from Muliya Gold & Diamonds
-          </p>
+      <section className="py-14 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {posts.map((post: any) => (
+              <Link key={post._id} href={`/blog/${post.slug}`} className="block group">
+                <article className="bg-white border border-gray-100 rounded-2xl overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
+                  <div className="relative h-44 overflow-hidden bg-gray-100">
+                    {post.featuredImage ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img src={post.featuredImage} alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-[#1a1a1a] to-[#C8102E]/60 flex items-center justify-center">
+                        <span className="text-4xl">📰</span>
+                      </div>
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                  </div>
+                  <div className="p-5 flex-1 flex flex-col">
+                    <div className="flex items-center gap-2 mb-3">
+                      <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${categoryColors[post.category] ?? "bg-gray-100 text-gray-600"}`}>
+                        {post.category}
+                      </span>
+                      {(post.publishedAt || post.createdAt) && (
+                        <span className="text-xs text-gray-400 flex items-center gap-1">
+                          <Calendar className="w-3 h-3" />
+                          {new Date(post.publishedAt ?? post.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" })}
+                        </span>
+                      )}
+                    </div>
+                    <h2 className="font-bold text-gray-900 text-base leading-snug group-hover:text-[#C8102E] transition-colors mb-2">{post.title}</h2>
+                    <p className="text-gray-600 text-sm leading-relaxed flex-1 line-clamp-3">{post.excerpt}</p>
+                    <div className="mt-4 flex items-center gap-1 text-[#C8102E] text-sm font-semibold">
+                      Read More <ArrowRight className="w-4 h-4" />
+                    </div>
+                  </div>
+                </article>
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
-
-      {/* Blog Posts */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {sortedBlogPosts.map((post) => (
-            <article 
-              key={post.id}
-              className="group bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300"
-            >
-              {/* Image */}
-              <div className="relative h-48 overflow-hidden">
-                <Image
-                  src={post.image}
-                  alt={post.title}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
-              <div className="p-6 md:p-8">
-                {/* Date */}
-                <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
-                  <Calendar className="w-4 h-4" />
-                  <span>{post.date}</span>
-                </div>
-
-                {/* Title */}
-                <h2 className="text-xl md:text-2xl font-serif text-gray-900 mb-4 leading-tight group-hover:text-[#E92247] transition-colors">
-                  {post.title}
-                </h2>
-
-                {/* Excerpt */}
-                <p className="text-gray-600 mb-6 line-clamp-3">
-                  {post.excerpt}
-                </p>
-
-                {/* Read More Link */}
-                <Link 
-                  href={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-2 text-[#E92247] font-medium hover:gap-3 transition-all"
-                >
-                  Read More
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </article>
-          ))}
-        </div>
-      </div>
-
-      {/* CTA Section */}
-      <div className="bg-gray-50 py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-serif text-gray-900 mb-4">
-            Creating Happiness Since 1944
-          </h2>
-          <p className="text-gray-600 mb-8 text-lg max-w-2xl mx-auto">
-            Muliya in your mobile. Download our app to explore our latest collections and stay updated with our blog.
-          </p>
-          <Link 
-            href="/"
-            className="inline-flex items-center gap-3 bg-[#E92247] text-white px-8 py-4 rounded-xl hover:bg-[#d11f3f] transition-all shadow-lg hover:shadow-xl font-medium"
-          >
-            Explore Our Collections
-          </Link>
-        </div>
-      </div>
-    </main>
+      </section>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/app/context/AuthContext";
@@ -229,10 +229,28 @@ export function Header() {
   const router = useRouter();
   const [logoError, setLogoError] = useState(false);
   const { user, isAuthenticated, logout } = useAuth();
-  const goldRates = {
-    "24K": "₹15,093",
-    "22K": "₹13,835",
-  };
+
+  interface GoldRates { k24: number; k22: number; k18: number }
+  const [goldRates, setGoldRates]     = useState<GoldRates | null>(null);
+  const [ratesLoading, setRatesLoading] = useState(true);
+
+  useEffect(() => {
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+    fetch(`${apiUrl}/goldrate/getLatestGoldRate`)
+      .then((r) => r.json())
+      .then((res) => {
+        const rate = res?.goldRate;
+        if (rate) {
+          setGoldRates({
+            k24: rate.gold24KT || 0,
+            k22: rate.gold22KT || 0,
+            k18: rate.gold18KT || 0,
+          });
+        }
+      })
+      .catch(() => {})
+      .finally(() => setRatesLoading(false));
+  }, []);
 
   const megaTabs = [
     "Category",
@@ -331,14 +349,30 @@ export function Header() {
             ) : null}
           </Link>
 
-          {/* Center Navigation - Hidden on mobile */}
-          <div className="hidden lg:flex items-center gap-4 text-[12px]">
-            {Object.entries(goldRates).map(([karat, rate]) => (
-              <div key={karat} className="flex flex-col items-center px-2 py-0.5 bg-amber-50 rounded-lg border border-amber-100 min-w-[80px]">
-                <span className="text-[10px] uppercase tracking-wider font-bold text-amber-700">{karat} Gold</span>
-                <span className="font-semibold text-gray-900">{rate}</span>
-              </div>
-            ))}
+          {/* Gold Rate Ticker - Hidden on mobile */}
+          <div className="hidden lg:flex items-center gap-2 text-[12px]">
+            {ratesLoading ? (
+              /* skeleton while loading */
+              [1, 2, 3].map((i) => (
+                <div key={i} className="flex flex-col items-center px-2 py-0.5 bg-amber-50 rounded-lg border border-amber-100 min-w-[78px] animate-pulse">
+                  <span className="text-[10px] uppercase tracking-wider font-bold text-amber-300">-- Gold</span>
+                  <span className="font-semibold text-gray-300">₹ ---</span>
+                </div>
+              ))
+            ) : goldRates ? (
+              [
+                { label: "24K Gold", value: goldRates.k24 },
+                { label: "22K Gold", value: goldRates.k22 },
+                // { label: "18K Gold", value: goldRates.k18 },
+              ].map(({ label, value }) => (
+                <div key={label} className="flex flex-col items-center px-2 py-0.5 bg-amber-50 rounded-lg border border-amber-100 min-w-[78px]">
+                  <span className="text-[10px] uppercase tracking-wider font-bold text-amber-700">{label}</span>
+                  <span className="font-semibold text-gray-900">
+                    ₹ {value > 0 ? value.toLocaleString("en-IN") : "—"}
+                  </span>
+                </div>
+              ))
+            ) : null}
           </div>
 
           {/* Right Side Actions */}
@@ -425,6 +459,23 @@ export function Header() {
                       ) : null}
                     </SheetTitle>
                   </SheetHeader>
+                  {/* Gold rate strip in mobile menu */}
+                  {goldRates && (
+                    <div className="flex gap-2 mt-4 px-1">
+                      {[
+                        { label: "24K", value: goldRates.k24 },
+                        { label: "22K", value: goldRates.k22 },
+                        { label: "18K", value: goldRates.k18 },
+                      ].map(({ label, value }) => (
+                        <div key={label} className="flex-1 flex flex-col items-center py-1.5 bg-amber-50 rounded-lg border border-amber-100">
+                          <span className="text-[9px] uppercase tracking-wider font-bold text-amber-700">{label} Gold</span>
+                          <span className="text-xs font-semibold text-gray-900">
+                            ₹{value > 0 ? value.toLocaleString("en-IN") : "—"}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                   <nav className="flex flex-col gap-4 mt-6 pb-6 pl-1 pr-1">
                     {mobileMenuSections.map((section) => {
                       const Icon = section.icon;

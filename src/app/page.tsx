@@ -1,20 +1,28 @@
-import { Home } from "@/app/pages/Home";
+import { HGCHome } from "@/app/pages/HGCHome";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Best Jewellery Shop in Bangalore | Gold Jewellery Bangalore | Muliya",
+  title: "Hindustan Gold Company | India's #1 Gold Buyers | Best Gold Price",
   description:
-    "Discover premium gold jewellery in Bangalore at Muliya. Visit the best jewellery shop in Bangalore for exquisite collections, trusted quality, and elegant designs.",
+    "Hindustan Gold Company - India's most trusted gold buyers with 89+ branches across 3 states. Get the best price for your gold with instant cash payment. ISO 9001–2015 certified.",
   keywords: [
-    "gold jewellery Bangalore",
-    "jewellery shop in Bangalore",
-    "best jewellery shop in Bangalore"
+    "gold buyers in bangalore",
+    "sell gold in bangalore",
+    "best gold buyers",
+    "hindustan gold company",
+    "cash for gold",
+    "gold price today",
   ],
   alternates: {
-    canonical: "https://muliya.in/",
+    canonical: "https://hindustangoldcompany.com/",
+  },
+  openGraph: {
+    title: "Hindustan Gold Company | India's #1 Gold Buyers",
+    description: "India's most trusted gold buyers. 89+ branches. Best online gold price. Instant cash payment.",
+    type: "website",
   },
 };
 
 export default function Page() {
-  return <Home />;
+  return <HGCHome />;
 }

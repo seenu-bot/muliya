@@ -2,12 +2,14 @@
 
 import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { toast } from "sonner";
+import { api } from "@/lib/api";
 
 export interface User {
   id: string;
   name: string;
   email: string;
   phone: string;
+  userType?: string;
 }
 
 interface AuthContextType {
@@ -20,104 +22,132 @@ interface AuthContextType {
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
+function parseUser(data: {
+  _id?: string;
+  firstname?: string;
+  lastname?: string;
+  email?: string;
+  mobilenumber?: string;
+  UserType?: string;
+}): User {
+  return {
+    id: data._id ?? "",
+    name: [data.firstname, data.lastname].filter(Boolean).join(" ") || "User",
+    email: data.email ?? "",
+    phone: data.mobilenumber ?? "",
+    userType: data.UserType,
+  };
+}
+
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
 
-  // Load user from localStorage on mount
   useEffect(() => {
-    const storedUser = localStorage.getItem("muliya_user");
-    if (storedUser) {
-      try {
-        setUser(JSON.parse(storedUser));
-      } catch {
-        localStorage.removeItem("muliya_user");
-      }
+    const stored = localStorage.getItem("muliya_user");
+    if (stored) {
+      try { setUser(JSON.parse(stored)); } catch { localStorage.removeItem("muliya_user"); }
     }
   }, []);
 
   const login = useCallback(async (emailOrPhone: string, password: string): Promise<boolean> => {
-    // Get stored users from localStorage
-    const users = JSON.parse(localStorage.getItem("muliya_users") || "[]");
-    
-    // Find user by email or phone
-    const foundUser = users.find(
-      (u: User & { password: string }) => 
-        (u.email === emailOrPhone || u.phone === emailOrPhone) && u.password === password
-    );
+    try {
+      const isEmail = emailOrPhone.includes("@");
+      const payload = isEmail
+        ? { email: emailOrPhone, password }
+        : { mobilenumber: emailOrPhone, password };
 
-    if (foundUser) {
-      const { password: _, ...userWithoutPassword } = foundUser;
-      setUser(userWithoutPassword);
-      localStorage.setItem("muliya_user", JSON.stringify(userWithoutPassword));
-      toast.success(`Welcome back, ${foundUser.name}!`);
+      const res = await api.post<{
+        success: boolean;
+        token?: string;
+        userId?: string;
+        UserType?: string;
+        user?: { _id: string; firstname: string; lastname: string; email: string; mobilenumber: string; UserType: string };
+        message?: string;
+      }>("/user/login", payload);
+
+      if (!res.success) {
+        toast.error(res.message ?? "Invalid credentials");
+        return false;
+      }
+
+      if (res.token) {
+        localStorage.setItem("muliya_auth_token", res.token);
+      }
+
+      const userData = res.user
+        ? parseUser(res.user)
+        : { id: res.userId ?? "", name: "User", email: emailOrPhone, phone: "", userType: res.UserType };
+
+      setUser(userData);
+      localStorage.setItem("muliya_user", JSON.stringify(userData));
+      toast.success(`Welcome back, ${userData.name}!`);
       return true;
-    } else {
-      toast.error("Invalid email/phone or password");
+    } catch (e: unknown) {
+      toast.error(e instanceof Error ? e.message : "Login failed");
       return false;
     }
   }, []);
 
   const register = useCallback(async (
-    name: string, 
-    phone: string, 
-    email: string, 
+    name: string,
+    phone: string,
+    email: string,
     password: string
   ): Promise<boolean> => {
-    // Get stored users
-    const users = JSON.parse(localStorage.getItem("muliya_users") || "[]");
+    try {
+      const [firstname, ...rest] = name.trim().split(" ");
+      const lastname = rest.join(" ") || "";
 
-    // Check if email or phone already exists
-    const existingUser = users.find(
-      (u: User) => u.email === email || u.phone === phone
-    );
+      const res = await api.post<{
+        success: boolean;
+        token?: string;
+        userId?: string;
+        UserType?: string;
+        user?: { _id: string; firstname: string; lastname: string; email: string; mobilenumber: string; UserType: string };
+        message?: string;
+        error?: string;
+      }>("/user/register", {
+        firstname,
+        lastname,
+        email,
+        password,
+        mobilenumber: phone,
+        UserType: "1",
+        lang: "1",
+      });
 
-    if (existingUser) {
-      if (existingUser.email === email) {
-        toast.error("Email already registered");
-      } else {
-        toast.error("Phone number already registered");
+      if (!res.success) {
+        toast.error(res.message ?? res.error ?? "Registration failed");
+        return false;
       }
+
+      if (res.token) {
+        localStorage.setItem("muliya_auth_token", res.token);
+      }
+
+      const userData = res.user
+        ? parseUser(res.user)
+        : { id: res.userId ?? "", name, email, phone, userType: res.UserType ?? "1" };
+
+      setUser(userData);
+      localStorage.setItem("muliya_user", JSON.stringify(userData));
+      toast.success("Account created successfully!");
+      return true;
+    } catch (e: unknown) {
+      toast.error(e instanceof Error ? e.message : "Registration failed");
       return false;
     }
-
-    // Create new user
-    const newUser = {
-      id: crypto.randomUUID(),
-      name,
-      phone,
-      email,
-      password, // In production, hash this password
-    };
-
-    // Save to users list
-    users.push(newUser);
-    localStorage.setItem("muliya_users", JSON.stringify(users));
-
-    // Auto login after registration
-    const { password: _, ...userWithoutPassword } = newUser;
-    setUser(userWithoutPassword);
-    localStorage.setItem("muliya_user", JSON.stringify(userWithoutPassword));
-
-    toast.success("Account created successfully!");
-    return true;
   }, []);
 
   const logout = useCallback(() => {
     setUser(null);
     localStorage.removeItem("muliya_user");
+    localStorage.removeItem("muliya_auth_token");
     toast.success("Logged out successfully");
   }, []);
 
   return (
-    <AuthContext.Provider
-      value={{
-        user,
-        isAuthenticated: !!user,
-        login,
-        register,
-        logout,
-      }}
-    >
+    <AuthContext.Provider value={{ user, isAuthenticated: !!user, login, register, logout }}>
       {children}
     </AuthContext.Provider>
   );
@@ -125,8 +155,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
 export function useAuth() {
   const context = useContext(AuthContext);
-  if (context === undefined) {
-    throw new Error("useAuth must be used within an AuthProvider");
-  }
+  if (context === undefined) throw new Error("useAuth must be used within an AuthProvider");
   return context;
 }

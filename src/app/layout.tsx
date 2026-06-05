@@ -9,7 +9,8 @@ import { CartProvider } from "@/app/context/CartContext";
 import { AuthProvider } from "@/app/context/AuthContext";
 
 export const metadata: Metadata = {
-  title: "Muliya",
+  title: "Hindustan Gold Company | India's #1 Gold Buyers",
+  description: "Hindustan Gold Company — India's most trusted gold buyers. 89+ branches across 3 states. Best price for your gold with instant cash payment. ISO 9001-2015 certified.",
 };
 
 export const viewport: Viewport = {

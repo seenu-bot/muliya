@@ -18,6 +18,8 @@ import { HeroParallaxBanner } from "@/app/components/HeroParallaxBanner";
 import { ImageBannerSwiper } from "@/app/components/ImageBannerSwiper";
 import AboutSection from "../components/AboutSection";
 import VideoGallery from "@/app/components/VideoCarousel";
+import { DynamicCollectionSection } from "@/app/components/DynamicCollectionSection";
+import { DynamicCategorySection } from "@/app/components/DynamicCategorySection";
 
 function categoryPublicImage(filename: string) {
   return `/images/category/${encodeURIComponent(filename)}`;
@@ -82,56 +84,6 @@ function MuliyaTestimonialAvatarBlock({
 }
 
 /** Shop by categories — Tanishq-style grid (2×4): image tile + label; last cell is View All. */
-const shopByCategoryGridItems = [
-  {
-    label: "RINGS",
-    href: "/products/gold-rings-bangalore",
-    image: "/images/blue_category/Slider1_muliya.webp",
-  },
-  {
-    label: "EARRINGS",
-    href: "/products/gold-earrings-bangalore",
-    image: "/images/blue_category/Slider6_muliya.webp",
-  },
-  {
-    label: "PENDANTS",
-    href: "/products/gold-pendants-bangalore",
-    image: "/images/blue_category/Slider4_muliya.webp",
-  },
-  {
-    label: "MANGALSUTRA",
-    href: "/products/gold-mangalsutra-bangalore",
-    image: "/images/blue_category/Slider5_muliya.webp",
-  },
-  {
-    label: "CHAINS",
-    href: "/products/gold-chain-bangalore",
-    image: "/images/blue_category/Slider3_muliya.webp",
-  },
-  {
-    label: "BRACELETS",
-    href: "/products/gold-bracelets-bangalore",
-    image: "/images/blue_category/Slider7_muliya.webp",
-  },
-  {
-    label: "BANGLES",
-    href: "/products/gold-bangles-bangalore",
-    image: "/images/blue_category/Slider2_muliya.webp",
-  },
-  {
-    label: "NECKLACES",
-    href: "/products/gold-necklaces-bangalore",
-    image: "/images/blue_category/Slider8_muliya.webp",
-  }
-] as const;
-
-const shopByCategoryViewAll = {
-  label: "VIEW ALL",
-  href: "/gold-jewellery-bangalore",
-  count: "10+",
-  sublabel: "Categories to choose from",
-} as const;
-
 const collections = [
   {
     id: 1,
@@ -611,33 +563,7 @@ export function Home() {
             </p>
           </div>
 
-          <div className="mt-10 grid grid-cols-2 gap-5 md:mt-14 md:gap-6 lg:grid-cols-4">
-            {shopByCategoryGridItems.map((cat, idx) => (
-              <motion.div
-                key={cat.href}
-                initial={{ opacity: 0, y: 12 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.45, delay: idx * 0.04 }}
-                className="group"
-              >
-                <Link href={cat.href} className="block">
-                  <div className="relative aspect-[3/4] overflow-hidden rounded-2xl shadow-sm ring-1 ring-black/5 transition-shadow duration-300 group-hover:shadow-md">
-                    <ImageWithFallback
-                      src={cat.image}
-                      alt={cat.label}
-                      className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <p className="mt-4 text-center font-serif text-xs uppercase tracking-[0.14em] text-neutral-900 sm:text-sm md:text-[0.95rem]">
-                    {cat.label}
-                  </p>
-                </Link>
-              </motion.div>
-            ))}
-
-            
-          </div>
+          <DynamicCategorySection />
         </div>
       </section>
 
@@ -818,154 +744,7 @@ What began as a vision rooted in craftsmanship has evolved into a legacy - where
 
     </h3>
 
-    {/* Mobile: horizontal scroll | md+: grid */}
-    <div className="md:hidden flex overflow-x-auto gap-4 pb-4 snap-x snap-mandatory -mx-4 px-4 hide-scrollbar">
-      {[
-  { 
-    name: "Amuliya Diamonds", 
-    desc: "Exquisite Diamond Craftsmanship", 
-    image: "/images/sector/Amulya.jpg.jpeg", 
-    slug: "amuliya" 
-  },
-  { 
-    name: "Mahathi Antique Collection", 
-    desc: "Timeless Antique Designs", 
-    image: "/images/sector/Mahathi.png", 
-    slug: "mahathi" 
-  },
-  { 
-    name: "Pouranik Collection", 
-    desc: "Heritage-Inspired Pieces", 
-    image: "/images/sector/Pouranik.png", 
-    slug: "pouranik" 
-  },
-  { 
-    name: "Muliya Silveriya", 
-    desc: "Premium Silver Jewellery", 
-    image: "/images/sector/Silverio_2.png", 
-    slug: "silveriya" 
-  },
-  { 
-    name: "Nithya 18k Jewellery Series", 
-    desc: "Everyday Elegance In 18k Gold", 
-    image: "/images/sector/Nithiya.png", 
-    slug: "nithya" 
-  },
-  { 
-    name: "Mangalsutra Collection", 
-    desc: "Sacred Bonds, Beautiful Designs", 
-    image: "/images/sector/Mangalsutra.png", 
-    slug: "mangalsutra" 
-  }
-].map((col, idx) => (
-        <motion.div
-          key={col.slug}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, delay: idx * 0.05 }}
-          className="flex-shrink-0 w-[72vw] snap-start"
-        >
-          <Link href={`/collections/${col.slug}`}>
-            <div className="group cursor-pointer text-center">
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <ImageWithFallback
-                  src={col.image}
-                  alt={col.name}
-                  className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-              <div className="mt-3">
-                <h3 className="text-lg font-serif text-gray-900 flex items-center justify-center gap-1 group-hover:text-gray-700 transition-colors">
-                  {col.name}
-                  <ArrowRight className="w-4 h-4 -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </h3>
-                {col.desc && (
-                  <p className="text-sm text-gray-600 mt-1">{col.desc}</p>
-                )}
-              </div>
-            </div>
-          </Link>
-        </motion.div>
-      ))}
-    </div>
-
-    {/* Desktop: grid layout */}
-    <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6 justify-items-center">
-      {[
-  { 
-    name: "Amuliya Diamonds", 
-    desc: "Exquisite Diamond Craftsmanship", 
-    image: "/images/sector/Amulya.jpg.jpeg", 
-    slug: "amuliya" 
-  },
-  { 
-    name: "Mahathi Antique Collection", 
-    desc: "Timeless Antique Designs", 
-    image: "/images/sector/Mahathi.png", 
-    slug: "mahathi" 
-  },
-  { 
-    name: "Pouranik Collection", 
-    desc: "Heritage-Inspired Pieces", 
-    image: "/images/sector/Pouranik.png", 
-    slug: "pouranik" 
-  },
-  { 
-    name: "Muliya Silveriya", 
-    desc: "Premium Silver Jewellery", 
-    image: "/images/sector/Silverio_2.png", 
-    slug: "silveriya" 
-  },
-  { 
-    name: "Nithya 18k Jewellery Series", 
-    desc: "Everyday Elegance In 18k Gold", 
-    image: "/images/sector/Nithiya.png", 
-    slug: "nithya" 
-  },
-  { 
-    name: "Mangalsutra Collection", 
-    desc: "Sacred Bonds, Beautiful Designs", 
-    image: "/images/sector/Mangalsutra.png", 
-    slug: "mangalsutra" 
-  }
-].map((col, idx) => (
-        <motion.div
-          key={col.slug}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.45, delay: idx * 0.05 }}
-        >
-          <Link href={`/collections/${col.slug}`}>
-            <div className="group cursor-pointer text-center">
-
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <ImageWithFallback
-                  src={col.image}
-                  alt={col.name}
-                  className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-300"
-                />
-              </div>
-
-              <div className="mt-3">
-                <h3 className="text-xl font-serif text-gray-900 flex items-center justify-center gap-1 group-hover:text-gray-700 transition-colors">
-                  {col.name}
-                  <ArrowRight className="w-4 h-4 -rotate-45 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-                </h3>
-
-                {col.desc && (
-                  <p className="text-sm text-gray-600 mt-1">
-                    {col.desc}
-                  </p>
-                )}
-              </div>
-
-            </div>
-          </Link>
-        </motion.div>
-      ))}
-    </div>
+    <DynamicCollectionSection />
   </div>
 </section>
 

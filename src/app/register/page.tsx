@@ -28,6 +28,8 @@ export default function RegisterPage() {
     confirmPassword: "",
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [serverError, setServerError] = useState("");
+  const [registered, setRegistered] = useState(false);
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
@@ -64,6 +66,7 @@ export default function RegisterPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setServerError("");
 
     if (!validateForm()) return;
 
@@ -77,9 +80,30 @@ export default function RegisterPage() {
     setIsLoading(false);
 
     if (success) {
-      router.push("/");
+      setRegistered(true);
+      setTimeout(() => router.push("/"), 1500);
+    } else {
+      setServerError("Registration failed. This email or phone number may already be in use.");
     }
   };
+
+  /* ── Success screen ── */
+  if (registered) {
+    return (
+      <main className="min-h-screen bg-gray-50 flex items-center justify-center py-12">
+        <div className="max-w-md w-full mx-auto px-4 text-center">
+          <div className="bg-white rounded-xl shadow-sm p-10">
+            <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <CheckCircle2 className="w-8 h-8 text-green-500" />
+            </div>
+            <h2 className="text-2xl font-serif text-gray-900 mb-2">Account Created!</h2>
+            <p className="text-gray-600 mb-6">Welcome to Muliya Gold &amp; Diamonds. Redirecting you home…</p>
+            <div className="w-8 h-8 border-4 border-[#E92247] border-t-transparent rounded-full animate-spin mx-auto" />
+          </div>
+        </div>
+      </main>
+    );
+  }
 
   return (
     <main className="min-h-screen bg-gray-50 py-12">
@@ -112,7 +136,7 @@ export default function RegisterPage() {
                 <input
                   type="text"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) => { setServerError(""); setFormData({ ...formData, name: e.target.value }); }}
                   className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E92247]/20 focus:border-[#E92247] outline-none"
                   placeholder="Enter your full name"
                 />
@@ -132,7 +156,7 @@ export default function RegisterPage() {
                 <input
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e) => { setServerError(""); setFormData({ ...formData, phone: e.target.value }); }}
                   className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E92247]/20 focus:border-[#E92247] outline-none"
                   placeholder="Enter your phone number"
                 />
@@ -152,7 +176,7 @@ export default function RegisterPage() {
                 <input
                   type="email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) => { setServerError(""); setFormData({ ...formData, email: e.target.value }); }}
                   className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E92247]/20 focus:border-[#E92247] outline-none"
                   placeholder="Enter your email"
                 />
@@ -172,7 +196,7 @@ export default function RegisterPage() {
                 <input
                   type={showPassword ? "text" : "password"}
                   value={formData.password}
-                  onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                  onChange={(e) => { setServerError(""); setFormData({ ...formData, password: e.target.value }); }}
                   className="w-full pl-10 pr-12 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E92247]/20 focus:border-[#E92247] outline-none"
                   placeholder="Create a password"
                 />
@@ -199,7 +223,7 @@ export default function RegisterPage() {
                 <input
                   type={showPassword ? "text" : "password"}
                   value={formData.confirmPassword}
-                  onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                  onChange={(e) => { setServerError(""); setFormData({ ...formData, confirmPassword: e.target.value }); }}
                   className="w-full pl-10 pr-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#E92247]/20 focus:border-[#E92247] outline-none"
                   placeholder="Confirm your password"
                 />
@@ -208,6 +232,14 @@ export default function RegisterPage() {
                 <p className="text-sm text-red-500 mt-1">{errors.confirmPassword}</p>
               )}
             </div>
+
+            {/* Server error */}
+            {serverError && (
+              <div className="flex items-start gap-2 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3">
+                <span className="mt-0.5">⚠</span>
+                <span>{serverError}</span>
+              </div>
+            )}
 
             {/* Submit Button */}
             <button
